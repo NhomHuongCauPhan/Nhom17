@@ -5,15 +5,17 @@
 
 -- Table Account
 CREATE TABLE account(
-	account_name varchar(50) PRIMARY KEY,
+	id int PRIMARY KEY
+	account_name varchar(50),
     password varchar(20) NOT NULL,
-    role int NOT NULL
+    role int NOT NULL,
+    status int not NULL
 );
 
 insert into account values ('admin1','12345',1),
-('admin','12345',1),
-('member','12345',0),
-('systemadmin','123456',2);
+('admin','12345',1,1),
+('member','12345',1,1),
+('systemadmin','123456',2,1);
 
 -- Table Parentage
 CREATE TABLE parentage(
