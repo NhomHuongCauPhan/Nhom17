@@ -1,14 +1,14 @@
 package com.giaphavietnam.model;
 
 public class ImageModel {
-	private int id;
+	private Long id;
 	private String imageName;
 	private String url;
-	private int parentageId;
-	public int getId() {
+	private long parentageId;
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getImageName() {
@@ -23,10 +23,10 @@ public class ImageModel {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public int getParentageId() {
+	public long getParentageId() {
 		return parentageId;
 	}
-	public void setParentageId(int parentageId) {
+	public void setParentageId(long parentageId) {
 		this.parentageId = parentageId;
 	}
 	

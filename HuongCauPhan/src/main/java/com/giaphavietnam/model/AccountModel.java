@@ -1,15 +1,15 @@
 package com.giaphavietnam.model;
 
 public class AccountModel {
-	private int id;
+	private long id;
 	private String accountName; 
 	private String password;
 	private int role;
 	private int status;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getAccountName() {

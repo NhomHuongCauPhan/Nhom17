@@ -3,7 +3,7 @@ package com.giaphavietnam.model;
 import java.sql.Timestamp;
 
 public class ParentageModel {
-	private int parentageId ;
+	private long parentageId ;
 	private String parentageName ;
 	private String head_of_parentage_name ;
 	private String address ;
@@ -13,11 +13,11 @@ public class ParentageModel {
 	private String headOfParentageEmail ;
 	private String ancestor ;
 	private String historyOfParentage ;
-	private int accountId ;
-	public int getParentageId() {
+	private long accountId ;
+	public long getParentageId() {
 		return parentageId;
 	}
-	public void setParentageId(int parentageId) {
+	public void setParentageId(long parentageId) {
 		this.parentageId = parentageId;
 	}
 	public String getParentageName() {
@@ -74,10 +74,10 @@ public class ParentageModel {
 	public void setHistoryOfParentage(String historyOfParentage) {
 		this.historyOfParentage = historyOfParentage;
 	}
-	public int getAccountId() {
+	public long getAccountId() {
 		return accountId;
 	}
-	public void setAccountId(int accountId) {
+	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
 	

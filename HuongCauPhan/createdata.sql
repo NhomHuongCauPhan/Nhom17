@@ -27,21 +27,18 @@ CREATE TABLE parentage(
     cultural_autumn_day date,
     head_of_parentage_number varchar(11),
     head_of_parentage_email varchar(50),
-    head_of_parentage_address varchar(255),
     ancestor text,
     history_of_parentage text,
-    convention_of_parentage text,
-    cult_portion_land text,
-    account_name varchar(255),
+    account_id varchar(255),
 
-    FOREIGN KEY (account_name) REFERENCES account(account_name)
+    FOREIGN KEY (account_id) REFERENCES account(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 insert into parentage(parentage_name,head_of_parentage_name,address
 ,cultural_spring_day, cultural_autumn_day, head_of_parentage_number,
-head_of_parentage_email, head_of_parentage_address, ancestor,
-history_of_parentage, convention_of_parentage, cult_portion_land,
+head_of_parentage_email, ancestor,
+history_of_parentage,
 account_name) values
 ('Jaime','Jame Lannister','London','1300-6-4','1300/10/14', '0965930913','phamvanhieu300198@gmail.com'
 ,'Lodon','Twin Lannister','once upon ago', 'No Mercy', 'Surray','admin');

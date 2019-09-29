@@ -3,19 +3,19 @@ package com.giaphavietnam.model;
 import java.sql.Timestamp;
 
 public class IndividualModel {
-	private int individualId;
+	private long individualId;
 	private String fullName ;
 	private int gender;
 	private Timestamp dateOfBirth ;
 	private Timestamp dateOfDeath ;
 	private int father;
 	private String branch ;
-	private int parentageId ;
+	private long parentageId ;
 	private String avatar ;
-	public int getIndividualId() {
+	public long getIndividualId() {
 		return individualId;
 	}
-	public void setIndividualId(int individualId) {
+	public void setIndividualId(long individualId) {
 		this.individualId = individualId;
 	}
 	public String getFullName() {
@@ -54,10 +54,10 @@ public class IndividualModel {
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
-	public int getParentageId() {
+	public long getParentageId() {
 		return parentageId;
 	}
-	public void setParentageId(int parentageId) {
+	public void setParentageId(long parentageId) {
 		this.parentageId = parentageId;
 	}
 	public String getAvatar() {
