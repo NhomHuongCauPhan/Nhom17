@@ -5,21 +5,21 @@
 
 -- Table Account
 CREATE TABLE account(
-	id int PRIMARY KEY
+	id bigint PRIMARY KEY AUTO_INCREMENT,
 	account_name varchar(50),
     password varchar(20) NOT NULL,
     role int NOT NULL,
     status int not NULL
 );
 
-insert into account values ('admin1','12345',1),
+insert into account(account_name,password,role,status) values ('admin1','12345',1,0),
 ('admin','12345',1,1),
 ('member','12345',1,1),
 ('systemadmin','123456',2,1);
 
 -- Table Parentage
 CREATE TABLE parentage(
-	parentage_id int PRIMARY KEY AUTO_INCREMENT,
+	parentage_id bigint PRIMARY KEY AUTO_INCREMENT,
     parentage_name varchar(255) ,
     head_of_parentage_name varchar(255) ,
     address varchar(255) ,
@@ -29,7 +29,7 @@ CREATE TABLE parentage(
     head_of_parentage_email varchar(50),
     ancestor text,
     history_of_parentage text,
-    account_id varchar(255),
+    account_id bigint,
 
     FOREIGN KEY (account_id) REFERENCES account(id)
     ON DELETE CASCADE ON UPDATE CASCADE
@@ -39,20 +39,20 @@ insert into parentage(parentage_name,head_of_parentage_name,address
 ,cultural_spring_day, cultural_autumn_day, head_of_parentage_number,
 head_of_parentage_email, ancestor,
 history_of_parentage,
-account_name) values
+account_id) values
 ('Jaime','Jame Lannister','London','1300-6-4','1300/10/14', '0965930913','phamvanhieu300198@gmail.com'
-,'Lodon','Twin Lannister','once upon ago', 'No Mercy', 'Surray','admin');
+,'Twin Lannister','once upon ago',2);
 
 -- Table Individual
 CREATE TABLE individual(
-	individual_id int PRIMARY KEY AUTO_INCREMENT,
+	individual_id bigint PRIMARY KEY AUTO_INCREMENT,
     fullname varchar(100) ,
     gender bit,
     date_of_birth date,
     date_of_death date,
     father int,
     branch varchar(255),
-    parentage_id int,
+    parentage_id bigint,
     avatar varchar(100),
     FOREIGN KEY (parentage_id) REFERENCES parentage(parentage_id)
     ON DELETE CASCADE  ON UPDATE CASCADE
@@ -70,10 +70,10 @@ insert into individual(fullname,gender,date_of_birth,date_of_death
 
 -- Table Image
 CREATE TABLE image(
-	id int primary key auto_increment,
+	id bigint primary key auto_increment,
     image_name varchar(255),
     url varchar(255),
-    parentage_id int ,
+    parentage_id bigint ,
     FOREIGN KEY (parentage_id) REFERENCES parentage(parentage_id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );

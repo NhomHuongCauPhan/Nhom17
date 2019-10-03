@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>	
+<c:url var="APIurl" value="/api-admin-account"/>
+<c:url var="
+" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +43,7 @@
 							</div>
 						</div>
 
-						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+						
 						<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 						<script src="<c:url value='/template/adjs/bootstrap.min.js'></c:url>"></script>
@@ -139,7 +143,9 @@
 
 						<div class="box rb ovh txtC login">
 							<h3 class="bhead">THÀNH VIÊN</h3>
+							
 							<div class="grb ovh" id="member_area">
+							
 								<%
 									if (request.getSession().getAttribute("Loginned") != null) {
 										out.print("<div class=\"member\">");
@@ -152,21 +158,21 @@
 										out.print("<p><a href=\"javascript:logout()\">Đăng xuất</a></p>");
 										out.print("</div>");
 									} else {
+										out.print("<form id=\"formlogin\">");
 										out.print(
-												"<p><input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"txt usrn\" placeholder=\"Tên đăng nhập\" /></p>");
+												"<p><input type=\"text\" id=\"accountName\" name=\"accountName\" class=\"txt usrn\" placeholder=\"Tên đăng nhập\" /></p>");
 										out.print(
-												"<p><input type=\"password\" id=\"pass\" name=\"pass\" class=\"txt pwd\" placeholder=\"Mật khẩu\" /></p>");
+												"<p><input type=\"password\" id=\"password\" name=\"password\" class=\"txt pwd\" placeholder=\"Mật khẩu\" /></p>");
 										out.print(
-												"<p class=\"pdr\"><input type=\"button\" onclick=\"login()\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
+												"<p class=\"pdr\"><input type=\"button\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
 										out.print(
 												"<p style=\"padding-top: 5px\"><a href=\"javascript:open_register()\" id=\"lnk_regnew\" style=\"text-decoration: underline\">Đăng ký mới miễn phí</a></p>");
+										out.print("</form>");
 									}
 								%>
 
-
-
-
 							</div>
+							
 						</div>
 						
 						<div class="box rb ovh txtC menu">
@@ -228,10 +234,11 @@
 		function open_register() {
 			$('#dlg_register').modal('show'); // show bootstrap modal
 		}
-		function login() {
-
-			var username = $("#loginid").val().trim();
-			var password = $("#pass").val().trim();
+		$('#btnLogin').click(function (e) {
+			e.preventDefault();
+			var username = $("#accountName").val().trim();
+			var password = $("#password").val().trim();
+			var data={};
 			var tmp = "";
 			if (username.length == 0) {
 				tmp += "Tên tài khoản không được để trống";
@@ -243,10 +250,33 @@
 				alert(tmp);
 				return;
 			}
-			$("#form1")[0].method = "POST";
-			$("#form1")[0].action = "/home/view";
-			$("#form1")[0].submit();
-		}
+			
+			/* var formdata = $('#formlogin').serializeArray();
+			$.each(formdata, function(i, v){
+				data[""+v.name+""] = v.value;
+			}); */
+			data['accountName'] = username;
+			data['password']=password;
+			data['id'] = "";
+			data['role']="";
+			data['status'] = "";
+
+			
+			$.ajax({
+				url: '$(APIurl)',
+				type: 'GET',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: function(result){
+					window.location.href = "${WebURL}?hahah";
+				},
+				
+				error: function(error){
+					window.location.href = "${WebURL}?huhuhuh";
+				}
+			});
+		});
 
 		function register() {
 

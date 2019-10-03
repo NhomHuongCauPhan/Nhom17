@@ -16,6 +16,7 @@ public class HomeController extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
 		if (req.getRequestURI().endsWith("dong-ho")) {
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/edit.jsp");
 			rd.forward(req, res);
 		}
@@ -28,6 +29,7 @@ public class HomeController extends HttpServlet {
 			rd.forward(req, res);
 		}
 		else if (req.getRequestURI().endsWith("album")) {
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/album.jsp");
 			rd.forward(req, res);
 		}
