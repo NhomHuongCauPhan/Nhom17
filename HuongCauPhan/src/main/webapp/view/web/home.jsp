@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>	
 <c:url var="APIurl" value="/api-admin-account"/>
-<c:url var="
-" value="/trang-chu"/>
+<c:url var="WebURL" value="/trang-chu"/>
 <c:url var="Adminurl" value="/quan-tri"/>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,9 @@
 	<form name="form1" id="form1">
 
 		<div class="wrapper">
-			<a href="/home/view" title="Bấm vào đây đề về Trang chủ">
+			<a href="<c:url value='/trang-chu'/>" title="Bấm vào đây đề về Trang chủ" >
 				<div class="banner txtC" id="heading-page">
-					<img src="<c:url value='/template/adimgs/cen_bn.jpg'></c:url>" style="height: 150px" />
+					<img src="<c:url value='/template/adimgs/cen_bn.jpg'></c:url>" style="height: 150px" >
 				</div>
 			</a>
 			<div class="wrappage">
@@ -146,30 +147,30 @@
 							
 							<div class="grb ovh" id="member_area">
 							
-								<%
-									if (request.getSession().getAttribute("Loginned") != null) {
-										out.print("<div class=\"member\">");
-										out.print("<img src=\"/home/adimgs/default.png\">");
-										out.print("<p>Xin chào:</p><p class=\"memname\">" + request.getSession().getAttribute("acname")
-												+ "</p>");
-										out.print("</div>");
-										out.print("<div class=\"memfunc\">");
-										out.print("<p><a href=\"/home/parentage/ae\">Quản lý</a></p>");
-										out.print("<p><a href=\"javascript:logout()\">Đăng xuất</a></p>");
-										out.print("</div>");
-									} else {
-										out.print("<form id=\"formlogin\">");
-										out.print(
-												"<p><input type=\"text\" id=\"accountName\" name=\"accountName\" class=\"txt usrn\" placeholder=\"Tên đăng nhập\" /></p>");
-										out.print(
-												"<p><input type=\"password\" id=\"password\" name=\"password\" class=\"txt pwd\" placeholder=\"Mật khẩu\" /></p>");
-										out.print(
-												"<p class=\"pdr\"><input type=\"button\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
-										out.print(
-												"<p style=\"padding-top: 5px\"><a href=\"javascript:open_register()\" id=\"lnk_regnew\" style=\"text-decoration: underline\">Đăng ký mới miễn phí</a></p>");
-										out.print("</form>");
-									}
-								%>
+							<c:if test="${not empty model}">
+								<div class="member">
+								<img src="<c:url value='/template/adimgs/default.png'/>"/>
+								<p>Xin chào:</p><p class="memname">${model.accountName}</p>
+								</div>
+								<div class="memfunc">
+								<p><a href="/home/parentage/ae">Quản lý</a></p>
+								<p><a href="javascript:logout()">Đăng xuất</a></p>
+								</div>
+							</c:if>
+							
+							<c:if test="${empty model}">
+								<form id="formlogin">
+										
+								<p><input type="text" id="accountName" name="accountName" class="txt usrn" placeholder="Tên đăng nhập" /></p>
+										
+								<p><input type="password" id="password" name="password" class="txt pwd" placeholder="Mật khẩu" /></p>
+								
+								<p class="pdr"><input type="button" id="btnLogin" value="Đăng nhập" style="height: 25px" /></p>
+								<p style="padding-top: 5px"><a href="javascript:open_register()" id="lnk_regnew" style="text-decoration: underline">Đăng ký mới miễn phí</a></p>
+								</form>
+							</c:if>
+							
+								
 
 							</div>
 							
@@ -211,18 +212,6 @@
 	<a href="#heading-page" id="toTop">to Top</a>
 
 	<script type="text/javascript">
-		function ucFirstAllWords(str) {
-			var pieces = str.split(" ");
-			for (var i = 0; i < pieces.length; i++) {
-				var j = pieces[i].charAt(0).toUpperCase();
-				pieces[i] = j + pieces[i].substr(1);
-			}
-			return pieces.join(" ");
-		}
-
-		$(document).ready(function() {
-
-		});
 
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
@@ -238,7 +227,13 @@
 			e.preventDefault();
 			var username = $("#accountName").val().trim();
 			var password = $("#password").val().trim();
-			var data={};
+			var data={
+					accountName: username,
+					password:password,
+					id:0 ,
+					role:0,
+					status:0
+			};
 			var tmp = "";
 			if (username.length == 0) {
 				tmp += "Tên tài khoản không được để trống";
@@ -255,25 +250,21 @@
 			$.each(formdata, function(i, v){
 				data[""+v.name+""] = v.value;
 			}); */
-			data['accountName'] = username;
-			data['password']=password;
-			data['id'] = "";
-			data['role']="";
-			data['status'] = "";
+			
 
 			
 			$.ajax({
-				url: '$(APIurl)',
-				type: 'GET',
+				url: '${APIurl}',
+				type: 'Post',
 				contentType: 'application/json',
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function(result){
-					window.location.href = "${WebURL}?hahah";
+					window.location.href = "${WebURL}";
 				},
 				
 				error: function(error){
-					window.location.href = "${WebURL}?huhuhuh";
+					window.location.href = "${WebURL}?error=notlogin";
 				}
 			});
 		});
@@ -323,7 +314,7 @@
 
 				request.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						var tmp1 = "<div class=\"error\">"
+						var tmp1 = "<div class=\"success\">"
 								+ request.responseText + "</div>";
 						$("#update_msg").html(tmp1);
 
@@ -370,7 +361,7 @@
 						<td><input type="text" id="captConfirm"
 							style="width: 75px; height: 21px; float: left; margin-right: 10px"
 							placeholder="Mã bảo mật" title="Nhập mã trong ảnh bên" /> <img
-							id="imgSec" src="/home/adimgs/CapGenerator.jpg" class="imgCaptcha"
+							id="imgSec" src="<c:url value='/template/adimgs/CapGenerator.jpg'/>" class="imgCaptcha"
 							alt="Loading..." style="width: 80px; height: 30px" /></td>
 					</tr>
 					<tr>

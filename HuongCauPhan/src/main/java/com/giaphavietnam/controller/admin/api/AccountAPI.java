@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.giaphavietnam.constant.SystemConstant;
 import com.giaphavietnam.model.AccountModel;
 import com.giaphavietnam.service.impl.AccountService;
 import com.giaphavietnam.utils.HttpUtil;
@@ -21,14 +22,15 @@ public class AccountAPI extends HttpServlet{
 	@Inject AccountService acountService;
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("hahahhahahah");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
 		accountModel = acountService.findByUserNameAndUserPass(accountModel.getAccountName(), accountModel.getPassword());
-		
+		if(accountModel!=null) {
+			req.getSession().setAttribute(SystemConstant.MODEL, accountModel);
+		}
 		mapper.writeValue(resp.getOutputStream(), accountModel);
 	}
 	
