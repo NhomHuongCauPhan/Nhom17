@@ -1,12 +1,12 @@
 package com.giaphavietnam.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -75,8 +75,8 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 					pre.setString(index, (String) parameter);
 				}else if (parameter instanceof Integer) {
 					pre.setInt(index, (Integer) parameter);
-				}else if (parameter instanceof Timestamp) {
-					pre.setTimestamp(index, (Timestamp) parameter);
+				}else if (parameter instanceof Date) {
+					pre.setDate(index, (Date) parameter);
 				}else if (parameter == null) {
 					pre.setNull(index, Types.NULL);
 				}
@@ -136,6 +136,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 			if(rs.next()) {
 				id = rs.getLong(1);
 			}
+			
 			con.commit();
 			return id;
 		} catch (SQLException e) {

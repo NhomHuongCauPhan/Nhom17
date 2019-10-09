@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIurl" value="/api-admin-parentage"/>
+<c:url var="WebURL" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri"/>
 <!doctype html>
 <html>
 <head>
@@ -16,8 +19,7 @@
 		<div class="page_title" style="margin-bottom: 15px">
 			<h2>Thông tin dòng họ</h2>
 			<div class="toolbox">
-				<a href="javascript:saveGiaPhaInfo()" id="btn_save"
-					class="ubtn save">Lưu lại</a>
+				<a id="btn_save" class="ubtn save">Lưu lại</a>
 			</div>
 		</div>
 		<div class="load_progress"></div>
@@ -32,25 +34,25 @@
 					<td style="width: 110px">Tên dòng họ</td>
 					<td style="width: 400px"><input type="text" name="FamilyName"
 						id="FamilyName" style="width: 380px"
-						value='<c:out value="${prname}"></c:out>'></td>
+						value='<c:out value="${ParentageModel.parentageName}"></c:out>'></td>
 					<td style="width: 120px">Tên thủy tổ</td>
 					<td style="width: 180px"><input type="text" name="Ancestor"
 						id="Ancestor"
-						value='<c:out value="${prancestor}"></c:out>'></td>
+						value='<c:out value="${ParentageModel.ancestor}"></c:out>'></td>
 					<td>Truy cập gần đây:</td>
 					<td id="recently"></td>
 				</tr>
 				<tr>
 					<td style="width: 110px">Ngày tế thu (âm lịch)</td>
-					<td style="width: 200px"><input type="text"
+					<td style="width: 200px"><input type="date"
 						name="AutumnAnniversary" placeholder="yyyy/mm/dd"
 						id="AutumnAnniversary"
-						value='<c:out value="${prt.cultural_autumn_day}"></c:out>'></td>
+						value='<c:out value="${ParentageModel.culturalAutumnDay}"></c:out>'></td>
 					<td style="width: 120px">Ngày tế xuân (âm lịch)</td>
-					<td style="width: 160px"><input type="text"
+					<td style="width: 160px"><input type="date"
 						name="SpringAnniversary" placeholder="yyyy/mm/dd"
 						id="SpringAnniversary"
-						value='<c:out value="${prt.cultural_spring_day}"></c:out>'></td>
+						value='<c:out value="${ParentageModel.culturalSpringDay}"></c:out>'></td>
 					<td style="width: 120px">Số thành viên:</td>
 					<td id="member_count">${prnumber_individual}</td>
 				</tr>
@@ -125,7 +127,7 @@
 					</select></td>
 					<td style="width: 110px">Tên trưởng họ</td>
 					<td style="width: 200px"><input type="text" name="Head"
-						id="Head" value="<c:out value="${prhead}"></c:out>"></td>
+						id="Head" value="<c:out value="${ParentageModel.head_of_parentage_name}"></c:out>"></td>
 
 
 				</tr>
@@ -137,14 +139,12 @@
 
 					<td style="width: 110px"><input type="text" name="Number"
 						id="Number"
-						value='<c:out value="${prt.head_of_parentage_number}"></c:out>'></td>
+						value='<c:out value="${ParentageModel.headOfParentageNumber}"></c:out>'></td>
 					<td style="width: 200px">Email Ngưởi tạo</td>
 					<td style="width: 120px"><input type="text" name="Email"
 						id="Email"
-						value='<c:out value="${prt.head_of_parentage_email}"></c:out>'></td>
-					<td>Địa chỉ người tạo</td>
-					<td><input type="text" name="Address" id="Address"
-						value='<c:out value="${prheadadr}"></c:out>'></td>
+						value='<c:out value="${ParentageModel.headOfParentageEmail}"></c:out>'></td>
+					
 
 				</tr>
 
@@ -156,7 +156,7 @@
 					<td style="vertical-align: top">Lời giới thiệu</td>
 					<td colspan="7"><textarea name="Description" id="Description"
 							style="height: 230px; width: 580px"><c:out
-								value="${prhistory}"></c:out></textarea>
+								value="${ParentageModel.historyOfParentage}"></c:out></textarea>
 				</tr>
 			</tbody>
 		</table>
@@ -173,7 +173,7 @@
 				var re = new RegExp(Name + "=[^;]+", "i"); // construct RE to search for target name/value pair
 				if (document.cookie.match(re)) // if cookie found
 					return document.cookie.match(re)[0].split("=")[1] // return its value
-				return ""
+				return "";
 			}
 			lastvisit.setCookie = function(name, value, days) { // set cookie value
 				var expireDate = new Date()
@@ -213,7 +213,7 @@
 
 		function loadCBO() {
 			$("select option").each(function() {
-				if ($(this).text() == "<c:out value='${pradr}'></c:out>")
+				if ($(this).text() == "<c:out value='${ParentageModel.address}'></c:out>")
 					$(this).attr("selected", "selected");
 			});
 		}
@@ -224,15 +224,14 @@
 
 		}
 
-		function saveGiaPhaInfo() {
-			$("#msg")
-					.html(
-							'<img src="<c:url value='/template/adimgs/loading1.gif'/>">Đang xử lý');
+		$("#btn_save").click(function () {
+			$("#msg").html('<img src="<c:url value='/template/adimgs/loading1.gif'/>">Đang xử lý');
 			var parentage_name = $("#FamilyName").val().trim();
 			var head_of_parentage_name = $("#Head").val().trim();
 			var ancestor = $("#Ancestor").val().trim();
 			var cultural_spring_day = $("#SpringAnniversary").val().trim();
 			var cultural_autumn_day = $("#AutumnAnniversary").val().trim();
+			var parentageid = "<c:out value='${ParentageModel.id}'></c:out>";
 			var mess = "";
 
 			if (parentage_name == "") {
@@ -244,65 +243,62 @@
 			if (ancestor == "") {
 				mess += "Tên thủy tổ không được để trống. \n";
 			}
-			if (cultural_spring_day != "") {
-				if (!cultural_spring_day.match(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/)) {
-					mess += "Sai định dạng ngày tế xuân(Năm/Tháng/Ngày). \n";
-				}
-			}
-			if (cultural_autumn_day != "") {
-				if (!cultural_autumn_day.match(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/)) {
-					mess += "Sai định dạng ngày tế thu(Năm/Tháng/Ngày). \n";
-				}
-			}
+			
 			if (mess != "") {
 				$("#msg").html(mess);
 				return;
 			}
-
-			var idpr = $("#idpr").val();
-			var request;
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-
-			try {
-				var data = {
-					parentage_id : "",
-					address : $("#cboAddress option:selected").text(),
-					parentage_name : $("#FamilyName").val(),
-					head_of_parentage_name : $("#Head").val(),
-					cultural_spring_day : $("#SpringAnniversary").val(),
-					cultural_autumn_day : $("#AutumnAnniversary").val(),
-					head_of_parentage_number : $("#Number").val(),
-					head_of_parentage_email : $("#Email").val(),
-					head_of_parentage_address : $("#Address").val(),
-					ancestor : $("#Ancestor").val(),
-					history_of_parentage : $("#Description").val(),
-					account_name : "<c:out value='${prt.account_name}'></c:out>",
-					cult_portion_land : "update soon",
-					convention_of_parentage : "update soon"
-				};
-				var datastr = JSON.stringify(data);
-				var url = "/home/parentage/ae?data="
-						+ encodeURIComponent(datastr);
-				request.onreadystatechange = function() {
-					var val = request.responseText;
-					if (this.readyState == 4 && this.status == 200) {
-						window.alert(val);
-						$("#msg").html("");
+			
+			var data = {
+				parentageId : parentageid,
+				address : $("#cboAddress option:selected").text(),
+				parentageName : $("#FamilyName").val(),
+				head_of_parentage_name : $("#Head").val(),
+				culturalSpringDay : $("#SpringAnniversary").val(),
+				culturalAutumnDay : $("#AutumnAnniversary").val(),
+				headOfParentageNumber : $("#Number").val(),
+				headOfParentageEmail : $("#Email").val(),
+				ancestor : $("#Ancestor").val(),
+				historyOfParentage : $("#Description").val(),
+				accountId : "<c:out value='${model.id}'></c:out>"
+			};
+			
+			if(parentageid!=null){
+				$.ajax({
+					url: '${APIurl}',
+					type: 'put',
+					contentType: 'application/json',
+					data: JSON.stringify(data),
+					dataType: 'json',
+					success: function(result){
+						window.location.href = "${Adminurl}";
+					},
+					
+					error: function(error){
+						window.location.href = "${Adminurl}?error=updatefailure";
 					}
-				};
-				request.open("POST", url, true);
-				request.setRequestHeader('Content-Type',
-						'application/json; charset=utf-8');
-				request.send();
-			} catch (e) {
-				alert("Unable to connect to server");
+				});
+			}else{
+				$.ajax({
+					url: '${APIurl}',
+					type: 'post',
+					contentType: 'application/json',
+					data: JSON.stringify(data),
+					dataType: 'json',
+					success: function(result){
+						window.location.href = "${Adminurl}";
+					},
+					
+					error: function(error){
+						window.location.href = "${Adminurl}?error=createfailure";
+					}
+				});
 			}
+			
+			
+				
 
-		}
+		});
 
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
@@ -310,9 +306,7 @@
 				window.location.href = "/home/view?action=logout";
 			}
 		}
-		function openedit(id) {
-			window.location.href = "/home/individual/ae?id=" + id;
-		}
+		
 	</script>
 </body>
 </html>

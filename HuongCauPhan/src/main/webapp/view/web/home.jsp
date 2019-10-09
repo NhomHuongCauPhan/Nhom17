@@ -25,9 +25,6 @@
 				<div class="clb ovh top_news">
 					<div id="dvgss"
 						style="background: url(<c:url value='/template/adimgs/tnbd.png'></c:url>) no-repeat !important;">
-
-
-
 						<div id="myCarousel" class="carousel slide border"
 							data-ride="carousel"
 							style="width: 440px; height: 240px; margin: 0 auto; padding-top: 9px">
@@ -153,7 +150,7 @@
 								<p>Xin chào:</p><p class="memname">${model.accountName}</p>
 								</div>
 								<div class="memfunc">
-								<p><a href="/home/parentage/ae">Quản lý</a></p>
+								<p><a href="<c:url value='/quan-tri'/>" >Quản lý</a></p>
 								<p><a href="javascript:logout()">Đăng xuất</a></p>
 								</div>
 							</c:if>
@@ -216,7 +213,7 @@
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
 			if (window.confirm(mess)) {
-				window.location.href = "/home/view?action=logout";
+				window.location.href = "${WebURL}?action=logout";
 			}
 		}
 
@@ -255,7 +252,7 @@
 			
 			$.ajax({
 				url: '${APIurl}',
-				type: 'Post',
+				type: 'post',
 				contentType: 'application/json',
 				data: JSON.stringify(data),
 				dataType: 'json',
@@ -362,7 +359,8 @@
 							style="width: 75px; height: 21px; float: left; margin-right: 10px"
 							placeholder="Mã bảo mật" title="Nhập mã trong ảnh bên" /> <img
 							id="imgSec" src="<c:url value='/template/adimgs/CapGenerator.jpg'/>" class="imgCaptcha"
-							alt="Loading..." style="width: 80px; height: 30px" /></td>
+							alt="Loading..." style="width: 80px; height: 30px"/>
+						</td>
 					</tr>
 					<tr>
 						<td></td>

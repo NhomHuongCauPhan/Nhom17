@@ -14,8 +14,8 @@ public class ParentageMapper implements RowMapper<ParentageModel> {
 			item.setAccountId(rs.getInt("account_id"));
 			item.setAddress(rs.getString("address"));
 			item.setAncestor(rs.getString("ancestor"));
-			item.setCulturalAutumnDay(rs.getTimestamp("cultural_autumn_day"));
-			item.setCulturalSpringDay(rs.getTimestamp("cultural_spring_day"));
+			item.setCulturalAutumnDay(rs.getDate("cultural_autumn_day"));
+			item.setCulturalSpringDay(rs.getDate("cultural_spring_day"));
 			item.setHead_of_parentage_name(rs.getString("head_of_parentage_name"));
 			item.setHeadOfParentageEmail(rs.getString("head_of_parentage_email"));
 			item.setHeadOfParentageNumber(rs.getString("head_of_parentage_number"));

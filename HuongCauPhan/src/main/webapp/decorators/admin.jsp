@@ -47,9 +47,16 @@
 				<tbody>
 					<tr>
 						<td></td>
-						<td class="subleft"><a href="<c:url value='/template/view'/>">TRANG CHỦ</a></td>
-						<td class="subcen"><c:out value="${prname}"></c:out></td>
-						<td class="subright">Người tạo: <c:out value="${pracname}"></c:out>
+						<td class="subleft"><a href="<c:url value='/trang-chu'/>">TRANG CHỦ</a></td>
+						<td class="subcen">
+							<c:if test="${not empty ParentageModel}">
+								<c:out value="${ParentageModel.parentageName}"></c:out>
+							</c:if>
+							<c:if test="${empty ParentageModel}">
+								Hãy tạo thông tin dòng họ
+							</c:if>
+						</td>
+						<td class="subright">Người tạo: <c:out value="${model.accountName}"></c:out>
 
 						</td>
 						<td></td>

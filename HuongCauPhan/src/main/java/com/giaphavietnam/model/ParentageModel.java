@@ -1,14 +1,15 @@
 package com.giaphavietnam.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 public class ParentageModel {
 	private long parentageId ;
 	private String parentageName ;
 	private String head_of_parentage_name ;
 	private String address ;
-	private Timestamp culturalSpringDay ;
-	private Timestamp culturalAutumnDay ;
+	private Date culturalSpringDay ;
+	private Date culturalAutumnDay ;
 	private String headOfParentageNumber ;
 	private String headOfParentageEmail ;
 	private String ancestor ;
@@ -38,16 +39,16 @@ public class ParentageModel {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Timestamp getCulturalSpringDay() {
+	public Date getCulturalSpringDay() {
 		return culturalSpringDay;
 	}
-	public void setCulturalSpringDay(Timestamp culturalSpringDay) {
+	public void setCulturalSpringDay(Date culturalSpringDay) {
 		this.culturalSpringDay = culturalSpringDay;
 	}
-	public Timestamp getCulturalAutumnDay() {
+	public Date getCulturalAutumnDay() {
 		return culturalAutumnDay;
 	}
-	public void setCulturalAutumnDay(Timestamp culturalAutumnDay) {
+	public void setCulturalAutumnDay(Date culturalAutumnDay) {
 		this.culturalAutumnDay = culturalAutumnDay;
 	}
 	public String getHeadOfParentageNumber() {

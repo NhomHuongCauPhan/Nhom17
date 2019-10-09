@@ -32,15 +32,13 @@ public class AuthorizationFilter implements Filter{
 		HttpServletResponse res = (HttpServletResponse)response;
 		String url = rq.getRequestURI();
 		if(url.contains("/quan-tri")) {
-			AccountModel model = (AccountModel)SessionUtil.getInstance().getValue(rq, "USERMODEL");
+			AccountModel model = (AccountModel)SessionUtil.getInstance().getValue(rq, SystemConstant.MODEL);
 			if(model!=null) {
-				if(model.getRole()==SystemConstant.ADMIN) {
+				if(model.getRole()==SystemConstant.USER) {
 					chain.doFilter(request, response); 	
-				}else if(model.getRole()==SystemConstant.USER) {
-					res.sendRedirect(rq.getContextPath()+"/trang-chu?action=login&message=not_permission&alert=danger");
 				}
 			}else {
-				res.sendRedirect(rq.getContextPath()+"/trang-chu?action=login&message=not_login&alert=danger");
+				res.sendRedirect(rq.getContextPath()+"/trang-chu?message=not_login");
 			}
 		}else {
 			chain.doFilter(request, response); 	

@@ -17,7 +17,7 @@ public class SessionUtil {
 		request.getSession().setAttribute(key, value);
 	}
 
-	public static Object getValue(HttpServletRequest request, String key) {
+	public Object getValue(HttpServletRequest request, String key) {
 		return request.getSession().getAttribute(key);
 	}
 
