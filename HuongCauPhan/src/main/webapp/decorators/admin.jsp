@@ -21,6 +21,8 @@
 	href="<c:url value='/template/adcss/editor.css'/>" />
 <link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>"/>
 
+ <script src="<c:url value='/template/ckeditor/ckeditor.js' />"></script>
+
 <title>Quản Lý Phả Đồ</title>
 <style>
 #lgr a {

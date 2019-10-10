@@ -18,7 +18,7 @@
 		<div id="float_panel"></div>
 		<div class="page_title" style="margin-bottom: 15px">
 			<h2>Thông tin dòng họ</h2>
-			<div class="toolbox">
+			<div class="toolbox" style="background:#ffff">
 				<a id="btn_save" class="ubtn save">Lưu lại</a>
 			</div>
 		</div>
@@ -154,8 +154,8 @@
 				<tr>
 				<tr>
 					<td style="vertical-align: top">Lời giới thiệu</td>
-					<td colspan="7"><textarea name="Description" id="Description"
-							style="height: 230px; width: 580px"><c:out
+					<td colspan="3"><textarea name="Description" id="Description"
+							style="height: 30px; width: 580px"><c:out
 								value="${ParentageModel.historyOfParentage}"></c:out></textarea>
 				</tr>
 			</tbody>
@@ -205,10 +205,13 @@
 			}
 			return pieces.join(" ");
 		}
+		
+		var editor = '';
 		$(document).ready(function() {
 			loadCBO();
 			$("#recently").html(document.cookie);
 			lastVisit();
+			editor = CKEDITOR.replace( 'Description');
 		});
 
 		function loadCBO() {
@@ -231,7 +234,7 @@
 			var ancestor = $("#Ancestor").val().trim();
 			var cultural_spring_day = $("#SpringAnniversary").val().trim();
 			var cultural_autumn_day = $("#AutumnAnniversary").val().trim();
-			var parentageid = "<c:out value='${ParentageModel.id}'></c:out>";
+			var parentageid = "<c:out value='${ParentageModel.parentageId}'></c:out>";
 			var mess = "";
 
 			if (parentage_name == "") {
@@ -245,7 +248,7 @@
 			}
 			
 			if (mess != "") {
-				$("#msg").html(mess);
+				$("#msg").html("<div class=\"alert alert-danger\" role=\"alert\">"+mess+"</div>");
 				return;
 			}
 			
@@ -259,7 +262,7 @@
 				headOfParentageNumber : $("#Number").val(),
 				headOfParentageEmail : $("#Email").val(),
 				ancestor : $("#Ancestor").val(),
-				historyOfParentage : $("#Description").val(),
+				historyOfParentage : editor.getData(),
 				accountId : "<c:out value='${model.id}'></c:out>"
 			};
 			
@@ -273,7 +276,6 @@
 					success: function(result){
 						window.location.href = "${Adminurl}";
 					},
-					
 					error: function(error){
 						window.location.href = "${Adminurl}?error=updatefailure";
 					}
@@ -288,7 +290,6 @@
 					success: function(result){
 						window.location.href = "${Adminurl}";
 					},
-					
 					error: function(error){
 						window.location.href = "${Adminurl}?error=createfailure";
 					}

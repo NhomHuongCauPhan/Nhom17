@@ -6,12 +6,13 @@
 				<div class="ucpleft_group" id="lgr">
 					<h2 class="title">Dòng họ</h2>
 					<div class="gitem">
-						<a href="<c:url value='/parentage/ae'/>">Thông tin dòng họ</a> <a
-							href="<c:url value='/view/tree'/>">Quản lý phả đồ</a><a href="/home/image/view">Album ảnh</a>
+						<a href="<c:url value='/quan-tri'/>">Thông tin dòng họ</a> <a
+							href="<c:url value='/quan-tri/pha-do'/>">Quản lý phả đồ</a>
+							<a href="<c:url value='/quan-tri/album'/>">Album ảnh</a>
 					</div>
 					<h2 class="title">Tin tức</h2>
 					<div class="gitem">
-						<a href="#">Viết bài mới</a> <a href="#">Tin bài đã tạo</a>
+						<a href="<c:url value='/quan-tri/bai-viet'/>">Viết bài mới</a> <a href="#">Tin bài đã tạo</a>
 					</div>
 					<h2 class="title">Tin nhắn</h2>
 					<div class="gitem">

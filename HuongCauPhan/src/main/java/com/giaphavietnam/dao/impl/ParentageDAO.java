@@ -27,11 +27,10 @@ public class ParentageDAO extends AbstractDAO<ParentageModel> implements IParent
 
 	@Override
 	public void update(ParentageModel parentageNew) {
-		StringBuilder sql = new StringBuilder("insert into parentage(parentage_name,head_of_parentage_name,address,"
-				+ "cultural_spring_day,cultural_autumn_day,head_of_parentage_number,"
-				+ "head_of_parentage_email,ancestor,history_of_parentage,account_id) values");
-		sql.append("(?,?,?,?,?,?,?,?,?,?) ");
-		sql.append("where parentage_id = ?");
+		StringBuilder sql = new StringBuilder("update parentage set parentage_name = ? , head_of_parentage_name = ?,address = ? , "
+				+ "cultural_spring_day = ? , cultural_autumn_day = ? , head_of_parentage_number = ? , "
+				+ "head_of_parentage_email = ? , ancestor = ? , history_of_parentage = ? , account_id = ?");
+		sql.append(" where parentage_id = ?");
 		update(sql.toString(), parentageNew.getParentageName(),parentageNew.getHead_of_parentage_name(),parentageNew.getAddress(),parentageNew.getCulturalSpringDay(),parentageNew.getCulturalAutumnDay(),parentageNew.getHeadOfParentageNumber(),parentageNew.getHeadOfParentageEmail(),parentageNew.getAncestor(),parentageNew.getHistoryOfParentage(),parentageNew.getAccountId(),parentageNew.getParentageId());
 	}
 
