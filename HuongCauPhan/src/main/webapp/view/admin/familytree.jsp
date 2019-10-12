@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIurl" value="/api-admin-individual"/>
+<c:url var="WebURL" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri/pha-do"/>
 <!doctype html>
 <html>
 <head>
@@ -37,89 +40,54 @@
 				</div>
 			</div>
 			<div class="ucp_def_right" id="gp_phahe">
-				<%out.print(request.getAttribute("mess")); %>
+				${FamilyTree}
 			</div>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			//loadPhaHe();
+			
 		});
 
-		function loadPhaHe() {
-			var life;
-			if ($("#life").val() == '0') {
-				if (parseInt("${prlife}") < 5) {
-					life = Math.floor(parseInt("${prlife}") / 2);
-					if (life == 0) {
-						life = 1;
-					}
-				} else {
-					life = 5;
-				}
-
-			} else {
-				life = $("#life").val();
-			}
-			var request;
-			var url = "/home/individual/view?life=" + life;
-
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-
-			try {
-				request.onreadystatechange = getInfo;
-				request.open("GET", url, true);
-				request.send();
-			} catch (e) {
-				alert("Unable to connect to server");
-			}
-
-			function getInfo() {
-				if (request.readyState == 4) {
-					var data = request.responseText;
-					$("#gp_phahe").html(data);
-				}
-			}
-		}
-		function del(id) {
-			var mess = "Bạn có thực sự muốn xóa thành viên";
+		
+		function del(id, name) {
+			var mess = "Bạn có thực sự muốn xóa "+name+" khỏi dòng họ!";
 			if (window.confirm(mess)) {
-				var request;
-				var url = "/home/individual/ae?action=del&id=" + id;
-
-				if (window.XMLHttpRequest) {
-					request = new XMLHttpRequest();
-				} else if (window.ActiveXObject) {
-					request = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-
-				try {
-					request.onreadystatechange = getInfo;
-					request.open("POST", url, true);
-					request.send();
-				} catch (e) {
-					alert("Unable to connect to server");
-				}
-
-				function getInfo() {
-					if (request.readyState == 4) {
-						var data = request.responseText;
-						alert(data);
-						location.href = location.href
-					}
+				var data = {
+						individualId:id,
+						fullName :"",
+						gender:1,
+						dateOfBirth: "1300-1-1",
+						dateOfDeath:"1300-1-1" ,
+						father:1,
+						branch:"" ,
+						parentageId:1, 
+						avatar:"" 
+					};
+				
+				if(id!=null){
+					$.ajax({
+						url: '${APIurl}',
+						type: 'delete',
+						contentType: 'application/json',
+						data: JSON.stringify(data),
+						dataType: 'json',
+						success: function(result){
+							window.location.href = "${Adminurl}";
+						},
+						error: function(error){
+							alert(name+" vẫn còn hậu duệ!");
+						}
+					});
 				}
 			}
 		}
 		function openedit(id) {
-			window.location.href = "/home/individual/ae?id=" + id;
+			window.location.href = "<c:url value='/quan-tri/sua-gia-pha?id="+id+"'/>";
 		}
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
 			if (window.confirm(mess)) {
-				window.location.href = "/home/view?action=logout";
+				window.location.href = "<c:url value='trang-chu?action=logout'/>";
 			}
 		}
 	</script>

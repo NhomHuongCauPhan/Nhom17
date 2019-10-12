@@ -1,13 +1,13 @@
 package com.giaphavietnam.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class IndividualModel {
 	private long individualId;
 	private String fullName ;
 	private int gender;
-	private Timestamp dateOfBirth ;
-	private Timestamp dateOfDeath ;
+	private Date dateOfBirth ;
+	private Date dateOfDeath ;
 	private int father;
 	private String branch ;
 	private long parentageId ;
@@ -30,16 +30,16 @@ public class IndividualModel {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public Timestamp getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Timestamp dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public Timestamp getDateOfDeath() {
+	public Date getDateOfDeath() {
 		return dateOfDeath;
 	}
-	public void setDateOfDeath(Timestamp dateOfDeath) {
+	public void setDateOfDeath(Date dateOfDeath) {
 		this.dateOfDeath = dateOfDeath;
 	}
 	public int getFather() {

@@ -150,7 +150,7 @@
 								<p>Xin chào:</p><p class="memname">${model.accountName}</p>
 								</div>
 								<div class="memfunc">
-								<p><a href="<c:url value='/quan-tri'/>" >Quản lý</a></p>
+								<p><a href="<c:url value='/quan-tri'/>" tabindex="1" >Quản lý</a></p>
 								<p><a href="javascript:logout()">Đăng xuất</a></p>
 								</div>
 							</c:if>
@@ -162,7 +162,7 @@
 										
 								<p><input type="password" id="password" name="password" class="txt pwd" placeholder="Mật khẩu" /></p>
 								
-								<p class="pdr"><input type="button" id="btnLogin" value="Đăng nhập" style="height: 25px" /></p>
+								<p class="pdr"><input type="button" id="btnLogin" value="Đăng nhập" tabindex="1" style="height: 25px" /></p>
 								<p style="padding-top: 5px"><a href="javascript:open_register()" id="lnk_regnew" style="text-decoration: underline">Đăng ký mới miễn phí</a></p>
 								</form>
 							</c:if>

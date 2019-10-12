@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIurl" value="/api-admin-individual"/>
+<c:url var="WebURL" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri/pha-do"/>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +16,7 @@
 
 			<div class="dlg_title">
 				Thành viên:
-				<c:out value="${indname}"></c:out>
+				<c:out value="${IndividualModel.fullName}"></c:out>
 				<input type="button" id="btn_back" value="Trở lại" onclick="back()"
 					style="float: right">
 			</div>
@@ -36,14 +39,9 @@
 										<td><input type="text" style="width: 270px"
 											name="FullName" id="FullName"></td>
 										<td rowspan="4" style="width: 110px; vertical-align: top">
-											<form id="frm1" method="POST"
-												action="/home/individual/ae?id=<c:out value="${indid }"/>"
-												enctype="multipart/form-data">
-												<img id="avatar" name="avatar"
-													style="width: 100%; border: 1px solid #ccc; max-height: 130px"
-													src="/home/adimgs/${childavatar}"> <input type="file"
-													onchange="changeimg(event)" id="real" name="real"
-													accept=".png, .jpg, .jpeghidden " hidden="hidden">
+											<form id="frm1" method="POST" action="<c:url value='/api-admin-image'/>" enctype="multipart/form-data">
+												<img id="avatar" name="avatar" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:url value='/template/adimgs/default.png'/>"> 
+												<input type="file" onchange="changeimg(event)" id="real" name="real" accept=".png, .jpg, .jpeghidden " hidden="hidden">
 												<input type="text" name="addchild" value="1" hidden="hidden" />
 											</form>
 										</td>
@@ -59,9 +57,8 @@
 									</tr>
 									<tr>
 										<td>Ngày sinh</td>
-										<td><input type="text" style="width: 100px"
-											name="BirdDate" id="BirdDate"> <span class="legend">(Định
-												dạng Năm/Tháng/Ngày)</span></td>
+										<td><input type="date" style="width: 100px"
+											name="BirdDate" id="BirdDate"></td>
 									</tr>
 									<tr>
 										<td>Con thứ</td>
@@ -93,9 +90,13 @@
 												<option selected="selected" value="1">Còn sống</option>
 												<option value="2">Đã mất</option>
 										</select>
-											<div id="rip_box" class="rip_box"
+									</tr>
+									<tr>
+									    <td></td>
+										<td>
+										<div id="rip_box" class="rip_box"
 												style="padding-left: 10px; float: left; display: none">
-												Ngày mất <input type="text" style="width: 100px"
+												Ngày mất:        <input type="date" style="width: 120px"
 													name="RipDate" id="RipDate">
 											</div></td>
 									</tr>
@@ -134,17 +135,11 @@
 										<td style="width: 85px">Họ và tên</td>
 										<td><input type="text" style="width: 270px"
 											name="FullName2" id="FullName2"
-											value="<c:out value="${indname }"/>"></td>
+											value="<c:out value='${IndividualModel.fullName }'/>"></td>
 										<td rowspan="4" style="width: 110px; vertical-align: top">
-											<form id="frm" method="POST"
-												action="/home/individual/ae?id=<c:out value="${indid }"/>"
-												enctype="multipart/form-data">
-												<img id="avatar1" name="avatar1"
-													style="width: 100%; border: 1px solid #ccc; max-height: 130px"
-													src="/home/adimgs/${indavatar }"> <input type="file"
-													onchange="changeimg1(event)" id="real1" name="real1"
-													accept=".png, .jpg, .jpeg" hidden="hidden" />
-
+											<form id="frm" method="POST" action="<c:url value='/api-admin-image'/>" enctype="multipart/form-data">
+												<img id="avatar1" name="avatar1" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:url value='/template/adimgs/${IndividualModel.avatar }'/>" /> 
+												<input type="file" onchange="changeimg1(event)" id="real1" name="real1" accept=".png, .jpg, .jpeg" hidden="hidden" />
 											</form>
 										</td>
 										<td rowspan="4" style="vertical-align: top"><a
@@ -154,23 +149,21 @@
 									</tr>
 									<tr>
 										<td>Tên Vợ/Chồng</td>
-										<td><input type="text" name="PartnerName2"
-											id="PartnerName2" value="<c:out value="${indpartnername }"/>"
-											style="width: 270px"></td>
+										<td>
+											<input type="text" name="PartnerName2" id="PartnerName2" value="<c:out value='${indpartnername }'/>" style="width: 270px" />
+										</td>
 									</tr>
 									<tr>
 										<td>Ngày sinh</td>
-										<td><input type="text" style="width: 100px"
+										<td><input type="date" style="width: 100px"
 											name="BirdDate2" id="BirdDate2"
-											value="<c:out value="${indbirth}"/>"> <span
-											class="legend">(Định dạng Năm/Tháng/Ngày)</span></td>
+											value="<c:out value="${IndividualModel.dateOfBirth}"/>"></td>
 									</tr>
 									<tr>
 										<td>Ngày mất</td>
-										<td><input type="text" style="width: 100px"
+										<td><input type="date" style="width: 100px"
 											name="DeathDate2" id="DeathDate2"
-											value="<c:out value="${inddeath}"/>"> <span
-											class="legend">(Định dạng Năm/Tháng/Ngày)</span></td>
+											value="<c:out value="${IndividualModel.dateOfDeath}"/>"></td>
 									</tr>
 									<tr>
 										<td>Giới tính</td>
@@ -217,7 +210,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#cboGender2 option").each(function() {
-				if ($(this).val() == "<c:out value="${indsex}"/>")
+				if ($(this).val() == "<c:out value="${IndividualModel.gender}"/>")
 					$(this).attr("selected", "selected");
 			});
 		});
@@ -281,21 +274,7 @@
 				$("#frm_msg").html('');
 				return;
 			}
-			if ($("#BirdDate2").val() != "") {
-				if (!$("#BirdDate2").val().match(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/)) {
-					$("#frm_msg").html('');
-					alert("Sai định dạng ngày(Năm/Tháng/Ngày)");
-					return;
-				}
-			}
-			if ($("#DeathDate2").val() != "") {
-				if (!$("#DeathDate2").val()
-						.match(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/)) {
-					$("#frm_msg").html('');
-					alert("Sai định dạng ngày(Năm/Tháng/Ngày)");
-					return;
-				}
-			}
+			
 			var request;
 			if (window.XMLHttpRequest) {
 				request = new XMLHttpRequest();
@@ -437,7 +416,7 @@
 		
 
 		function back() {
-			window.location.href = "/home/view/tree";
+			window.location.href = "<c:url value='/quan-tri/pha-do'/>";
 		}
 	</script>
 </body>

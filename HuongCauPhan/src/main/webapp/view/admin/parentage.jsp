@@ -44,13 +44,11 @@
 				</tr>
 				<tr>
 					<td style="width: 110px">Ngày tế thu (âm lịch)</td>
-					<td style="width: 200px"><input type="date"
-						name="AutumnAnniversary" placeholder="yyyy/mm/dd"
+					<td style="width: 200px"><input type="date" name="AutumnAnniversary"
 						id="AutumnAnniversary"
 						value='<c:out value="${ParentageModel.culturalAutumnDay}"></c:out>'></td>
 					<td style="width: 120px">Ngày tế xuân (âm lịch)</td>
-					<td style="width: 160px"><input type="date"
-						name="SpringAnniversary" placeholder="yyyy/mm/dd"
+					<td style="width: 160px"><input type="date" name="SpringAnniversary"
 						id="SpringAnniversary"
 						value='<c:out value="${ParentageModel.culturalSpringDay}"></c:out>'></td>
 					<td style="width: 120px">Số thành viên:</td>

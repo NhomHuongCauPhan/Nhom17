@@ -13,8 +13,8 @@ public class IndividualMapper implements RowMapper<IndividualModel> {
 		try {
 			item.setAvatar(rs.getString("avatar"));
 			item.setBranch(rs.getString("branch"));
-			item.setDateOfBirth(rs.getTimestamp("date_of_birth"));
-			item.setDateOfDeath(rs.getTimestamp("date_of_death"));
+			item.setDateOfBirth(rs.getDate("date_of_birth"));
+			item.setDateOfDeath(rs.getDate("date_of_death"));
 			item.setFather(rs.getInt("father"));
 			item.setFullName(rs.getString("fullname"));
 			item.setGender(rs.getInt("gender"));
