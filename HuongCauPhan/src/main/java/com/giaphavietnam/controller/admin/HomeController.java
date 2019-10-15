@@ -47,6 +47,11 @@ public class HomeController extends HttpServlet {
 		}
 		else if (req.getRequestURI().endsWith("sua-gia-pha")) {
 			String strid = req.getParameter("id");
+			String img = req.getParameter("image");
+			String img1 = req.getParameter("image1");
+			req.setAttribute("image", img);
+			req.setAttribute("image1", img1); 
+			
 			int id = Integer.parseInt(strid);
 			IndividualModel ind = individualService.findById(id);
 			if(ind!=null) {

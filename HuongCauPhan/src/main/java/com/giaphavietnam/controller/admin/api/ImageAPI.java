@@ -13,29 +13,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 @MultipartConfig
-@WebServlet(urlPatterns= {"/api-admin-image"})
-public class ImageAPI extends HttpServlet{
+@WebServlet(urlPatterns = { "/api-admin-image" })
+public class ImageAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String fileimg = uploadFile(req);
-		System.out.println(fileimg);
-		resp.sendRedirect(req.getContextPath()+"/quan-tri/sua-gia-pha");
-	}
-private String uploadFile(HttpServletRequest request) throws IOException, ServletException {
+		String flag = req.getParameter("flag");
+		String id = req.getParameter("id");
 		
+		if(flag==null) {
+			resp.sendRedirect(req.getContextPath() + "/quan-tri/sua-gia-pha?image1="+fileimg+"&id="+id);
+		}else {
+			resp.sendRedirect(req.getContextPath() + "/quan-tri/sua-gia-pha?image="+fileimg+"&id="+id);
+		}
+		
+		
+	}
+
+	private String uploadFile(HttpServletRequest request) throws IOException, ServletException {
+
 		String fileName = "";
 		try {
-			Part filePart = request.getPart("real");;
-			if(filePart==null) {
+			Part filePart = request.getPart("real");
+			if (filePart == null) {
 				filePart = request.getPart("real1");
 			}
 			
+
 			fileName = (String) getFileName(filePart);
 			String applicationPath = request.getServletContext().getRealPath("");
 			String basePath = applicationPath + "template\\adimgs" + File.separator;
-			System.out.println(basePath);
+			
 			InputStream inputStream = null;
 			OutputStream outputStream = null;
 			try {
@@ -62,13 +73,12 @@ private String uploadFile(HttpServletRequest request) throws IOException, Servle
 		} catch (Exception e) {
 			fileName = "";
 		}
-		
+
 		return fileName;
 	}
 
 	private String getFileName(Part part) {
 		final String partHeader = part.getHeader("content-disposition");
-		System.out.println("*****partHeader :" + partHeader);
 		for (String content : part.getHeader("content-disposition").split(";")) {
 			if (content.trim().startsWith("filename")) {
 				return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");

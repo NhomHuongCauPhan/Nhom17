@@ -3,7 +3,7 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APIurl" value="/api-admin-individual"/>
 <c:url var="WebURL" value="/trang-chu"/>
-<c:url var="Adminurl" value="/quan-tri/pha-do"/>
+<c:url var="Adminurl" value="/quan-tri/sua-gia-pha"/>
 <!doctype html>
 <html>
 <head>
@@ -39,16 +39,15 @@
 										<td><input type="text" style="width: 270px"
 											name="FullName" id="FullName"></td>
 										<td rowspan="4" style="width: 110px; vertical-align: top">
-											<form id="frm1" method="POST" action="<c:url value='/api-admin-image'/>" enctype="multipart/form-data">
-												<img id="avatar" name="avatar" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:url value='/template/adimgs/default.png'/>"> 
+											<form id="frm1" method="POST" action="<c:url value='/api-admin-image?id=${IndividualModel.individualId}'/>" enctype="multipart/form-data">
+												<img id="avatar" name="avatar" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:if test='${empty image1}'><c:url value='/template/adimgs/default.png' /></c:if><c:if test='${not empty image1 }'><c:url value='/template/adimgs/${image1}'/></c:if>" /> 
 												<input type="file" onchange="changeimg(event)" id="real" name="real" accept=".png, .jpg, .jpeghidden " hidden="hidden">
 												<input type="text" name="addchild" value="1" hidden="hidden" />
 											</form>
 										</td>
 										<td rowspan="4" style="vertical-align: top"><a
 											href="javascript:choseimgs()" id="btn_changeimg"
-											class="aubtn browse">Chọn ảnh</a> <a onclick="agree()"
-											id="btn_changeimg1" class="aubtn browse">Chấp nhận</a></td>
+											class="aubtn browse">Chọn ảnh</a></td>
 									</tr>
 									<tr>
 										<td>Tên Vợ/Chồng</td>
@@ -137,15 +136,14 @@
 											name="FullName2" id="FullName2"
 											value="<c:out value='${IndividualModel.fullName }'/>"></td>
 										<td rowspan="4" style="width: 110px; vertical-align: top">
-											<form id="frm" method="POST" action="<c:url value='/api-admin-image'/>" enctype="multipart/form-data">
-												<img id="avatar1" name="avatar1" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:url value='/template/adimgs/${IndividualModel.avatar }'/>" /> 
+											<form id="frm" method="POST" action="<c:url value='/api-admin-image?flag=1&id=${IndividualModel.individualId}'/>" enctype="multipart/form-data" >
+												<img id="avatar1" name="avatar1" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:if test='${empty image}'>${IndividualModel.avatar }</c:if><c:if test='${not empty image }'><c:url value='/template/adimgs/${image}'/></c:if>" /> 
 												<input type="file" onchange="changeimg1(event)" id="real1" name="real1" accept=".png, .jpg, .jpeg" hidden="hidden" />
 											</form>
 										</td>
 										<td rowspan="4" style="vertical-align: top"><a
 											onclick="choseimgs1()" id="btn_changeimg1"
-											class="aubtn browse">Chọn ảnh</a> <a onclick="agree1()"
-											id="btn_changeimg1" class="aubtn browse">Chấp nhận</a></td>
+											class="aubtn browse">Chọn ảnh</a> </td>
 									</tr>
 									<tr>
 										<td>Tên Vợ/Chồng</td>
@@ -236,6 +234,9 @@
 				myImg.src = url;
 			}
 			fileReader.readAsDataURL(file);
+			
+			var form = document.getElementById("frm");
+			form.submit();
 		}
 
 		function choseimgs() {
@@ -256,12 +257,12 @@
 				myImg.src = url;
 			}
 			fileReader.readAsDataURL(file);
+			var form = document.getElementById("frm1");
+			form.submit();
 		}
 
 		function updateind() {
-			$("#frm_msg")
-					.html(
-							'<img src="<c:url value='/template/adimgs/loading1.gif'/>">Đang xử lý..');
+			$("#frm_msg").html('<img src="<c:url value='/template/adimgs/loading1.gif'/>">Đang xử lý..');
 			var fuln;
 			if ($("#PartnerName2").val() != "") {
 				fuln = ($("#FullName2").val()) + " & "
@@ -274,55 +275,38 @@
 				$("#frm_msg").html('');
 				return;
 			}
-			
-			var request;
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			try {
 
-				var data = {
-					individual_id : "",
-					fullname : fuln,
+			var data = {
+					individualId : "${IndividualModel.individualId}",
+					fullName : fuln,
 					gender : $("#cboGender2").val(),
-					date_of_birth : $("#BirdDate2").val(),
-					date_of_death : $("#DeathDate2").val(),
-					father : "<c:out value='${indfather}'/>",
-					branch : "<c:out value='${indbranch}'/>",
-					parentage_id : "<c:out value='${indprid}'/>",
+					dateOfBirth : $("#BirdDate2").val(),
+					dateOfDeath : $("#DeathDate2").val(),
+					father : "",
+					branch : "",
+					parentageId : "",
 					avatar : document.getElementById("avatar1").src
+					
 				};
+			
+			$.ajax({
+				url: '${APIurl}',
+				type: 'post',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: function(result){
+					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}";
+				},
+				error: function(error){
+					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}&error=updatefailure";
+				}
+			});
 
-				var datastr = JSON.stringify(data);
-				var url = "/home/individual/ae?id=<c:out value='${indid}'/>&action=edit&data="
-						+ encodeURIComponent(datastr);
-				request.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						$("#frm_msg").html('');
-						alert(request.responseText);
-						location.href = location.href;
-					}
-				};
-
-				request.open("POST", url, true);
-				request.setRequestHeader('Content-Type',
-						'application/json; charset=utf-8');
-				request.send();
-			} catch (e) {
-				alert("Unable connect to server");
-			}
+				
 
 		}
-		function agree1() {
-			var form = document.getElementById("frm");
-			form.submit();
-		}
-		function agree() {
-			var form = document.getElementById("frm1");
-			form.submit();
-		}
+		
 		function addind() {
 			$("#frm_msg").html(
 					'<img src="<c:url value='/template/adimgs/loading1.gif'/>">');
@@ -330,75 +314,41 @@
 				$("#frm_msg").html('');
 				alert("Tên thành viên không được để trống");
 				return;
-			}
-			if ($("#BirdDate").val() != "") {
-				if (!$("#BirdDate").val().match(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/)) {
-					$("#frm_msg").html('');
-					alert("Sai định dạng ngày(Năm/Tháng/Ngày)");
-					return;
-				}
-			}
-			if ($("#RipDate").val() != "") {
-				if (!$("#RipDate").val().match(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/)) {
-					$("#frm_msg").html('');
-					alert("Sai định dạng ngày(Năm/Tháng/Ngày)");
-					return;
-				}
+			}			
+			var fuln;
+			if ($("#PartnerName").val() != "") {
+				fuln = ($("#FullName").val()) + " & "
+						+ ($("#PartnerName").val());
+			} else {
+				fuln = $("#FullName").val();
 			}
 
-			var request;
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			var request;
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			try {
-				var fuln;
-				if ($("#PartnerName").val() != "") {
-					fuln = ($("#FullName").val()) + " & "
-							+ ($("#PartnerName").val());
-				} else {
-					fuln = $("#FullName").val();
-				}
-
-				var data = {
-					individual_id : "",
-					fullname : fuln,
+			var data = {
+					individualId : "",
+					fullName : fuln,
 					gender : $("#cboGender").val(),
-					date_of_birth : $("#BirdDate").val(),
-					date_of_death : $("#RipDate").val(),
-					father : "<c:out value='${indid}'/>",
-					branch : "<c:out value='${indbranch}'/>."
-							+ $("#cboOrderInFamily option:selected").val(),
-					parentage_id : "<c:out value='${indprid}'/>",
+					dateOfBirth : $("#BirdDate").val(),
+					dateOfDeath : $("#RipDate").val(),
+					father : "<c:out value='${IndividualModel.individualId}'/>",
+					branch : "<c:out value='${IndividualModel.branch}'/>."
+						+ $("#cboOrderInFamily option:selected").val(),
+					parentageId : "<c:out value='${IndividualModel.parentageId}'/>",
 					avatar : document.getElementById("avatar").src
 				};
-				var datastr = JSON.stringify(data);
-				var url = "/home/individual/ae?id=<c:out value='${indid}'/>&action=add&data="
-						+ encodeURIComponent(datastr);
-				request.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						alert(request.responseText);
-						location.href = "/home/individual/ae?id=<c:out value='${indid}'/>";
-						$("#frm_msg").html('');
-
-					}
-				};
-
-				request.open("POST", url, true);
-				request.setRequestHeader('Content-Type',
-						'application/json; charset=utf-8');
-				request.send();
-			} catch (e) {
-				alert("Unable connect to server");
-			}
-
+				
+			$.ajax({
+				url: '${APIurl}',
+				type: 'put',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: function(result){
+					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}";
+				},
+				error: function(error){
+					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}&error=createfailure";
+				}
+			});
 		}
 
 		function change() {
