@@ -44,6 +44,7 @@ public class IndividualAPI extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		IndividualModel individualNew = HttpUtil.of(req.getReader()).toModel(IndividualModel.class);
+		System.out.println(individualNew);
 		individualService.save(individualNew);
 		mapper.writeValue(resp.getOutputStream(), "");
 	}

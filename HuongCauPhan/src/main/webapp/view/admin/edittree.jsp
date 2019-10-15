@@ -344,6 +344,7 @@
 				dataType: 'json',
 				success: function(result){
 					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}";
+					alert("Đã thêm "+fuln);
 				},
 				error: function(error){
 					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}&error=createfailure";

@@ -53,7 +53,7 @@ CREATE TABLE individual(
     father int,
     branch varchar(255),
     parentage_id bigint,
-    avatar varchar(100),
+    avatar text,
     FOREIGN KEY (parentage_id) REFERENCES parentage(parentage_id)
     ON DELETE CASCADE  ON UPDATE CASCADE
 );
