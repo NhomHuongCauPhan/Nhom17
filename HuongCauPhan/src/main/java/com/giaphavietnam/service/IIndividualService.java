@@ -8,6 +8,7 @@ public interface IIndividualService {
 	public ArrayList<IndividualModel> findAll(long parentageId);
 	public IndividualModel findById(long individualId);
 	public IndividualModel findBro(long father);
+	public IndividualModel findBranch(String branch);
 	public long save(IndividualModel individualNew);
 	public void update(IndividualModel individualNew);
 	public void delete(IndividualModel individual);

@@ -72,10 +72,14 @@
 						data: JSON.stringify(data),
 						dataType: 'json',
 						success: function(result){
-							window.location.href = "${Adminurl}";
+							if(result=="true"){
+								window.location.href = "${Adminurl}";
+							}else{
+								alert(name+" vẫn còn hậu duệ!");
+							}
 						},
 						error: function(error){
-							alert(name+" vẫn còn hậu duệ!");
+							
 						}
 					});
 				}

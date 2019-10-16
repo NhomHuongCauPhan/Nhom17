@@ -343,8 +343,13 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function(result){
-					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}";
-					alert("Đã thêm "+fuln);
+					if(result=="true"){
+						window.location.href = "${Adminurl}?id=${IndividualModel.individualId}";
+						alert("Đã thêm "+fuln);
+					}else{
+						alert("trùng thứ tự trong gia đình!");
+						$("#frm_msg").html('');
+					}
 				},
 				error: function(error){
 					window.location.href = "${Adminurl}?id=${IndividualModel.individualId}&error=createfailure";
@@ -359,10 +364,6 @@
 			} else {
 				rip[0].style = "display:none";
 			}
-		}
-
-		function openedit(id) {
-			window.location.href = "/home/individual/ae?id=" + id;
 		}
 		
 

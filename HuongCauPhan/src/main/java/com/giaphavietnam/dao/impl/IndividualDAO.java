@@ -58,4 +58,12 @@ public class IndividualDAO extends AbstractDAO<IndividualModel> implements IIndi
 		return prt.isEmpty()?null:prt.get(0);
 	}
 
+	@Override
+	public IndividualModel findBranch(String branch) {
+		StringBuilder sql = new StringBuilder("select * from individual");
+		sql.append(" where branch=?");
+		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper(),branch);
+		return prt.isEmpty()?null:prt.get(0);
+	}
+
 }

@@ -26,8 +26,12 @@ public class IndividualAPI extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		IndividualModel individual = HttpUtil.of(req.getReader()).toModel(IndividualModel.class);
+		if(individualService.findBro(individual.getIndividualId())!=null) {
+			mapper.writeValue(resp.getOutputStream(), "false");
+		}else {
 		individualService.delete(individual);
-		mapper.writeValue(resp.getOutputStream(), "");
+		mapper.writeValue(resp.getOutputStream(), "true");
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +40,7 @@ public class IndividualAPI extends HttpServlet{
 		resp.setContentType("application/json");
 		IndividualModel individualNew = HttpUtil.of(req.getReader()).toModel(IndividualModel.class);
 		individualService.update(individualNew);
-		mapper.writeValue(resp.getOutputStream(), "");
+		mapper.writeValue(resp.getOutputStream(), individualNew);
 	}
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,8 +48,12 @@ public class IndividualAPI extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		IndividualModel individualNew = HttpUtil.of(req.getReader()).toModel(IndividualModel.class);
-		System.out.println(individualNew);
-		individualService.save(individualNew);
-		mapper.writeValue(resp.getOutputStream(), "");
+		if(individualService.findBranch(individualNew.getBranch())!=null) {
+			mapper.writeValue(resp.getOutputStream(), "false");
+		}else {
+			individualService.save(individualNew);
+			mapper.writeValue(resp.getOutputStream(), "true");
+		}
+		
 	}
 }
