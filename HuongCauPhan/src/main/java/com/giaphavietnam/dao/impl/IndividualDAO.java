@@ -51,11 +51,11 @@ public class IndividualDAO extends AbstractDAO<IndividualModel> implements IIndi
 	}
 
 	@Override
-	public IndividualModel findBro(long father) {
+	public ArrayList<IndividualModel> findBro(long father) {
 		StringBuilder sql = new StringBuilder("select * from individual");
 		sql.append(" where father=?");
 		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper(),father);
-		return prt.isEmpty()?null:prt.get(0);
+		return prt.isEmpty()?null:prt;
 	}
 
 	@Override

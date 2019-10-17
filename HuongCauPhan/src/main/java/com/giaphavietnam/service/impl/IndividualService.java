@@ -37,7 +37,7 @@ public class IndividualService implements IIndividualService {
 	}
 
 	@Override
-	public IndividualModel findBro(long father) {
+	public ArrayList<IndividualModel> findBro(long father) {
 		return individualDAO.findBro(father);
 	}
 
