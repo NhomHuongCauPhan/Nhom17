@@ -52,7 +52,7 @@
 						id="SpringAnniversary"
 						value='<c:out value="${ParentageModel.culturalSpringDay}"></c:out>'></td>
 					<td style="width: 120px">Số thành viên:</td>
-					<td id="member_count">${prnumber_individual}</td>
+					<td id="member_count">${sotv}</td>
 				</tr>
 				<!-- <c:out value="${prt.address}"></c:out> -->
 				<tr>

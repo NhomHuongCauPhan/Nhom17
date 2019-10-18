@@ -19,7 +19,7 @@ import com.giaphavietnam.service.IIndividualService;
 import com.giaphavietnam.service.IParentageService;
 import com.giaphavietnam.utils.GenerateTree;
 
-@WebServlet(urlPatterns = { "/quan-tri","/quan-tri/dong-ho", "/quan-tri/pha-do", "/quan-tri/sua-gia-pha", "/quan-tri/album", "/quan-tri/bai-viet" })
+@WebServlet(urlPatterns = { "/quan-tri","/quan-tri/dong-ho","/quan-tri/mail", "/quan-tri/pha-do", "/quan-tri/sua-gia-pha", "/quan-tri/album", "/quan-tri/bai-viet" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Inject 
@@ -35,6 +35,8 @@ public class HomeController extends HttpServlet {
 		}
 		
 		if (req.getRequestURI().endsWith("dong-ho")) {
+			int sotv = individualService.findAll(prt.getParentageId()).size();
+			req.setAttribute("sotv", sotv);
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/parentage.jsp");
 			rd.forward(req, res);
 		}
@@ -55,13 +57,27 @@ public class HomeController extends HttpServlet {
 			int id = Integer.parseInt(strid);
 			IndividualModel ind = individualService.findById(id);
 			if(ind!=null) {
+				ArrayList<IndividualModel> bro = individualService.findBro(ind.getFather());
+				ArrayList<IndividualModel> child = individualService.findBro(ind.getIndividualId());
+				IndividualModel parent = individualService.findById(ind.getFather());
+				
+				req.setAttribute("brother", bro);
+				req.setAttribute("parent", parent);
+				req.setAttribute("children", child);
+				req.setAttribute("indorder", ind.getBranch().split("\\.").length);
+				if (ind.getFullName().indexOf('&') > -1) {
+					req.setAttribute("indname", ind.getFullName().split("&")[0]);
+					req.setAttribute("indpartnername", ind.getFullName().split("&")[1]);
+				} else {
+					System.out.println(ind.getFullName());
+					req.setAttribute("indname", ind.getFullName());
+				}
 				req.setAttribute(SystemConstant.INDIVIDUALMODEL, ind);
 			}
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/edittree.jsp");
 			rd.forward(req, res);
 		}
 		else if (req.getRequestURI().endsWith("album")) {
-			
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/album.jsp");
 			rd.forward(req, res);
 		}
@@ -69,7 +85,13 @@ public class HomeController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/edittree.jsp");
 			rd.forward(req, res);
 		}
+		else if (req.getRequestURI().endsWith("mail")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/email.jsp");
+			rd.forward(req, res);
+		}
 		else{
+			int sotv = individualService.findAll(prt.getParentageId()).size();
+			req.setAttribute("sotv", sotv);
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/parentage.jsp");
 			rd.forward(req, res);
 		}

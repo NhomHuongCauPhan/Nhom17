@@ -16,10 +16,7 @@
 					</div>
 					<h2 class="title">Tin nhắn</h2>
 					<div class="gitem">
-
-						<a href="javascript:void(0)">Soạn tin nhắn</a> <a
-							href="javascript:void(0)">Hộp thư đến</a> <a
-							href="javascript:void(0)">Tin đã gửi</a>
+						<a href="<c:url value='/quan-tri/mail'/>">Soạn tin nhắn</a>
 					</div>
 					<h2 class="title">Account</h2>
 					<div class="gitem">

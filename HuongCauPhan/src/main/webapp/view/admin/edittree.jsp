@@ -134,7 +134,7 @@
 										<td style="width: 85px">Họ và tên</td>
 										<td><input type="text" style="width: 270px"
 											name="FullName2" id="FullName2"
-											value="<c:out value='${IndividualModel.fullName }'/>"></td>
+											value="<c:out value='${indname}'/>"></td>
 										<td rowspan="4" style="width: 110px; vertical-align: top">
 											<form id="frm" method="POST" action="<c:url value='/api-admin-image?flag=1&id=${IndividualModel.individualId}'/>" enctype="multipart/form-data" >
 												<img id="avatar1" name="avatar1" style="width: 100%; border: 1px solid #ccc; max-height: 130px" src="<c:if test='${empty image}'>${IndividualModel.avatar }</c:if><c:if test='${not empty image }'><c:url value='/template/adimgs/${image}'/></c:if>" /> 
@@ -148,7 +148,7 @@
 									<tr>
 										<td>Tên Vợ/Chồng</td>
 										<td>
-											<input type="text" name="PartnerName2" id="PartnerName2" value="<c:out value='${indpartnername }'/>" style="width: 270px" />
+											<input type="text" name="PartnerName2" id="PartnerName2" value="<c:out value='${indpartnername}'/>" style="width: 270px" />
 										</td>
 									</tr>
 									<tr>
@@ -173,15 +173,23 @@
 									</tr>
 									<tr>
 										<td>Bố & Mẹ:</td>
-										<td><c:out value="${parent}" /></td>
+										<td><c:out value="${parent.fullName}" /></td>
 									</tr>
 									<tr>
 										<td>Anh chị em:</td>
-										<td><c:out value="${bro}" /></td>
+										<td>
+											<c:forEach items="${brother}" var="item">
+												<c:out value="${item.fullName}" />
+											</c:forEach>
+										</td>
 									</tr>
 									<tr>
 										<td>Con:</td>
-										<td><c:out value="${child}" /></td>
+										<td>
+											<c:forEach items="${children}" var="item">
+												<c:out value="${item.fullName}" /> // 
+											</c:forEach>
+										</td>
 									</tr>
 									<tr>
 										<td>Đời thứ:</td>
