@@ -11,16 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.giaphavietnam.constant.SystemConstant;
 
-@WebServlet(urlPatterns= {"/trang-chu"})
+@WebServlet(urlPatterns= {"/trang-chu","/cac-dong-ho","/thong-bao","/thong-tin-dong-ho"})
 public class HomeController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
     
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException {
-		String action = req.getParameter("action");
-		if(action!=null&&action.equalsIgnoreCase("logout")){
-			req.getSession().removeAttribute(SystemConstant.MODEL);
+		if (req.getRequestURI().endsWith("trang-chu")) {
+			String action = req.getParameter("action");
+			if(action!=null&&action.equalsIgnoreCase("logout")){
+				req.getSession().removeAttribute(SystemConstant.MODEL);
+			}
+			RequestDispatcher rd = req.getRequestDispatcher("/view/web/home.jsp");
+			rd.forward(req, res);
+		}else if (req.getRequestURI().endsWith("cac-dong-ho")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/view/web/parentages.jsp");
+			rd.forward(req, res);
+		}else if (req.getRequestURI().endsWith("thong-bao")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/view/web/alerts.jsp");
+			rd.forward(req, res);
+		}else if (req.getRequestURI().endsWith("thong-tin-dong-ho")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/view/web/parentageinfo.jsp");
+			rd.forward(req, res);
 		}
-		RequestDispatcher rd = req.getRequestDispatcher("/view/web/home.jsp");
-		rd.forward(req, res);
+		
 	}
 }

@@ -4,9 +4,9 @@
 <div class="footer txtC w100">
 	<div class="col-sm-12 clb ovh navBottom fonts ul-none">
 		<ul>
-			<li><a href="/home/view">TRANG CHỦ</a></li>
-			<li><a href="#">TIN TỨC</a></li>
-			<li><a href="/home/parentage/view">GIA PHẢ VIỆT NAM</a></li>
+			<li><a class="active" href="<c:url value='/trang-chu' />">Trang chủ</a></li>
+			<li><a href="<c:url value='/thong-bao' />">Thông báo</a></li>
+			<li><a href="<c:url value='/cac-dong-ho' />">Gia phả Việt Nam</a></li>
 			<li><a href="#">GIỚI THIỆU</a></li>
 			<li><a href="#">LIÊN HỆ - GÓP Ý</a></li>
 		</ul>

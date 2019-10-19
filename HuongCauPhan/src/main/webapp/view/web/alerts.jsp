@@ -1,50 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp" %>	
-<c:url var="APIurl" value="/api-admin-account"/>
-<c:url var="WebURL" value="/trang-chu"/>
-<c:url var="Adminurl" value="/quan-tri"/>
-
+<%@include file="/common/taglib.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gia Phả Việt Nam</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="http://www.giaphavietnam.vn/img/utils/favicon.ico"
+	type="image/x-icon" />
+<link rel="icon" href="http://www.giaphavietnam.vn/img/utils/favicon.ico" type="image/x-icon" />
 
+<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>" ></script>
+<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/dvgss.css'/>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value='/template/adjs/jquery.modal.min.js'/>" ></script>
+<link href="<c:url value='/template/adcss/jquery.modal.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/jquery.mCustomScrollbar.css'/>" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>" >
+<style>
+	.ss_vlist li{width:62px;}
+	.intro{width:670px;}
+</style>
+
+<title>Gia Phả Việt Nam</title>
+<style>
+
+</style>
 </head>
 <body>
 	<form name="form1" id="form1">
 
 		<div class="wrapper">
-			<a href="<c:url value='/trang-chu'/>" title="Bấm vào đây đề về Trang chủ" >
+			<a href="/home/view" title="Bấm vào đây đề về Trang chủ">
 				<div class="banner txtC" id="heading-page">
-					<img src="<c:url value='/template/adimgs/cen_bn.jpg'></c:url>" style="height: 150px" >
+					<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height: 150px" />
 				</div>
 			</a>
 			<div class="wrappage">
 				<div class="clb ovh top_news">
 					<div id="dvgss"
-						style="background: url(<c:url value='/template/adimgs/tnbd.png'></c:url>) no-repeat !important;">
+						style="background: url(<c:url value='/template/adimgs/tnbd.png'/>) no-repeat !important;" >
+
+
+
 						<div id="myCarousel" class="carousel slide border"
 							data-ride="carousel"
 							style="width: 440px; height: 240px; margin: 0 auto; padding-top: 9px">
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl1.jpeg'></c:url>" alt="Panther">
+									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl1.jpeg'/>" alt="Panther" >
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl2.jpg'></c:url>" alt="Black Cat">
+									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl2.jpg' />" alt="Black Cat">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl3.jpg'></c:url>" alt="Lion">
+									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl3.jpg' />" alt="Lion">
 								</div>
 							</div>
 						</div>
 
-						
+						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 						<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-						<script src="<c:url value='/template/adjs/bootstrap.min.js'></c:url>"></script>
+						<script src="adjs/bootstrap.min.js"></script>
 
 					</div>
 					<div class="ss_vlist">
@@ -81,96 +102,70 @@
 						
 					</div>
 
-					<div class="main-center fll">
-
-						<div class="intro ovh">
-							<h3 class="intro_head">Lời nói đầu</h3>
-							<div class="intro_content mCustomScrollbar"
-								style="overflow: scroll;">
-								<p>Xin trân trọng cảm ơn quý khách đã ghé thăm website:
-									www.giaphavietnam.online - Nơi lưu giữ, nối kết và tôn vinh
-									những giá trị truyền thống.</p>
-								<p style="text-align: justify">Đây là một công trình nhằm
-									phục vụ cho việc học tập môn hướng dịch vụ, website là thành quả của sự hướng dẫn nhiệt tình của thầy 
-									Hoàng Quang Huy cùng bên cung cấp giao diện là anh Toàn, anh Quyết và nếu không có được điều đó thì
-									nhóm em khó có thể hoàn thành được</p>	
-								<p style="text-align: justify">Vì không thể tránh khỏi những thiếu sót và hạn chế nên chúng em mong được nhận
-									những phản hồi để cải thiện sản phảm này tốt hơn</p>							
-
-								<p style="text-align: justify">Trân trọng cảm ơn!</p>
-							</div>
-						</div>
-
-
+					<div class="main-center fll" style="padding:20px 20px; font-size:16px;background: url(<c:url value='/template/adimgs/ct_bg.png'/>) repeat !important;">
+						<%
+							
+								out.print("<div class=\"grb cencol\">");
+								out.print("<div class=\"ofnews flr \" style=\"width:100%\">");
+								out.print("<ul>");
+								out.print("<li style=\"float:left\">");
+								out.print("<a href=\"/home/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]\">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>");
+								out.print("<p class=\"source\">Tin dòng họ:</p>");
+								out.print("</li>");
+								out.print("<li style=\"float:left\">");
+								out.print("<a href=\"/home/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]\">Cụ Vũ XuânTròn trọn việc nước, việc nhà");
+								out.print("<span>- <i>24/03/2019</i></span>");
+								out.print("</a>");
+								out.print("<p class=\"source\">Tin dòng họ:</p></li>");
+								out.print("<li style=\"float:left\"><a href=\"/home/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]\"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>");
+								out.print("</span>");
+								out.print("</a>");
+								out.print("<p class=\"source\">Tin dòng họ:</p></li>");
+								out.print("<li style=\"float:left\">");
+								out.print("<a href=\"/home/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]\">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>");
+								out.print("<span>- <i>24/03/2019</i></span>");
+								out.print("</a>");
+								out.print("<p class=\"source\">Tin dòng họ:</p></li>");
+								out.print("</ul>");
+								out.print("</div>");
+								out.print("</div>");
+							
+						%>
 						
-						<div class="box ovh">
-							<h3 class="cbhead txtC">TIN TỨC DÒNG HỌ</h3>
-							<div class="grb cencol">
-								<div class="fnews fll">
-									<h4></h4>
-									<p class="headline">
-										<a href="/home/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>
-									</p>
-									<div class="summary"></div>
-									<p class="ndate">Đăng ngày: 25/04/2019</p>
-								</div>
-								<div class="ofnews flr">
-									<ul>
-										<li>
-											<a href="/home/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>
-											<p class="source">Tin dòng họ:</p>
-										</li>
-										<li>
-											<a href="/home/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]">Cụ Vũ XuânTròn trọn việc nước, việc nhà
-												<span>- <i>24/03/2019</i></span>
-										</a>
-											<p class="source">Tin dòng họ:</p></li>
-										<li><a href="/home/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>
-											</span>
-										</a>
-											<p class="source">Tin dòng họ:</p></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-
 					</div>
 
 					<div class="main-right flr">
 
 						<div class="box rb ovh txtC login">
 							<h3 class="bhead">THÀNH VIÊN</h3>
-							
 							<div class="grb ovh" id="member_area">
-							
-							<c:if test="${not empty model}">
-								<div class="member">
-								<img src="<c:url value='/template/adimgs/default.png'/>"/>
-								<p>Xin chào:</p><p class="memname">${model.accountName}</p>
-								</div>
-								<div class="memfunc">
-								<p><a href="<c:url value='/quan-tri'/>" tabindex="1" >Quản lý</a></p>
-								<p><a href="javascript:logout()">Đăng xuất</a></p>
-								</div>
-							</c:if>
-							
-							<c:if test="${empty model}">
-								<form id="formlogin">
-										
-								<p><input type="text" id="accountName" name="accountName" class="txt usrn" placeholder="Tên đăng nhập" /></p>
-										
-								<p><input type="password" id="password" name="password" class="txt pwd" placeholder="Mật khẩu" /></p>
-								
-								<p class="pdr"><input type="button" id="btnLogin" value="Đăng nhập" tabindex="1" style="height: 25px" /></p>
-								<p style="padding-top: 5px"><a href="javascript:open_register()" id="lnk_regnew" style="text-decoration: underline">Đăng ký mới miễn phí</a></p>
-								</form>
-							</c:if>
-							
-								
+								<%
+									if (request.getSession().getAttribute("Loginned") != null) {
+										out.print("<div class=\"member\">");
+										out.print("<img src=\"/home/adimgs/default.png\">");
+										out.print("<p>Xin chào:</p><p class=\"memname\">" + request.getSession().getAttribute("acname")
+												+ "</p>");
+										out.print("</div>");
+										out.print("<div class=\"memfunc\">");
+										out.print("<p><a href=\"/home/parentage/ae\">Quản lý</a></p>");
+										out.print("<p><a href=\"javascript:logout()\">Đăng xuất</a></p>");
+										out.print("</div>");
+									} else {
+										out.print(
+												"<p><input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"txt usrn\" placeholder=\"Tên đăng nhập\" /></p>");
+										out.print(
+												"<p><input type=\"password\" id=\"pass\" name=\"pass\" class=\"txt pwd\" placeholder=\"Mật khẩu\" /></p>");
+										out.print(
+												"<p class=\"pdr\"><input type=\"button\" onclick=\"login()\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
+										out.print(
+												"<p style=\"padding-top: 5px\"><a href=\"javascript:open_register()\" id=\"lnk_regnew\" style=\"text-decoration: underline\">Đăng ký mới miễn phí</a></p>");
+									}
+								%>
+
+
+
 
 							</div>
-							
 						</div>
 						
 						<div class="box rb ovh txtC menu">
@@ -204,33 +199,39 @@
 		</div>
 	</form>
 
-	
+	<!-- Footer -->
+	<%@include file="/common/web/footer.jsp" %>
 	
 	<a href="#heading-page" id="toTop">to Top</a>
 
 	<script type="text/javascript">
+		function ucFirstAllWords(str) {
+			var pieces = str.split(" ");
+			for (var i = 0; i < pieces.length; i++) {
+				var j = pieces[i].charAt(0).toUpperCase();
+				pieces[i] = j + pieces[i].substr(1);
+			}
+			return pieces.join(" ");
+		}
+
+		$(document).ready(function() {
+
+		});
 
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
 			if (window.confirm(mess)) {
-				window.location.href = "${WebURL}?action=logout";
+				window.location.href = "/home/view?action=logout";
 			}
 		}
 
 		function open_register() {
 			$('#dlg_register').modal('show'); // show bootstrap modal
 		}
-		$('#btnLogin').click(function (e) {
-			e.preventDefault();
-			var username = $("#accountName").val().trim();
-			var password = $("#password").val().trim();
-			var data={
-					accountName: username,
-					password:password,
-					id:0 ,
-					role:0,
-					status:0
-			};
+		function login() {
+
+			var username = $("#loginid").val().trim();
+			var password = $("#pass").val().trim();
 			var tmp = "";
 			if (username.length == 0) {
 				tmp += "Tên tài khoản không được để trống";
@@ -242,29 +243,10 @@
 				alert(tmp);
 				return;
 			}
-			
-			/* var formdata = $('#formlogin').serializeArray();
-			$.each(formdata, function(i, v){
-				data[""+v.name+""] = v.value;
-			}); */
-			
-
-			
-			$.ajax({
-				url: '${APIurl}',
-				type: 'post',
-				contentType: 'application/json',
-				data: JSON.stringify(data),
-				dataType: 'json',
-				success: function(result){
-					window.location.href = "${WebURL}";
-				},
-				
-				error: function(error){
-					window.location.href = "${WebURL}?error=notlogin";
-				}
-			});
-		});
+			$("#form1")[0].method = "POST";
+			$("#form1")[0].action = "/home/view";
+			$("#form1")[0].submit();
+		}
 
 		function register() {
 
@@ -311,7 +293,7 @@
 
 				request.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						var tmp1 = "<div class=\"success\">"
+						var tmp1 = "<div class=\"error\">"
 								+ request.responseText + "</div>";
 						$("#update_msg").html(tmp1);
 
@@ -358,9 +340,8 @@
 						<td><input type="text" id="captConfirm"
 							style="width: 75px; height: 21px; float: left; margin-right: 10px"
 							placeholder="Mã bảo mật" title="Nhập mã trong ảnh bên" /> <img
-							id="imgSec" src="<c:url value='/template/adimgs/CapGenerator.jpg'/>" class="imgCaptcha"
-							alt="Loading..." style="width: 80px; height: 30px"/>
-						</td>
+							id="imgSec" src="/home/adimgs/CapGenerator.jpg" class="imgCaptcha"
+							alt="Loading..." style="width: 80px; height: 30px" /></td>
 					</tr>
 					<tr>
 						<td></td>
