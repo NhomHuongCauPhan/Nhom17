@@ -20,7 +20,7 @@
 .blocker.behind {
   background-color: transparent;
 }
-.modal {
+.modal{
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -37,13 +37,14 @@
 
 .modal a.close-modal {
   position: absolute;
-  top: -12.5px;
-  right: -12.5px;
+  top: -7px;
+  right: -7px;
   display: block;
   width: 30px;
-  height: 30px;
+  height: 30px !important;
   text-indent: -9999px;
-  background: url(/adv/adimgs/x.png) no-repeat 0 0;
+  background: url(/HuongCauPhan/template/adimgs/x.png) no-repeat 0 0;
+  cursor: pointer;
 }
 
 .modal-spinner {

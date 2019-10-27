@@ -375,8 +375,8 @@
 				</table>
 			</form>
 		</div>
-		<input type="hidden" value="0" id="hdpr" name="hdpr" /> <a
-			class="close-modal" style="margin-top: 5.5px; height: 3px;">Close</a>
+		<input type="hidden" value="0" id="hdpr" name="hdpr" /> 
+		<a class="close-modal" style="margin-top: 5.5px; height: 3px;">Close</a>
 	</div>
 </body>
 </html>

@@ -312,7 +312,7 @@
 	</script>
 	<div class="dialog modal" id="dlg_register"
 		style="width: 550px; height: 280px; margin: 100px auto;">
-		<div class="dlg_title" style="">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
+		<div class="dlg_title" style="width: 550px !important">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
 		<div class="dlg_content">
 			<div class="frm_loadstatus" style="display: none"></div>
 			<form name="frm_dk" id="frm_dk">
@@ -357,7 +357,7 @@
 			</form>
 		</div>
 		<input type="hidden" value="0" id="hdpr" name="hdpr" /> <a
-			class="close-modal" style="margin-top: 5.5px; height: 3px;">Close</a>
+			class="close-modal">Close</a>
 	</div>
 </body>
 </html>
