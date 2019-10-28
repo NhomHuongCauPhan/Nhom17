@@ -11,7 +11,7 @@
 <link rel="icon" href="template/http://www.giaphavietnam.vn/img/utils/favicon.ico" type="image/x-icon" />
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="template/adjs/jquery.min.1.7.1.js"></script>
 <link href="template/adcss/layout.css" rel="stylesheet" type="text/css" />
 <link href="template/adcss/common.css" rel="stylesheet" type="text/css" />
 <link href="template/adcss/default.css" rel="stylesheet" type="text/css" />
