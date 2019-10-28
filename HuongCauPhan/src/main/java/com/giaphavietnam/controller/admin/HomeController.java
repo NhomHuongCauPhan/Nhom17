@@ -82,7 +82,7 @@ public class HomeController extends HttpServlet {
 			rd.forward(req, res);
 		}
 		else if (req.getRequestURI().endsWith("bai-viet")) {
-			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/edittree.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/news.jsp");
 			rd.forward(req, res);
 		}
 		else if (req.getRequestURI().endsWith("mail")) {
