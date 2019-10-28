@@ -32,7 +32,7 @@
 function logout() {
 	var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
 	if (window.confirm(mess)) {
-		window.location.href = "/home/view?action=logout";
+		window.location.href = "/HuongCauPhan/view?action=logout";
 	}
 }
 </script>		

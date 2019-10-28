@@ -35,7 +35,7 @@
 				<tbody>
 					<tr>
 						<td></td>
-						<td class="subleft"><a href="/home/view">TRANG CHỦ</a></td>
+						<td class="subleft"><a href="/HuongCauPhan/view">TRANG CHỦ</a></td>
 						<td class="subcen"><c:out value="${prname}"></c:out></td>
 						<td class="subright">Người tạo: <c:out value="${pracname}"></c:out></td>
 						<td></td>
@@ -95,7 +95,7 @@
 		});
 
 		function loadimg() {
-			var url = "/home/album";
+			var url = "/HuongCauPhan/album";
 			var request;
 
 			if (window.XMLHttpRequest) {

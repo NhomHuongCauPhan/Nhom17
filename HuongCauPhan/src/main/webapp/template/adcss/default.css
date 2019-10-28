@@ -94,7 +94,7 @@ h3.intro_head { text-align: center; font-size: 13px; text-transform: uppercase; 
 
 /* Dialog */
 .dialog {display: none}
-.dlg_title { color: #000; font-weight: bold; padding: 8px 5px; font-size: 14px; border-radius: 8px 8px 0 0;
+.dlg_title { color: #000; font-weight: bold; padding: 8px 5px; font-size: 14px; border-radius: 8px 8px 0 0; text-align: center; width: 550px !important;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b7ad70+0,d5cea6+48 */
 background: rgb(183,173,112); /* Old browsers */
 background: -moz-radial-gradient(center, ellipse cover,  rgba(183,173,112,1) 0%, rgba(213,206,166,1) 48%); /* FF3.6-15 */
@@ -102,7 +102,7 @@ background: -webkit-radial-gradient(center, ellipse cover,  rgba(183,173,112,1) 
 background: radial-gradient(ellipse at center,  rgba(183,173,112,1) 0%,rgba(213,206,166,1) 48%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7ad70', endColorstr='#d5cea6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-.dlg_content { padding: 5px 15px}
+.dlg_content { padding: 15px 20px 15px 0px}
 .dlg_content td { padding: 3px !important}
 .legend {font-style: italic; color: gray}
 .frm_loadstatus { position: absolute; left: 0px; z-index: 300; width: 100%; height: 260px; background: #fff url(/HuongCauPhan/template/adimgs/tloading.gif) scroll no-repeat center center; opacity: 0.9}

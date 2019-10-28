@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<a href="/home/view" title="Bấm vào đây đề về Trang chủ">
+		<a href="/HuongCauPhan/view" title="Bấm vào đây đề về Trang chủ">
 			<div class="banner ovh txtC">
 				<img src="<c:url value='/template/adimgs/cen_bn.jpg' />" style="height: 150px">
 			</div>
@@ -89,7 +89,7 @@
 								</p>
 								<p class="dhtitle">
 									<span>Số thành viên</span><b>:</b><span>${prnumber_individual}(<a
-										href="/home/parentage/info/view" class="treelink">Xem Phả
+										href="/HuongCauPhan/parentage/info/view" class="treelink">Xem Phả
 											đồ tại đây</a>)
 									</span>
 								</p>
@@ -110,7 +110,7 @@
 							<div class="grb" id="ft_ct">
 								<div class="row" style="height: 400px; overflow: scroll">
 									<c:forEach items="${list_imgs}" var="item">
-										<img alt="" src="/home/adimgs/${item.url}"
+										<img alt="" src="/HuongCauPhan/template/adimgs/${item.url}"
 											style="max-height: 200px;">
 									</c:forEach>
 								</div>
@@ -161,7 +161,7 @@
 			tmp += " <p class=\"dhtitle\"><span>Tên dòng họ</span><b>:</b><span>${prname}</span></p> ";
 			tmp += " <p class=\"dhtitle\"><span>Quê gốc</span><b>:</b><span>${prheadadr}</span></p> ";
 			tmp += " <p class=\"dhtitle\"><span>Ngày giỗ họ</span><b>:</b><span>15/1</span></p> ";
-			tmp += " <p class=\"dhtitle\"><span>Số thành viên</span><b>:</b><span>${prnumber_individual}(<a href=\"/home/parentage/info/view\" class=\"treelink\">Xem Phả đồ tại đây</a>)</span></p> ";
+			tmp += " <p class=\"dhtitle\"><span>Số thành viên</span><b>:</b><span>${prnumber_individual}(<a href=\"/HuongCauPhan/parentage/info/view\" class=\"treelink\">Xem Phả đồ tại đây</a>)</span></p> ";
 			tmp += " <p class=\"dhtitle\"><span>Ngày lập gia phả</span><b>:</b><span>17/05/2019</span></p> ";
 			tmp += " <p class=\"dhtitle\"><span>Người lâp gia phả</span><b>:</b><span>${prhead}</span></p> ";
 			tmp += " <h3>LỜI HAY Ý ĐẸP</h3><div class=\"lhyd\">${pradvise}</div> ";

@@ -88,12 +88,12 @@
 							<div class="intro_content mCustomScrollbar"
 								style="overflow: scroll;">
 								<p>Xin trân trọng cảm ơn quý khách đã ghé thăm website:
-									www.giaphavietnam.online - Nơi lưu giữ, nối kết và tôn vinh
+									giaphavietnam - Nơi lưu giữ, nối kết và tôn vinh
 									những giá trị truyền thống.</p>
 								<p style="text-align: justify">Đây là một công trình nhằm
-									phục vụ cho việc học tập môn hướng dịch vụ, website là thành quả của sự hướng dẫn nhiệt tình của thầy 
-									Hoàng Quang Huy cùng bên cung cấp giao diện là anh Toàn, anh Quyết và nếu không có được điều đó thì
-									nhóm em khó có thể hoàn thành được</p>	
+									phục vụ cho việc học tập môn phát triển phần mềm hướng cấu phần, Website là thành quả của sự hướng dẫn nhiệt tình của thầy 
+									Nguyễn Thái Cường cùng bên cung cấp giao diện là anh Toàn, anh Quyết và nếu không có được điều đó thì
+									nhóm em khó có thể hoàn thành được.</p>	
 								<p style="text-align: justify">Vì không thể tránh khỏi những thiếu sót và hạn chế nên chúng em mong được nhận
 									những phản hồi để cải thiện sản phảm này tốt hơn</p>							
 
@@ -109,7 +109,7 @@
 								<div class="fnews fll">
 									<h4></h4>
 									<p class="headline">
-										<a href="/home/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>
+										<a href="/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>
 									</p>
 									<div class="summary"></div>
 									<p class="ndate">Đăng ngày: 25/04/2019</p>
@@ -117,15 +117,15 @@
 								<div class="ofnews flr">
 									<ul>
 										<li>
-											<a href="/home/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>
+											<a href="/HuongCauPhan/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>
 											<p class="source">Tin dòng họ:</p>
 										</li>
 										<li>
-											<a href="/home/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]">Cụ Vũ XuânTròn trọn việc nước, việc nhà
+											<a href="/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]">Cụ Vũ XuânTròn trọn việc nước, việc nhà
 												<span>- <i>24/03/2019</i></span>
 										</a>
 											<p class="source">Tin dòng họ:</p></li>
-										<li><a href="/home/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>
+										<li><a href="/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>
 											</span>
 										</a>
 											<p class="source">Tin dòng họ:</p></li>
@@ -306,7 +306,7 @@
 				};
 
 				var datastr = JSON.stringify(data);
-				var url = "/home/view?data="
+				var url = "/HuongCauPhan/view?data="
 						+ encodeURIComponent(datastr);
 
 				request.onreadystatechange = function() {

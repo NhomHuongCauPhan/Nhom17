@@ -34,7 +34,7 @@
 	<form name="form1" id="form1">
 
 		<div class="wrapper">
-			<a href="/home/view" title="Bấm vào đây đề về Trang chủ">
+			<a href="/HuongCauPhan/view" title="Bấm vào đây đề về Trang chủ">
 				<div class="banner txtC" id="heading-page">
 					<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height: 150px" />
 				</div>
@@ -109,20 +109,20 @@
 								out.print("<div class=\"ofnews flr \" style=\"width:100%\">");
 								out.print("<ul>");
 								out.print("<li style=\"float:left\">");
-								out.print("<a href=\"/home/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]\">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>");
+								out.print("<a href=\"/HuongCauPhan/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]\">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>");
 								out.print("<p class=\"source\">Tin dòng họ:</p>");
 								out.print("</li>");
 								out.print("<li style=\"float:left\">");
-								out.print("<a href=\"/home/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]\">Cụ Vũ XuânTròn trọn việc nước, việc nhà");
+								out.print("<a href=\"/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]\">Cụ Vũ XuânTròn trọn việc nước, việc nhà");
 								out.print("<span>- <i>24/03/2019</i></span>");
 								out.print("</a>");
 								out.print("<p class=\"source\">Tin dòng họ:</p></li>");
-								out.print("<li style=\"float:left\"><a href=\"/home/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]\"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>");
+								out.print("<li style=\"float:left\"><a href=\"/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]\"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>");
 								out.print("</span>");
 								out.print("</a>");
 								out.print("<p class=\"source\">Tin dòng họ:</p></li>");
 								out.print("<li style=\"float:left\">");
-								out.print("<a href=\"/home/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]\">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>");
+								out.print("<a href=\"/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]\">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>");
 								out.print("<span>- <i>24/03/2019</i></span>");
 								out.print("</a>");
 								out.print("<p class=\"source\">Tin dòng họ:</p></li>");
@@ -142,12 +142,12 @@
 								<%
 									if (request.getSession().getAttribute("Loginned") != null) {
 										out.print("<div class=\"member\">");
-										out.print("<img src=\"/home/adimgs/default.png\">");
+										out.print("<img src=\"/HuongCauPhan/template/adimgs/default.png\">");
 										out.print("<p>Xin chào:</p><p class=\"memname\">" + request.getSession().getAttribute("acname")
 												+ "</p>");
 										out.print("</div>");
 										out.print("<div class=\"memfunc\">");
-										out.print("<p><a href=\"/home/parentage/ae\">Quản lý</a></p>");
+										out.print("<p><a href=\"/HuongCauPhan/parentage/ae\">Quản lý</a></p>");
 										out.print("<p><a href=\"javascript:logout()\">Đăng xuất</a></p>");
 										out.print("</div>");
 									} else {
@@ -221,7 +221,7 @@
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
 			if (window.confirm(mess)) {
-				window.location.href = "/home/view?action=logout";
+				window.location.href = "/HuongCauPhan/view?action=logout";
 			}
 		}
 
@@ -244,7 +244,7 @@
 				return;
 			}
 			$("#form1")[0].method = "POST";
-			$("#form1")[0].action = "/home/view";
+			$("#form1")[0].action = "/HuongCauPhan/view";
 			$("#form1")[0].submit();
 		}
 
@@ -288,7 +288,7 @@
 				};
 
 				var datastr = JSON.stringify(data);
-				var url = "/home/view?data="
+				var url = "/HuongCauPhan/view?data="
 						+ encodeURIComponent(datastr);
 
 				request.onreadystatechange = function() {
@@ -311,8 +311,8 @@
 		}
 	</script>
 	<div class="dialog modal" id="dlg_register"
-		style="width: 550px; height: 280px; margin: 100px auto;">
-		<div class="dlg_title" style="width: 550px !important">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
+		style="width: 550px; margin: 100px auto; padding-right: -16px;">
+		<div class="dlg_title" style="width: 540px;!important">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
 		<div class="dlg_content">
 			<div class="frm_loadstatus" style="display: none"></div>
 			<form name="frm_dk" id="frm_dk">
@@ -340,7 +340,7 @@
 						<td><input type="text" id="captConfirm"
 							style="width: 75px; height: 21px; float: left; margin-right: 10px"
 							placeholder="Mã bảo mật" title="Nhập mã trong ảnh bên" /> <img
-							id="imgSec" src="/home/adimgs/CapGenerator.jpg" class="imgCaptcha"
+							id="imgSec" src="/HuongCauPhan/adimgs/CapGenerator.jpg" class="imgCaptcha"
 							alt="Loading..." style="width: 80px; height: 30px" /></td>
 					</tr>
 					<tr>
@@ -356,8 +356,8 @@
 				</table>
 			</form>
 		</div>
-		<input type="hidden" value="0" id="hdpr" name="hdpr" /> <a
-			class="close-modal">Close</a>
+		<input type="hidden" value="0" id="hdpr" name="hdpr" /> 
+		<a class="close-modal hdpr" id="hdpr">Close</a>
 	</div>
 </body>
 </html>
