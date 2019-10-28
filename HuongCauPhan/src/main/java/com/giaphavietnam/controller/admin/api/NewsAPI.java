@@ -38,7 +38,6 @@ public class NewsAPI extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		NewModel news = HttpUtil.of(req.getReader()).toModel(NewModel.class);
-		System.out.println(news.getViews());
 		newsService.save(news);
 		mapper.writeValue(resp.getOutputStream(), "Success");
 	}

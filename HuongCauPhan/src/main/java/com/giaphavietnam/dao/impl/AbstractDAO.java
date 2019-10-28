@@ -136,7 +136,6 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 			if(rs.next()) {
 				id = rs.getLong(1);
 			}
-			
 			con.commit();
 			return id;
 		} catch (SQLException e) {
@@ -144,7 +143,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 				try {
 					con.rollback();
 				} catch (SQLException e1) {
-					e.printStackTrace();
+					e1.printStackTrace();
 				}
 			}
 		}finally {
@@ -158,7 +157,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 					rs.close();
 				}				
 			} catch (SQLException e2) {
-				e2.printStackTrace();;
+				e2.printStackTrace();
 			}
 		}
 		return null;

@@ -251,13 +251,18 @@
 			}
 			
 			var data = {
-				parentageId : parentageid,
-				content : $("#cboAddress option:selected").text(),
-				parentage_id : $("#FamilyName").val(),
-				create_date : $("#Head").val(),
-				views : $("#SpringAnniversary").val()
-			
-			};
+					parentageId : parentageid,
+					address : $("#cboAddress option:selected").text(),
+					parentageName : $("#FamilyName").val(),
+					head_of_parentage_name : $("#Head").val(),
+					culturalSpringDay : $("#SpringAnniversary").val(),
+					culturalAutumnDay : $("#AutumnAnniversary").val(),
+					headOfParentageNumber : $("#Number").val(),
+					headOfParentageEmail : $("#Email").val(),
+					ancestor : $("#Ancestor").val(),
+					historyOfParentage : editor.getData(),
+					accountId : "<c:out value='${model.id}'></c:out>"
+			}
 			
 			if(parentageid!=null){
 				$.ajax({
