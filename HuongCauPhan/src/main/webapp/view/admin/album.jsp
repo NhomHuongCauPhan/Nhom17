@@ -10,7 +10,7 @@
 <!-- Body Album -->
 
 	<div class="container my-4">
-	    <form class="multi-img" enctype="multipart/form-data" style="margin: -17px 0px 0 20px; width: 1275px;">
+	    <form class="multi-img" enctype="multipart/form-data" style="margin: -17px 0px 0 20px; width: 1275px; height: 500px;">
 	        <div class="file-loading">
 	            <input id="file-0a" class="file" type="file" multiple data-min-file-count="1" data-theme="fas">
 	        </div>
