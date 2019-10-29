@@ -6,24 +6,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Phả đồ</title>
-<script type="text/javascript"
-	src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
-<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet"
-	type="text/css" />
-<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet"
-	type="text/css" />
-<link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet"
-	type="text/css" />
-<script type="text/javascript" src="<c:url value='/template/adjs/ucp.js'/>">
-	
-</script>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/template/adcss/editor.css'/>" />
+<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
+<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value='/template/adjs/ucp.js'/>"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/template/adcss/editor.css'/>" />
 <link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>"/>
+<script src="<c:url value='/template/ckeditor/ckeditor.js' />"></script>
 
- <script src="<c:url value='/template/ckeditor/ckeditor.js' />"></script>
+<!-- 
+<link rel="stylesheet" href="<c:url value='/template/adcss/all.css'/>" >
+ -->
+
+<link href="<c:url value='/template/adcss/fileinput.css'/>" media="all" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css"/>
+<script src="<c:url value='/template/adjs/jquery-3.2.1.min.js'/>" ></script>
+<script src="<c:url value='/template/adjs/bootstrap.bundle.min.js'/>" ></script>
+<script src="<c:url value='/template/adjs/fileinput.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/template/adjs/theme.js'/>" type="text/javascript"></script>
+
 
 <title>Quản Lý Phả Đồ</title>
+
 <style>
 #lgr a {
 	color: #19191a;
@@ -69,16 +75,11 @@
 		</div>
 		<div class="ucp_def_body">
 			<jsp:include page="/common/admin/menu-left.jsp"></jsp:include>
-
-<!-- Page Content -->
-	<dec:body />
-			
-	</div>
-
-	<!-- Footer -->
-	<%@include file="/common/web/footer.jsp"%>
-	<span style="float: left; padding-left: 20px; color: red" id="frm_msg"></span>
-
+			<dec:body />	
+		</div>
+		<!-- Footer -->
+		<%@include file="/common/web/footer.jsp"%>
+		<span style="float: left; padding-left: 20px; color: red" id="frm_msg"></span>
 	</div>
 </body>
 </html>
