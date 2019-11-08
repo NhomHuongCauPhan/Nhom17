@@ -16,32 +16,26 @@
 			<!-- content -->
 			<div class="page_title" style="margin-bottom: 15px">
 				<h2 style="padding-right: 860px">Phả Đồ</h2>
-				<select>
-					<option value="0">Từ đời 1</option>
-					<%
-						int doi;
-						if(request.getAttribute("prlife")!=null){
-							doi = (int) request.getAttribute("prlife");
-						}else{
-							doi=0;
-						}
-					%>
-				</select> <select id="life">
-					<option value="0">Đến đời</option>
-					<%
-						for (int i = 1; i <= doi; i++) {
-							out.print("<option value=" + i + ">" + i + "</option>");
-						}
-					%>
-				</select>
 				<div class="toolbox">
 					<a href="javascript:loadPhaHe()" id="btn_save" class="ubtn save">Hiển
 						thị</a>
 				</div>
 			</div>
-			<div class="ucp_def_right" id="gp_phahe">
+			<div class="ucp_def_right" id="gp_phahe" style="background:#eeee; width:45%; float:left">
 				${FamilyTree}
 			</div>
+			<div class="ucp_def_right" id="gp_phahe" style="background:#dddd; width:42%;float:left">
+				Đời <select>
+				<option style="width:20px;">1</option>
+				</select>
+				<input type="radio" name="gender" />Nam
+				<input type="radio" name="gender" />Nữ</br>
+				<input type="text" placeholder="Tên thành viên" /></br>
+				<input type="text" placeholder="Tên bố mẹ" /></br>
+				
+				
+			</div>
+			
 
 	<script type="text/javascript">
 		$(document).ready(function() {
