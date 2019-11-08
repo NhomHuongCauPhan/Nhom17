@@ -11,15 +11,15 @@
 <link rel="icon" href="template/http://www.giaphavietnam.vn/img/utils/favicon.ico" type="image/x-icon" />
 
 
-<script type="text/javascript" src="template/adjs/jquery.min.1.7.1.js"></script>
-<link href="template/adcss/layout.css" rel="stylesheet" type="text/css" />
-<link href="template/adcss/common.css" rel="stylesheet" type="text/css" />
-<link href="template/adcss/default.css" rel="stylesheet" type="text/css" />
-<link href="template/adcss/dvgss.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="template/adjs/jquery.modal.min.js"></script>
-<link href="template/adcss/jquery.modal.css" rel="stylesheet" type="text/css" />
-<link href="template/adcss/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="template/adcss/bootstrap.css">
+<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
+<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/dvgss.css'/>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value='/template/adjs/jquery.modal.min.js'/>"></script>
+<link href="<c:url value='/template/adcss/jquery.modal.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/adcss/jquery.mCustomScrollbar.css'/>" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>">
 <style>
 	.ss_vlist li{width:62px;}
 	.intro{width:670px;}

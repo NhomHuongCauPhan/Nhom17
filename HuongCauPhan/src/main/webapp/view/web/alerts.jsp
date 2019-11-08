@@ -142,7 +142,7 @@
 								<%
 									if (request.getSession().getAttribute("Loginned") != null) {
 										out.print("<div class=\"member\">");
-										out.print("<img src=\"/HuongCauPhan/template/adimgs/default.png\">");
+										out.print("<img src=\"/template/adimgs/default.png\">");
 										out.print("<p>Xin chào:</p><p class=\"memname\">" + request.getSession().getAttribute("acname")
 												+ "</p>");
 										out.print("</div>");
@@ -357,7 +357,7 @@
 			</form>
 		</div>
 		<input type="hidden" value="0" id="hdpr" name="hdpr" /> 
-		<a class="close-modal hdpr" id="hdpr">Close</a>
+		<a class="close-modal hdpr">Close</a>
 	</div>
 </body>
 </html>
