@@ -166,11 +166,7 @@
 								<p style="padding-top: 5px"><a href="javascript:open_register()" id="lnk_regnew" style="text-decoration: underline">Đăng ký mới miễn phí</a></p>
 								</form>
 							</c:if>
-							
-								
-
 							</div>
-							
 						</div>
 						
 						<div class="box rb ovh txtC menu">
@@ -195,139 +191,14 @@
 								</ul>
 							</div>
 						</div>
-
-						
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</form>
-
-	
 	
 	<a href="#heading-page" id="toTop">to Top</a>
 
-	<script type="text/javascript">
-
-		function logout() {
-			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
-			if (window.confirm(mess)) {
-				window.location.href = "${WebURL}?action=logout";
-			}
-		}
-
-		function open_register() {
-			$('#dlg_register').modal('show'); // show bootstrap modal
-		}
-		$('#btnLogin').click(function (e) {
-			e.preventDefault();
-			var username = $("#accountName").val().trim();
-			var password = $("#password").val().trim();
-			var data={
-					accountName: username,
-					password:password,
-					id:0 ,
-					role:0,
-					status:0
-			};
-			var tmp = "";
-			if (username.length == 0) {
-				tmp += "Tên tài khoản không được để trống";
-			}
-			if (password.length == 0) {
-				tmp += "Mật khẩu không được để trống\n";
-			}
-			if (tmp != "") {
-				alert(tmp);
-				return;
-			}
-			
-			/* var formdata = $('#formlogin').serializeArray();
-			$.each(formdata, function(i, v){
-				data[""+v.name+""] = v.value;
-			}); */
-			
-
-			
-			$.ajax({
-				url: '${APIurl}',
-				type: 'post',
-				contentType: 'application/json',
-				data: JSON.stringify(data),
-				dataType: 'json',
-				success: function(result){
-					window.location.href = "${WebURL}";
-				},
-				
-				error: function(error){
-					window.location.href = "${WebURL}?error=notlogin";
-				}
-			});
-		});
-
-		function register() {
-
-			var username = $("#UserName").val().trim();
-			var password = $("#Password").val().trim();
-			var cfpassword = $("#ConfirmPassword").val().trim();
-			var capcf = $("#captConfirm").val().trim();
-			var tmp = "";
-			if (username.length == 0) {
-				tmp += "Tên tài khoản không được để trống; ";
-			}
-			if (password.length == 0) {
-				tmp += "Mật khẩu không được để trống; ";
-			}
-			if (password != cfpassword) {
-				tmp += "Kiểm tra lại mật khẩu; ";
-				$("#ConfirmPassword").val("");
-				$("#Password").focus();
-			}
-			if (tmp != "") {
-				tmp = "<div class=\"error\">" + tmp + "</div>";
-				$("#update_msg").html(tmp);
-				return;
-			}
-
-			var request;
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-
-			try {
-
-				var data = {
-					accountname : username,
-					accountpass : password,
-					role : "1"
-				};
-
-				var datastr = JSON.stringify(data);
-				var url = "/HuongCauPhan/view?data="
-						+ encodeURIComponent(datastr);
-
-				request.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						var tmp1 = "<div class=\"success\">"
-								+ request.responseText + "</div>";
-						$("#update_msg").html(tmp1);
-
-					}
-				};
-
-				request.open("POST", url, true);
-				request.setRequestHeader('Content-Type',
-						'application/json; charset=utf-8');
-				request.send();
-			} catch (e) {
-				alert("Unable connect to server");
-			}
-
-		}
-	</script>
 	<div class="dialog modal" id="dlg_register"
 		style="width: 550px; height: 280px; margin: 100px auto;">
 		<div class="dlg_title" style="">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
@@ -378,5 +249,124 @@
 		<input type="hidden" value="0" id="hdpr" name="hdpr" /> 
 		<a class="close-modal" style="margin-top: 5.5px; height: 3px;">Close</a>
 	</div>
+
+<script>
+
+	function logout() {
+		var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
+		if (window.confirm(mess)) {
+			window.location.href = "${WebURL}?action=logout";
+		}
+	}
+
+	function open_register() {
+		$('#dlg_register').modal('show'); // show bootstrap modal
+	}
+
+	$('#btnLogin').click(function (e) {
+		e.preventDefault();
+		var username = $("#accountName").val().trim();
+		var password = $("#password").val().trim();
+		var data = {
+			accountName: username,
+			password: password,
+			id: 0,
+			role: 0,
+			status: 0
+		};
+		var tmp = "";
+		if (username.length == 0) {
+			tmp += "Tên tài khoản không được để trống";
+		}
+		if (password.length == 0) {
+			tmp += "Mật khẩu không được để trống\n";
+		}
+		if (tmp != "") {
+			alert(tmp);
+			return;
+		}
+
+		/* var formdata = $('#formlogin').serializeArray();
+		$.each(formdata, function(i, v){
+			data[""+v.name+""] = v.value;
+		}); */
+
+
+		$.ajax({
+			url: '${APIurl}',
+			type: 'post',
+			contentType: 'application/json',
+			data: JSON.stringify(data),
+			dataType: 'json',
+			success: function (result) {
+				window.location.href = "${WebURL}";
+			},
+
+			error: function (error) {
+				window.location.href = "${WebURL}?error=notlogin";
+			}
+		});
+	});
+
+	function register() {
+
+		var username = $("#UserName").val().trim();
+		var password = $("#Password").val().trim();
+		var cfpassword = $("#ConfirmPassword").val().trim();
+		var capcf = $("#captConfirm").val().trim();
+		var tmp = "";
+		if (username.length == 0) {
+			tmp += "Tên tài khoản không được để trống; ";
+		}
+		if (password.length == 0) {
+			tmp += "Mật khẩu không được để trống; ";
+		}
+		if (password != cfpassword) {
+			tmp += "Kiểm tra lại mật khẩu; ";
+			$("#ConfirmPassword").val("");
+			$("#Password").focus();
+		}
+		if (tmp != "") {
+			tmp = "<div class=\"error\">" + tmp + "</div>";
+			$("#update_msg").html(tmp);
+			return;
+		}
+
+		var request;
+		if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			request = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		try {
+
+			var data = {
+				accountname: username,
+				accountpass: password,
+				role: "1"
+			};
+
+			var datastr = JSON.stringify(data);
+			var url = "/HuongCauPhan/view?data="
+					+ encodeURIComponent(datastr);
+
+			request.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var tmp1 = "<div class=\"success\">"
+							+ request.responseText + "</div>";
+					$("#update_msg").html(tmp1);
+
+				}
+			};
+
+			request.open("POST", url, true);
+			request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+			request.send(datastr);
+		} catch (e) {
+			alert("Unable connect to server");
+		}
+	}
+</script>
 </body>
 </html>

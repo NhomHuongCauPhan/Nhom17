@@ -1,12 +1,40 @@
 package com.giaphavietnam.dao.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.giaphavietnam.dao.IParentageDAO;
 import com.giaphavietnam.mapper.ParentageMapper;
 import com.giaphavietnam.model.ParentageModel;
 
 public class ParentageDAO extends AbstractDAO<ParentageModel> implements IParentageDAO {
+
+	@Override
+	public List<ParentageModel> findAll() {
+		StringBuilder sql=new StringBuilder("SELECT * FROM parentage");
+		return query(sql.toString(),new ParentageMapper());
+	}
+
+    @Override
+    public List<ParentageModel> findAll(String data) {
+        StringBuilder sql=new StringBuilder("SELECT * FROM parentage ");
+        if(data!=null || !data.equals("")){
+            sql.append(" WHERE parentage_name LIKE '%"+data+"%' or head_of_parentage_name LIKE '%"+data+"%' or ");
+            sql.append("address LIKE '%"+data+"%' or head_of_parentage_number LIKE '%"+data+"%' or ");
+            sql.append("head_of_parentage_email LIKE '%"+data+"%' or ancestor LIKE '%"+data+"%';");
+        }
+        else{
+            sql.append(";");
+        }
+        return query(sql.toString(),new ParentageMapper(),data);
+    }
+
+	@Override
+	public List<ParentageModel> findByData(String data) {
+		StringBuilder sql=new StringBuilder("SELECT * FROM parentage ");
+		sql.append("WHERE ");
+		return query(sql.toString(),new ParentageMapper());
+	}
 
 	@Override
 	public ParentageModel findByAccountId(long id) {
