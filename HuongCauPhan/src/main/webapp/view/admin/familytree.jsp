@@ -100,35 +100,33 @@
 				success: function(result){
 					$('#gp_phahe').html(".");
 					for (var i in result) {
-						   var obj = result[i];
-						   for (var j in obj) {
-							   if(j=="fullName"){
-								   if(age!="Chọn đời"){
-									   
-								   }
-									$('#gp_phahe').append("<div class=\"rcontent-item item3\" >"	
-										+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
-										+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
-										+"<button class=\"tree\">"+ obj[j] +"</button>"
-										+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
-										+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
-										+"</br>"
-										+"</div>");
-							   }	
-							   
-							   if(j=="branch"){
-								   alert(j+" = "+obj[j].split("\.").length);
+					   var obj = result[i];
+					   for (var j in obj) {
+						   if(age!="Chọn đời"){
+							   if(j=="branch"){							
+								   if(age != obj[j].split("\.").length){break;}
 							   }
-							   
 						   }
-						}											 	
+						   
+						   if(j=="fullName"){
+								$('#gp_phahe').append("<div class=\"rcontent-item item3\" >"	
+									+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+									+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+									+"<button class=\"tree\">"+ obj[j] +"</button>"
+									+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+									+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+									+"</br>"
+									+"</div>");
+						   }							  							   							   
+					   }
+					}											 	
 				},
 				error: function(error){
 					
 				}
 			});
 			
-		})
+		});
 
 		
 		function del(id, name) {

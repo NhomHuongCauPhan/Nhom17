@@ -4,12 +4,12 @@ import java.sql.Date;
 
 public class IndividualModel {
 	private long individualId;
+	private String branch ;
 	private String fullName ;
 	private int gender;
 	private Date dateOfBirth ;
 	private Date dateOfDeath ;
 	private int father;
-	private String branch ;
 	private long parentageId ;
 	private String avatar ;
 	public long getIndividualId() {
