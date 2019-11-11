@@ -77,7 +77,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="formData">
-                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size">
+                                    <%--<c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
                                         <tr class="prInfo">
                                             <td>${size.index + 1}</td>
                                             <td>${item.parentageName}</td>
@@ -85,8 +85,15 @@
                                             <td>${item.head_of_parentage_name}</td>
                                             <td>${item.culturalSpringDay}</td>
                                             <td>${item.totalMember}</td>
-                                        </tr>
-                                    </c:forEach>
+                                        </tr>--%>
+                                    <tr id="list">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -112,29 +119,28 @@
 <a href="javascript:void(0)" id="toTop">to Top</a>
 
 <script>
-    /*$('#btnSearch').click(function (e) {
-        e.preventDefault();
-        var infoWantToSearch = $('#search').val();
-        console.log(infoWantToSearch);
-        var data={};
-        var info=$('tbody tr td').map(function () {
-            return $(this).val();
-        }).get();
-        data['']=info;
-        console.log(data);
-        searchParentage(infoWantToSearch);
-    });
-    function searchParentage(infoWantToSearch) {
+    $(document).ready(function () { //load parentages infomation
         $.ajax({
-            url: '/cac-dong-ho',
+            url: '${PrtUrl}',
             type: 'GET',
-
-        })
-    }*/
+            contentType:'application/json',
+            dataType: 'json',
+            success: function (result) {
+                console.log("GET: "+result);
+            },
+            error: function () {
+                alert('There\'s something wrong!');
+            }
+        });
+    });
 
     function checkDataExist(data){
+        var prt=[];
         if(data!=null){
+            //var data1=JSON.stringify(data);
+            prt.push(data)
             console.log(data);
+            console.log("rr: "+prt);
         }else{
             alert("Không có dữ liệu.");
         }
@@ -148,7 +154,7 @@
             type: 'POST',
             contentType:'application/text',
             dataType: 'json',
-            data: searchData,
+            data: searchData.trim(),
             success: function (data) {
                 checkDataExist(data);
             },
@@ -157,27 +163,6 @@
             }
         });
     });
-
-    /*$("#btnSearch").click(function(event){
-        $.get('/cac-dong-ho',function(responseJson) {
-            if(responseJson!=null){
-                $("#countrytable").find("tbody tr:gt(0)").remove();
-                var table1 = $("#countrytable");
-                $.each(responseJson, function(key,value) {
-                    var rowNew = $("<tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>");
-                    rowNew.children().eq(0).text(value['code']);
-                    rowNew.children().eq(1).text(value['name']);
-                    rowNew.children().eq(2).text(value['continent']);
-                    rowNew.children().eq(3).text(value['region']);
-                    rowNew.children().eq(4).text(value['population']);
-                    rowNew.children().eq(5).text(value['capital']);
-                    rowNew.appendTo(table1);
-                });
-            }
-        });
-        $("#tablediv").show();
-    });*/
-
 </script>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class HomeController extends HttpServlet {
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/home.jsp");
             rd.forward(req, res);
         } else if (req.getRequestURI().endsWith("cac-dong-ho")) {
-            List<ParentageModel> listPrt = iParentageService.findAll();
+           /* List<ParentageModel> listPrt = iParentageService.findAll();
             for (ParentageModel parentageModel : listPrt) {
                 if (parentageModel != null) {
                     int totalMember = iIndividualService.findAll(parentageModel.getParentageId()).size();
@@ -46,7 +46,7 @@ public class HomeController extends HttpServlet {
                 } else {
                     return;
                 }
-            }
+            }*/
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/parentages.jsp");
             rd.forward(req, res);
         } else if (req.getRequestURI().endsWith("thong-bao")) {
