@@ -1,6 +1,8 @@
 package com.giaphavietnam.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ParentageModel {
@@ -15,6 +17,9 @@ public class ParentageModel {
 	private String ancestor ;
 	private String historyOfParentage ;
 	private long accountId ;
+	private List<ParentageModel> listResult = new ArrayList<>();
+	private int totalMember;
+
 	public long getParentageId() {
 		return parentageId;
 	}
@@ -81,5 +86,20 @@ public class ParentageModel {
 	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
-	
+
+	public List<ParentageModel> getListResult() {
+		return listResult;
+	}
+
+	public void setListResult(List<ParentageModel> listResult) {
+		this.listResult = listResult;
+	}
+
+	public int getTotalMember() {
+		return totalMember;
+	}
+
+	public void setTotalMember(int totalMember) {
+		this.totalMember = totalMember;
+	}
 }

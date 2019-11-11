@@ -138,7 +138,7 @@
 					<td style="width: 110px"><input type="text" name="Number"
 						id="Number"
 						value='<c:out value="${ParentageModel.headOfParentageNumber}"></c:out>'></td>
-					<td style="width: 200px">Email Ngưởi tạo</td>
+					<td style="width: 200px">Email Người tạo</td>
 					<td style="width: 120px"><input type="text" name="Email"
 						id="Email"
 						value='<c:out value="${ParentageModel.headOfParentageEmail}"></c:out>'></td>

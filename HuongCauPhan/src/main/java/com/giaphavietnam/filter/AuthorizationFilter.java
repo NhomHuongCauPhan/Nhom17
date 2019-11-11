@@ -41,7 +41,7 @@ public class AuthorizationFilter implements Filter{
 				res.sendRedirect(rq.getContextPath()+"/trang-chu?message=not_login");
 			}
 		}else {
-			chain.doFilter(request, response); 	
+			chain.doFilter(request, response);
 		}
 		
 	}
