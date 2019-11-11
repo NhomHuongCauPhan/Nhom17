@@ -1,6 +1,7 @@
 package com.giaphavietnam.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.giaphavietnam.model.IndividualModel;
 
@@ -13,4 +14,5 @@ public interface IIndividualDAO {
 	public void update(IndividualModel individualNew);
 	public void delete(IndividualModel individual);
 	public IndividualModel findBranch(long parentageId);
+	public List<IndividualModel> search(IndividualModel data);
 }

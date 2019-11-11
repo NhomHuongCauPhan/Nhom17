@@ -46,6 +46,7 @@ public class HomeController extends HttpServlet {
 			String familyTree = GenerateTree.viewIndividual(list);
 			req.setAttribute(SystemConstant.FAMILYTREE, familyTree);
 			req.setAttribute("prlife", age.getBranch().split("\\.").length);
+			req.setAttribute("prid", prt.getParentageId());
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/familytree.jsp");
 			rd.forward(req, res);
 		}

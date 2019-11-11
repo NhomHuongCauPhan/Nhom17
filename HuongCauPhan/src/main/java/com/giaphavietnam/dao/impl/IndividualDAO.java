@@ -1,6 +1,7 @@
 package com.giaphavietnam.dao.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.giaphavietnam.dao.IIndividualDAO;
 import com.giaphavietnam.mapper.IndividualMapper;
@@ -72,6 +73,20 @@ public class IndividualDAO extends AbstractDAO<IndividualModel> implements IIndi
 		sql.append("order by father desc limit 1");
 		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper(),parentageId);
 		return prt.isEmpty()?null:prt.get(0);
+	}
+
+	@Override
+	public List<IndividualModel> search(IndividualModel data) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM individual where parentage_id="+data.getParentageId());
+		if(data.getGender()!=2) {
+			sql.append(" and gender="+data.getGender());
+		}
+		if(data.getFullName()!="") {
+			sql.append(" and fullname like '%"+data.getFullName()+"%'");
+		}
+		
+		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper());
+		return prt.isEmpty()?null:prt;
 	}
 
 }

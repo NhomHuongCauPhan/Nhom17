@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APIurl" value="/api-admin-individual"/>
+<c:url var="APISearchurl" value="/api-search"/>
+
 <c:url var="WebURL" value="/trang-chu"/>
 <c:url var="Adminurl" value="/quan-tri/pha-do"/>
 <!doctype html>
@@ -26,6 +28,7 @@
 						<div class="col-md-offset-4 col-md-3">Đời</div>
 						<div class="col-md-4">
 							<select id="cbxAge" style="width:130px; background:#dddd ; height:30px !important">
+								<option value="">Chọn đời</option>
 								<%
 									int doi;
 									if(request.getAttribute("prlife")!=null){
@@ -56,25 +59,12 @@
 					<div class="row" style="padding-bottom:20px;">
 						<div class="col-md-offset-4 col-md-3">Tên thành viên</div>
 						<div class="col-md-4">
-							<input type="text" style="background:#ffff; padding:14px 5px;" placeholder="Tên thành viên" />
+							<input id="indname" type="text" style="background:#ffff; padding:14px 5px;" placeholder="Tên thành viên" />
 						</div>
 						
-					</div>
-					
-					<div class="row" style="padding-bottom:20px;">
-						<div class="col-md-offset-4 col-md-3">Tên thành viên</div>
-						<div class="col-md-4">
-							<input type="text" style="background:#ffff; padding:14px 5px;" placeholder="Tên bố mẹ" />
-						</div>
 					</div>	
 					
 				</div>
-								
-				
-				
-				
-				
-				
 			</div>
 			
 
@@ -86,8 +76,58 @@
 		$("#btn_load").click(function(){
 			var age = $("#cbxAge option:selected").text();
 			var gender = $('input[name=gender]:checked').val();
-
-			alert(gender);
+			var name = $('#indname').val();
+			if(gender==undefined){
+				gender =  2;
+			}
+			var data = {
+					individualId:1,
+					fullName :name,
+					gender:gender,
+					dateOfBirth: "1300-1-1",
+					dateOfDeath:"1300-1-1" ,
+					father:1,
+					branch:age ,
+					parentageId:"${prid}", 
+					avatar:"" 
+				};
+			$.ajax({
+				url: '${APISearchurl}',
+				type: 'post',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: function(result){
+					$('#gp_phahe').html(".");
+					for (var i in result) {
+						   var obj = result[i];
+						   for (var j in obj) {
+							   if(j=="fullName"){
+								   if(age!="Chọn đời"){
+									   
+								   }
+									$('#gp_phahe').append("<div class=\"rcontent-item item3\" >"	
+										+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+										+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+										+"<button class=\"tree\">"+ obj[j] +"</button>"
+										+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+										+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+										+"</br>"
+										+"</div>");
+							   }	
+							   
+							   if(j=="branch"){
+								   alert(j+" = "+obj[j].split("\.").length);
+							   }
+							   
+						   }
+						}											 	
+				},
+				error: function(error){
+					
+				}
+			});
+			
 		})
 
 		

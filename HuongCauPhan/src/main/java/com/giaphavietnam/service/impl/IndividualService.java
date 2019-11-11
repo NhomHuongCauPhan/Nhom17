@@ -1,6 +1,7 @@
 package com.giaphavietnam.service.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -49,6 +50,10 @@ public class IndividualService implements IIndividualService {
 	@Override
 	public IndividualModel findAge(long parentageId) {
 		return individualDAO.findBranch(parentageId);
+	}
+
+	public List<IndividualModel> search(IndividualModel data) {
+		return individualDAO.search(data);
 	}
 
 }

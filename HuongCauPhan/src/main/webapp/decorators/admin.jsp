@@ -23,7 +23,7 @@
 <!--<script src="<c:url value='/template/adjs/jquery-3.2.1.min.js'/>" ></script>-->
 <%-- <script src="<c:url value='/template/adjs/bootstrap.bundle.min.js'/>" ></script> --%>
 <%--<script src="<c:url value='/template/adjs/jquery-3.2.1.min.js'/>" ></script>--%>
-<script src="<c:url value='/template/adjs/bootstrap.bundle.min.js'/>" ></script>
+<%-- <script src="<c:url value='/template/adjs/bootstrap.bundle.min.js'/>" ></script> --%>
 
 <script src="<c:url value='/template/adjs/fileinput.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/template/adjs/theme.js'/>" type="text/javascript"></script>
