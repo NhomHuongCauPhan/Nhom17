@@ -26,6 +26,7 @@ public class ParentageAPI extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json");
         /*ParentageModel parentageNew = HttpUtil.of(req.getReader()).toModel(ParentageModel.class);
+        parentageService.update(parentageNew);*/
         mapper.writeValue(resp.getOutputStream(), parentageService.findAll());
     }
 
