@@ -9,7 +9,7 @@
 .page_title h2 {float: left; font-size: 14px; color: #fff; font-weight: bold; font-family: Tahoma; padding: 0 }
 .page_title .toolbox {float: right;}
 .toolbox input { margin-right: 5px }
-.toolbox .ubtn { display: block; border: 1px solid #fff; width: 70px; text-align: center; border-radius: 5px; height: 23px; float: right; color: #F0F0F0; line-height: 23px; transition: all 0.2s linear}
+.toolbox .ubtn { display: block; border: 1px solid #fff; background:#337ab7 ; width: 70px; text-align: center; border-radius: 5px; height: 23px; float: right; color: #F0F0F0; line-height: 23px; transition: all 0.2s linear}
 .toolbox .ubtn:hover {border-color: #fff; text-decoration: none; color: #000; background-color: #F0F0F0}
 div.success { padding: 10px 10px 10px 45px; border: 1px solid #8DD420; background: url(../adimgs/success.png) no-repeat scroll 15px center; color: #009C24; font-size: 12px; margin: 0 0 15px 0 }
 div.error { padding: 10px 10px 10px 45px; border: 1px solid #D71111; background: #FDF6F2 url(../adimgs/error.gif) no-repeat scroll 15px center; color: red; font-size: 12px; margin: 0 10px 0 10px }

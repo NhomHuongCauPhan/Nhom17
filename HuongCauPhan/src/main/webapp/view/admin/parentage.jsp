@@ -18,7 +18,7 @@
 		<div id="float_panel"></div>
 		<div class="page_title" style="margin-bottom: 15px">
 			<h2>Thông tin dòng họ</h2>
-			<div class="toolbox" style="background:#ffff">
+			<div class="toolbox" style="background:#ffff; cursor: pointer;">
 				<a id="btn_save" class="ubtn save">Lưu lại</a>
 			</div>
 		</div>

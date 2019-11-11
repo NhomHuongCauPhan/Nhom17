@@ -42,8 +42,10 @@ public class HomeController extends HttpServlet {
 		}
 		else if (req.getRequestURI().endsWith("pha-do")) {
 			ArrayList<IndividualModel> list = individualService.findAll(prt.getParentageId());
+			IndividualModel age = individualService.findAge(prt.getParentageId());
 			String familyTree = GenerateTree.viewIndividual(list);
 			req.setAttribute(SystemConstant.FAMILYTREE, familyTree);
+			req.setAttribute("prlife", age.getBranch().split("\\.").length);
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/familytree.jsp");
 			rd.forward(req, res);
 		}

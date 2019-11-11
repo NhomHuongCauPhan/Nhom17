@@ -12,4 +12,5 @@ public interface IIndividualService {
 	public long save(IndividualModel individualNew);
 	public void update(IndividualModel individualNew);
 	public void delete(IndividualModel individual);
+	public IndividualModel findAge(long parentageId);
 }

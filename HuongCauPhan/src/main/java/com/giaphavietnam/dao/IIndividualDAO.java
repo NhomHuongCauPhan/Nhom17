@@ -12,4 +12,5 @@ public interface IIndividualDAO {
 	public long save(IndividualModel individualNew);
 	public void update(IndividualModel individualNew);
 	public void delete(IndividualModel individual);
+	public IndividualModel findBranch(long parentageId);
 }

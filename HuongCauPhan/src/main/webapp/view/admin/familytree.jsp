@@ -16,22 +16,63 @@
 			<!-- content -->
 			<div class="page_title" style="margin-bottom: 15px">
 				<h2 style="padding-right: 860px">Phả Đồ</h2>
-				<div class="toolbox">
-					<a href="javascript:loadPhaHe()" id="btn_save" class="ubtn save">Hiển
-						thị</a>
-				</div>
 			</div>
 			<div class="ucp_def_right" id="gp_phahe" style="background:#eeee; width:45%; float:left">
 				${FamilyTree}
 			</div>
 			<div class="ucp_def_right" id="gp_phahe" style="background:#dddd; width:42%;float:left">
-				Đời <select>
-				<option style="width:20px;">1</option>
-				</select>
-				<input type="radio" name="gender" />Nam
-				<input type="radio" name="gender" />Nữ</br>
-				<input type="text" placeholder="Tên thành viên" /></br>
-				<input type="text" placeholder="Tên bố mẹ" /></br>
+				<div class="container-fluid">
+					<div class="row" style="padding-bottom:20px;">
+						<div class="col-md-offset-4 col-md-3">Đời</div>
+						<div class="col-md-4">
+							<select id="cbxAge" style="width:130px; background:#dddd ; height:30px !important">
+								<%
+									int doi;
+									if(request.getAttribute("prlife")!=null){
+										doi = (int) request.getAttribute("prlife");
+									}else{
+										doi=0;
+									}
+									
+									for (int i = 1; i <= doi; i++) {
+										out.print("<option value=" + i + ">" + i + "</option>");
+									}
+								%>
+							</select>
+						</div>
+						<div class="col-md-offset-2 col-md-3">
+							<div class="toolbox" style="cursor: pointer;">
+								<a id="btn_load" class="ubtn save" style="background:#007bff;color:white">Hiển thị</a>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="padding-bottom:20px;">
+						<div class="col-md-offset-4 col-md-3">Giới tính</div>
+						<div class="col-md-4">
+							<input type="radio" name="gender" value="1" />Nam
+							<input type="radio" name="gender" value="0" />Nữ
+						</div>
+					</div>
+					<div class="row" style="padding-bottom:20px;">
+						<div class="col-md-offset-4 col-md-3">Tên thành viên</div>
+						<div class="col-md-4">
+							<input type="text" style="background:#ffff; padding:14px 5px;" placeholder="Tên thành viên" />
+						</div>
+						
+					</div>
+					
+					<div class="row" style="padding-bottom:20px;">
+						<div class="col-md-offset-4 col-md-3">Tên thành viên</div>
+						<div class="col-md-4">
+							<input type="text" style="background:#ffff; padding:14px 5px;" placeholder="Tên bố mẹ" />
+						</div>
+					</div>	
+					
+				</div>
+								
+				
+				
+				
 				
 				
 			</div>
@@ -41,6 +82,13 @@
 		$(document).ready(function() {
 			
 		});
+		
+		$("#btn_load").click(function(){
+			var age = $("#cbxAge option:selected").text();
+			var gender = $('input[name=gender]:checked').val();
+
+			alert(gender);
+		})
 
 		
 		function del(id, name) {

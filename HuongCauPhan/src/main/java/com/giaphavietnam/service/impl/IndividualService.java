@@ -46,4 +46,9 @@ public class IndividualService implements IIndividualService {
 		return individualDAO.findBranch(branch);
 	}
 
+	@Override
+	public IndividualModel findAge(long parentageId) {
+		return individualDAO.findBranch(parentageId);
+	}
+
 }
