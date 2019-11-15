@@ -3,8 +3,8 @@
 <%@include file="/common/taglib.jsp" %>	
 <c:url var="APIurl" value="/api-admin-account"/>
 <c:url var="WebURL" value="/trang-chu"/>
-<c:url var="Adminurl" value="/quan-tri"/>
-
+<c:url var="Adminurl" value="/quan-tri"/> 
+<c:url var="TopViews" value="/api-admin-news"/>
 
 <!DOCTYPE html>
 <html>
@@ -103,32 +103,34 @@
 
 
 						
-						<div class="box ovh">
+<div class="box ovh">
 							<h3 class="cbhead txtC">TIN TỨC DÒNG HỌ</h3>
 							<div class="grb cencol">
-								<div class="fnews fll">
+								<div class="fnews fll" id="TopNews">
 									<h4></h4>
-									<p class="headline">
-										<a href="/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Ho-Vu-lang-Phu-Hau-thanh-dat-nho-khuyen-hoc_tc_293_327_1193.html&regex=td[colspan=3][id=noidung]">Họ Vũ làng Phú Hậu thành đạt nhờ khuyến học</a>
-									</p>
-									<div class="summary"></div>
-									<p class="ndate">Đăng ngày: 25/04/2019</p>
+							<c:forEach items="${arrNewsTop}" var="item">
+							<div style="height: 100px">
+							<p class="headline" style="height: 45px; overflow: hidden;" >
+							<c:url value='/tin-hot' var='urlNews'>
+							<c:param name='newID' value='${item.newsID }'/> 
+							</c:url>
+							<a href="${urlNews}">${item.title}</a></p>
+						<p class="ndate">Đăng ngày: ${item.create_date}</p>
+						</div>
+						</c:forEach> 
+							
 								</div>
 								<div class="ofnews flr">
 									<ul>
+									<c:forEach items="${arrNewDate}" var="item">
 										<li>
-											<a href="/HuongCauPhan/views/web/news.jsp?src=http://hovanvietnam.com/thuyen-nhan-ai/hanh-trinh-ho-van-viet-nam-237.html&regex=div[class=panel-body]">Hành Trình Thuyền Nhân Ái Họ Văn Việt Nam<span>- <i>02/01/2018</i></span></a>
+										<c:url value='/tin-hot' var='urlNews'>
+											<c:param name='newID' value='${item.newsID }'/> 
+										</c:url>
+											<a href="${urlNews}">${item.title}<span>- <i>${item.create_date}</i></span></a>
 											<p class="source">Tin dòng họ:</p>
 										</li>
-										<li>
-											<a href="/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Cu-Vu-XuanTron-tron-viec-nuoc-viec-nha_tc_304_311_1532.html&regex=td[colspan=3][id=noidung]">Cụ Vũ XuânTròn trọn việc nước, việc nhà
-												<span>- <i>24/03/2019</i></span>
-										</a>
-											<p class="source">Tin dòng họ:</p></li>
-										<li><a href="/HuongCauPhan/views/web/news.jsp?src=http://hovuvovietnam.com/Khai-quoc-cong-than-Tuy-quoc-cong-Vu-Uy-1390-1424-_tc_304_309_1529.html&regex=td[colspan=3][id=noidung]"> Khai quốc công thần, Tuy quốc công Vũ Uy (1390 - 1424)<span>- <i>18/03/2019</i>
-											</span>
-										</a>
-											<p class="source">Tin dòng họ:</p></li>
+									</c:forEach> 
 									</ul>
 								</div>
 							</div>

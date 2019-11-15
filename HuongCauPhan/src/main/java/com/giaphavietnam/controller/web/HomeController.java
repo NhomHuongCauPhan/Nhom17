@@ -1,10 +1,10 @@
 package com.giaphavietnam.controller.web;
 
 import com.giaphavietnam.constant.SystemConstant;
-import com.giaphavietnam.model.ParentageModel;
+import com.giaphavietnam.model.NewModel;
 import com.giaphavietnam.service.IIndividualService;
+import com.giaphavietnam.service.INewsService;
 import com.giaphavietnam.service.IParentageService;
-import com.giaphavietnam.utils.FormUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 @WebServlet(urlPatterns = {"/trang-chu", "/cac-dong-ho", "/thong-bao", "/thong-tin-dong-ho"})
 public class HomeController extends HttpServlet {
@@ -24,13 +24,18 @@ public class HomeController extends HttpServlet {
     private IIndividualService iIndividualService;
     @Inject
     private IParentageService iParentageService;
-
+    @Inject
+    private INewsService newsService;
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         if (req.getRequestURI().endsWith("trang-chu")) {
             String action = req.getParameter("action");
             if (action != null && action.equalsIgnoreCase("logout")) {
                 req.getSession().removeAttribute(SystemConstant.MODEL);
             }
+            ArrayList<NewModel> arrNewsTop=newsService.findByTopViews();
+			ArrayList<NewModel> arrNewDate=newsService.findNewDate();
+			req.setAttribute("arrNewsTop", arrNewsTop);
+			req.setAttribute("arrNewDate", arrNewDate);
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/home.jsp");
             rd.forward(req, res);
         } else if (req.getRequestURI().endsWith("cac-dong-ho")) {

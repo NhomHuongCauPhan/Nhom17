@@ -3,7 +3,7 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APIurl" value="/api-admin-news"/>
 <c:url var="WebURL" value="/trang-chu"/>
-<c:url var="Adminurl" value="/quan-tri/bai-viet"/>
+<c:url var="Adminurl" value="/quan-tri/quan-ly-tin"/>
 
 <!doctype html>
 <html>
@@ -29,12 +29,14 @@
 			<tbody>
 			<tr> 
 				<td style="vertical-align: top">Nhập tiêu đề</td>
-				<td><input type="text" name="titleNews" id="titleNews" style="width: 700px !important;" value=""></td>
+				<td><input type="text" name="titleNews" id="titleNews" style="width: 700px !important;" value="${onlyOne.title }"></td>
 			</tr>
 				<tr>
 					<td style="vertical-align: top">Nhập nội dung</td>
-					<td colspan="3"><textarea name="Description" id="Description1"
-							style="height: 30px; width: 580px"></textarea>
+					<td colspan="3"><textarea name="Description" id="Description1" 
+							style="height: 30px; width: 580px" >
+							${onlyOne.content }
+							</textarea>
 				</tr>
 			</tbody>
 		</table>
@@ -48,8 +50,8 @@
 		$(document).ready(function() {
 			editor1 = CKEDITOR.replace( 'Description1');
 		});
-		var parentageid = "<c:out value='${ParentageModel.parentageId}'></c:out>";
 
+		var parentageid = "<c:out value='${ParentageModel.parentageId}'></c:out>";
 		function logout() {
 			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
 			if (window.confirm(mess)) {
@@ -59,7 +61,7 @@
 		$("#btn_save").click(function () {
 			$("#msg").html('<img src="<c:url value='/template/adimgs/loading1.gif'/>">Đang xử lý');
 			var data = {
-				newsID : null,
+				newsID : ${onlyOne.newsID },
 				content : editor1.getData(),
 				parentage_id : parentageid,
 				create_date : new Date(),
@@ -70,7 +72,7 @@
 			if(parentageid!=null){
 				$.ajax({
 					url: '${APIurl}',
-					type: 'put',
+					type: 'post',
 					contentType: 'application/json',
 					data: JSON.stringify(data),
 					dataType: 'json',

@@ -8,8 +8,15 @@ public class NewModel {
 	private long parentage_id;
 	private Date create_date;
 	private long views;
+	private String title;
 	public long getViews() {
 		return views;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public void setViews(long views) {
 		this.views = views;
