@@ -149,7 +149,7 @@ public class HomeController extends HttpServlet {
 	        req.setAttribute("min", min);
 	        req.setAttribute("max", max);
 //			// end phân trang
-	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(1,page,itemsPerPage);
+	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(prt.getParentageId(),page,itemsPerPage);
 	        req.setAttribute("newsParent", newsByIDPare);
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/manageNews.jsp");
 			rd.forward(req, res);

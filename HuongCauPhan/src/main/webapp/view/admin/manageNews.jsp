@@ -3,7 +3,7 @@
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-news" />
 <c:url var="WebURL" value="/trang-chu" />
-<c:url var="Adminurl" value="/quan-tri/bai-viet" />
+<c:url var="Adminurl" value="/quan-tri/quan-ly-tin" />
 
 <!doctype html>
 <html>
@@ -49,7 +49,7 @@
 								<td>${item.title }</td>
 								<td>${item.create_date }</td>
 								<td><a id="btn_update" class="btn btn-outline-danger" href="sua-tin?newID=${item.newsID }">Sửa</a>
-									<a id="btn_delete" class="btn btn-outline-danger">Xóa</a></td>
+									<a id="btn_delete" onclick="deleteNews(${item.newsID })" class="btn btn-outline-danger">Xóa</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -100,6 +100,32 @@
 				window.location.href = "/home/view?action=logout";
 			}
 		}
+		function deleteNews(item){
+			var data = {
+					newsID : item,
+					content : null,
+					parentage_id : parentageid,
+					create_date : null,
+					title : $("#titleNews").val(),
+					views : 0
+				};
+			var mess = "Bạn có thực sự muốn xóa tin đã tạo không";
+			if (window.confirm(mess)) {
+				$.ajax({
+					url: '${APIurl}',
+					type: 'delete',
+					contentType: 'application/json',
+					data: JSON.stringify(data),
+					dataType: 'json',
+					success: function(result){
+						window.location.href = "${Adminurl}";
+					},
+					error: function(error){
+						window.location.href = "${Adminurl}?error=updatefailure";
+					}
+				});
+			}
+		};
 		$("#btn_delete").click(function(){
 			var data = {
 					newsID : null,

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(urlPatterns = {"/trang-chu", "/cac-dong-ho", "/thong-bao", "/thong-tin-dong-ho"})
+@WebServlet(urlPatterns = {"/trang-chu", "/cac-dong-ho", "/thong-bao", "/thong-tin-dong-ho","/tin-hot"})
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -61,6 +61,12 @@ public class HomeController extends HttpServlet {
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/parentageinfo.jsp");
             rd.forward(req, res);
         }
-
+    	else if(req.getRequestURI().endsWith("tin-hot")) {
+			long id=  Long.valueOf(req.getParameter("newID"));
+			NewModel onlyOne= newsService.findById(id);
+			req.setAttribute("onlyOne", onlyOne);
+			RequestDispatcher rd = req.getRequestDispatcher("/view/web/news.jsp");
+			rd.forward(req, res);
+		}
     }
 }
