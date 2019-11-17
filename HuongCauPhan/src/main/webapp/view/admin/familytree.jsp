@@ -11,6 +11,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quản lý phả đồ - Gia phả Việt Nam</title>
+
+
 </head>
 <body>
 	
@@ -25,7 +27,7 @@
 			<div class="ucp_def_right" id="gp_phahe" style="background:#dddd; width:42%;float:left">
 				<div class="container-fluid">
 					<div class="row" style="padding-bottom:20px;">
-						<div class="col-md-offset-4 col-md-3">Đời</div>
+						<div class="col-md-offset-2 col-md-3">Đời</div>
 						<div class="col-md-4">
 							<select id="cbxAge" style="width:130px; background:#dddd ; height:30px !important">
 								<option value="">Chọn đời</option>
@@ -43,21 +45,21 @@
 								%>
 							</select>
 						</div>
-						<div class="col-md-offset-2 col-md-3">
+						<div class="col-md-3">
 							<div class="toolbox" style="cursor: pointer;">
 								<a id="btn_load" class="ubtn save" style="background:#007bff;color:white">Hiển thị</a>
 							</div>
 						</div>
 					</div>
 					<div class="row" style="padding-bottom:20px;">
-						<div class="col-md-offset-4 col-md-3">Giới tính</div>
+						<div class="col-md-offset-2 col-md-3">Giới tính</div>
 						<div class="col-md-4">
 							<input type="radio" name="gender" value="1" />Nam
 							<input type="radio" name="gender" value="0" />Nữ
 						</div>
 					</div>
 					<div class="row" style="padding-bottom:20px;">
-						<div class="col-md-offset-4 col-md-3">Tên thành viên</div>
+						<div class="col-md-offset-2 col-md-3">Tên thành viên</div>
 						<div class="col-md-4">
 							<input id="indname" type="text" style="background:#ffff; padding:14px 5px;" placeholder="Tên thành viên" />
 						</div>

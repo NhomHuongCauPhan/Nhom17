@@ -77,7 +77,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="formData">
-                                    <%--<c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
+                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
                                         <tr class="prInfo">
                                             <td>${size.index + 1}</td>
                                             <td>${item.parentageName}</td>
@@ -85,15 +85,15 @@
                                             <td>${item.head_of_parentage_name}</td>
                                             <td>${item.culturalSpringDay}</td>
                                             <td>${item.totalMember}</td>
-                                        </tr>--%>
-                                    <tr id="list">
+                                        </tr>
+                                    <%-- <tr id="list">
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                    </tr>
+                                    </tr>--%>
                                 </tbody>
                             </table>
                         </div>

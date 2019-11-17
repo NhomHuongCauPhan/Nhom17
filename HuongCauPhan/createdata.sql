@@ -77,3 +77,14 @@ CREATE TABLE image(
     FOREIGN KEY (parentage_id) REFERENCES parentage(parentage_id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE news(
+	id bigint PRIMARY KEY AUTO_INCREMENT,
+	content text,
+    parentage_id bigint NOT NULL,
+    create_date date,
+    views bigint,
+    title varchar(255),
+    FOREIGN KEY (parentage_id) REFERENCES parentage(parentage_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);

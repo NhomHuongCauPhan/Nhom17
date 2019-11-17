@@ -46,7 +46,13 @@ public class HomeController extends HttpServlet {
 		else if (req.getRequestURI().endsWith("pha-do")) {
 			ArrayList<IndividualModel> list = individualService.findAll(prt.getParentageId());
 			IndividualModel age = individualService.findAge(prt.getParentageId());
-			String familyTree = GenerateTree.viewIndividual(list);
+			String familyTree;
+			if(list!=null){
+				familyTree = GenerateTree.viewIndividual(list);
+			}else{
+				familyTree = "chua có dòng họ";
+			}
+			
 			req.setAttribute(SystemConstant.FAMILYTREE, familyTree);
 			req.setAttribute("prlife", age.getBranch().split("\\.").length);
 			req.setAttribute("prid", prt.getParentageId());
@@ -96,7 +102,7 @@ public class HomeController extends HttpServlet {
 			rd.forward(req, res);
 		}
 		else if(req.getRequestURI().endsWith("quan-ly-tin")) {
-//			//ph�ntrang
+//			//phântrang
 	        int itemsPerPage = 5;
 	        int page = 1;
 	        int totalItem = newsService.countNews(1);
@@ -148,7 +154,7 @@ public class HomeController extends HttpServlet {
 	        req.setAttribute("lastPage", lastPage);
 	        req.setAttribute("min", min);
 	        req.setAttribute("max", max);
-//			// end ph�n trang
+//			// end phân trang
 	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(1,page,itemsPerPage);
 	        req.setAttribute("newsParent", newsByIDPare);
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/manageNews.jsp");
@@ -162,8 +168,12 @@ public class HomeController extends HttpServlet {
 			rd.forward(req, res);
 		}
 		else{
-			int sotv = individualService.findAll(prt.getParentageId()).size();
-			req.setAttribute("sotv", sotv);
+			ArrayList<IndividualModel> model1= individualService.findAll(prt.getParentageId());
+			if(model1!=null){
+				int sotv = model1.size();
+				req.setAttribute("sotv", sotv);
+			}
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/parentage.jsp");
 			rd.forward(req, res);
 		}
