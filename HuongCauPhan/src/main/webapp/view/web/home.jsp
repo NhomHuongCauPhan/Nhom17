@@ -109,13 +109,14 @@
 								<div class="fnews fll" id="TopNews">
 									<h4></h4>
 							<c:forEach items="${arrNewsTop}" var="item">
-							<div style="height: 100px">
-							<p class="headline" style="height: 45px; overflow: hidden;" >
+							<div style="height: 100px;box-shadow: 1px 2px 3px;">
+							<p class="headline" style="height: 45px; overflow: hidden;text-align: center;" >
 							<c:url value='/tin-hot' var='urlNews'>
 							<c:param name='newID' value='${item.newsID }'/> 
 							</c:url>
-							<a href="${urlNews}">${item.title}</a></p>
-						<p class="ndate">Đăng ngày: ${item.create_date}</p>
+							<a href="${urlNews}" style="text-align: center;">${item.title}</a></p>
+							<span class="source" style="padding-left: 10px;font-style: italic;">Lượt xem: ${item.views }</span>
+						<span style="color: red;padding-left:50px; ">Đăng ngày: ${item.create_date}</span>
 						</div>
 						</c:forEach> 
 							

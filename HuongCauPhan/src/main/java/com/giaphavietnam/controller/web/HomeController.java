@@ -70,6 +70,12 @@ public class HomeController extends HttpServlet {
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/news.jsp");
             rd.forward(req, res);
         }
-
+    	else if(req.getRequestURI().endsWith("tin-hot")) {
+			long id=  Long.valueOf(req.getParameter("newID"));
+			NewModel onlyOne= newsService.findById(id);
+			req.setAttribute("onlyOne", onlyOne);
+			RequestDispatcher rd = req.getRequestDispatcher("/view/web/news.jsp");
+			rd.forward(req, res);
+		}
     }
 }
