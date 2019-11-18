@@ -135,7 +135,7 @@ a:hover {
 }
 
 a:not([href]):not([tabindex]) {
-    color: inherit;
+    /*color: inherit;*/
     text-decoration: none
 }
 
@@ -304,7 +304,7 @@ template {
     font-family: inherit;
     font-weight: 500;
     line-height: 1.2;
-    color: inherit
+    color: inherit;
 }
 
 .h1,h1 {
@@ -320,7 +320,7 @@ template {
 }
 
 .h4,h4 {
-    /*<!----font-size: 1.5rem----->*/
+    font-size: 1.5rem !important;
 }
 
 .h5,h5 {
@@ -552,8 +552,8 @@ pre code {
     position: relative;
     width: 100%;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px
+   /* padding-right: 15px;
+    padding-left: 15px*/
 }
 
 .col {
@@ -1075,7 +1075,7 @@ pre code {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
-        max-width: 33.333333%
+        max-width: 31.333333% !important;
     }
 
     .col-md-5 {

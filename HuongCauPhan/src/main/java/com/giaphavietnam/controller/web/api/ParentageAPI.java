@@ -34,7 +34,7 @@ public class ParentageAPI extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("utf-8");
-        //resp.setContentType("application/json");
+        resp.setContentType("application/json");
         String data = HttpUtil.of(req.getReader()).getValue();
         List<ParentageModel> listPrt = parentageService.findAll(data);
         mapper.writeValue(resp.getOutputStream(), listPrt);

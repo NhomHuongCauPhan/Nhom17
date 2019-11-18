@@ -12,18 +12,13 @@
 <link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value='/template/adjs/ucp.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/template/adcss/editor.css'/>" />
-<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>"/>
-<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap-theme.min.css'/>"/>
+<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>"/>
+<%--<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap-theme.min.css'/>"/>--%>
 <script src="<c:url value='/template/ckeditor/ckeditor.js' />"></script>
 
 
 <link href="<c:url value='/template/adcss/fileinput.css'/>" media="all" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css"/>
-
-<!--<script src="<c:url value='/template/adjs/jquery-3.2.1.min.js'/>" ></script>-->
-<%-- <script src="<c:url value='/template/adjs/bootstrap.bundle.min.js'/>" ></script> --%>
-<%--<script src="<c:url value='/template/adjs/jquery-3.2.1.min.js'/>" ></script>--%>
-<%-- <script src="<c:url value='/template/adjs/bootstrap.bundle.min.js'/>" ></script> --%>
 
 <script src="<c:url value='/template/adjs/fileinput.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/template/adjs/theme.js'/>" type="text/javascript"></script>

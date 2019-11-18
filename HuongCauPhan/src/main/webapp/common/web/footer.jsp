@@ -12,32 +12,31 @@
 		</ul>
 	</div>
 	<div class="col-sm-12">
-                <h5><a href="https://www.haui.edu.vn/vn">Trường Đại Học Công Nghiệp Hà Nội</a></h5>
-                <h4>Nhóm thực hiện: Nhóm 17 ĐH-KTPM3-K11</h4>
-                <h4>Giảng viên hướng dẫn: <span class="text-info font-weight-bold">ThS. Nguyễn Thái Cường</span>
-                </h4>
-                <h4>Website có tham khảo giao diện của <a href="http://www.giaphavietnam.vn" class="text-info font-weight-bold">giaphavietnam.vn</a></h4>
-				<div class="text-center lead" style="font-weight: bold;font-size: 18px">Các thành viên trong nhóm</div>
-                <br />
-                <div class="row">
-                    <div class="col-sm-6 col-md-4 pb-3 text-center">
-                    	<h5>Phạm Quốc Cường</h5>
-                        <h5>1141360205</h5>
-                        <p>0333 385 398</p>
-                        <p>quoc.cuong.yb.dhtb@gmail.com</p>
-                    </div>
-                    <div class="col-sm-6 col-md-4 pb-3 text-center border-left border-right">
-                        <h5>Phạm Văn Hiểu</h5>
-                        <h5>1141360232</h5>
-                        <p>0965 930 913</p>
-                        <p>phamvanhieu300198@gmail.com</p>
-                    </div>
-                    <div class="col-sm-6 col-md-4 pb-3 text-center">
-                        <h5>Phạm Hải Dương</h5>
-                        <h5>1141360254</h5>
-                        <p>0333 369 933</p>
-                        <p>Haiduog@gmail.com</p>
-                    </div>
-                </div>
+        <h5><a href="https://www.haui.edu.vn/vn">Trường Đại Học Công Nghiệp Hà Nội</a></h5>
+        <h3>Nhóm thực hiện: Nhóm 17 ĐH-KTPM3-K11</h3>
+        <h3>Giảng viên hướng dẫn: <span class="text-info font-weight-bold">ThS. Nguyễn Thái Cường</span></h3>
+        <h3>Website có tham khảo giao diện của <a href="http://www.giaphavietnam.vn" class="text-info font-weight-bold">giaphavietnam.vn</a></h3>
+        <div class="text-center lead" style="font-weight: bold;font-size: 18px">Các thành viên trong nhóm</div>
+        <br />
+        <div class="row">
+            <div class="col-sm-6 col-md-4 pb-3 text-center" style="max-width: 31.333333%;">
+                <h5>Phạm Quốc Cường</h5>
+                <h5>1141360205</h5>
+                <p>0333 385 398</p>
+                <p>quoc.cuong.yb.dhtb@gmail.com</p>
             </div>
+            <div class="col-sm-6 col-md-4 pb-3 text-center border-left border-right" style="max-width: 31.333333%;">
+                <h5>Phạm Văn Hiểu</h5>
+                <h5>1141360232</h5>
+                <p>0965 930 913</p>
+                <p>phamvanhieu300198@gmail.com</p>
+            </div>
+            <div class="col-sm-6 col-md-4 pb-3 text-center" style="max-width: 31.333333%;">
+                <h5>Phạm Hải Dương</h5>
+                <h5>1141360254</h5>
+                <p>0333 369 933</p>
+                <p>Haiduog@gmail.com</p>
+            </div>
+        </div>
+    </div>
 </div>

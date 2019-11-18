@@ -4,8 +4,6 @@
 <c:url var="APIurl" value="/api-admin-account"/>
 <c:url var="WebURL" value="/trang-chu"/>
 <c:url var="Adminurl" value="/quan-tri"/>
-
-
 <!DOCTYPE html>
 <html>
 <head>
