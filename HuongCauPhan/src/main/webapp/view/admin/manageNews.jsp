@@ -93,13 +93,6 @@
 	<script type="text/javascript">
 
 		var parentageid = "<c:out value='${ParentageModel.parentageId}'></c:out>";
-
-		function logout() {
-			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
-			if (window.confirm(mess)) {
-				window.location.href = "/home/view?action=logout";
-			}
-		}
 		function deleteNews(item){
 			var data = {
 					newsID : item,

@@ -104,12 +104,7 @@
 			});
 		});
 
-		function logout() {
-			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
-			if (window.confirm(mess)) {
-				window.location.href = "<c:url value='trnag-chu?action=logout'/>";
-			}
-		}
+		
 		
 	</script>
 </body>

@@ -9,7 +9,7 @@ public interface IIndividualDAO {
 	public ArrayList<IndividualModel> findAll(long parentageId);
 	public IndividualModel findById(long individualId);
 	public ArrayList<IndividualModel> findBro(long father);
-	public IndividualModel findBranch(String branch);
+	public IndividualModel findBranch(String branch, long prtid);
 	public long save(IndividualModel individualNew);
 	public void update(IndividualModel individualNew);
 	public void delete(IndividualModel individual);

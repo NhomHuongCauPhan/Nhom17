@@ -77,5 +77,13 @@
 		<%@include file="/common/web/footer.jsp"%>
 		<span style="float: left; padding-left: 20px; color: red" id="frm_msg"></span>
 	</div>
+	<script>
+		function logout() {
+			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
+			if (window.confirm(mess)) {
+				window.location.href = "<c:url value='/trang-chu?action=logout'/>";
+			}
+		}
+	</script>
 </body>
 </html>

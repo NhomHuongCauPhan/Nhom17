@@ -60,10 +60,11 @@ public class IndividualDAO extends AbstractDAO<IndividualModel> implements IIndi
 	}
 
 	@Override
-	public IndividualModel findBranch(String branch) {
+	public IndividualModel findBranch(String branch, long prtid) {
 		StringBuilder sql = new StringBuilder("select * from individual");
 		sql.append(" where branch=?");
-		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper(),branch);
+		sql.append(" and parentage_id=?");
+		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper(),branch, prtid);
 		return prt.isEmpty()?null:prt.get(0);
 	}
 

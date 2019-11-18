@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
 <c:url var="PrtUrl" value="/api-parentage"/>
+<c:url var="PrtInfo" value="/thong-tin-dong-ho"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +37,9 @@
                         <h3 class="bhead">DANH MỤC</h3>
                         <div class="grb">
                             <ul id="menu">
-                                <li><a class="active" href="<c:url value='/trang-chu'/>">Trang chủ</a></li>
+                                <li><a href="<c:url value='/trang-chu'/>">Trang chủ</a></li>
                                 <li><a href="<c:url value='/thong-bao' />">Thông báo</a></li>
-                                <li><a href="<c:url value='/cac-dong-ho' />">Gia phả Việt Nam</a></li>
+                                <li><a class="active" href="<c:url value='/cac-dong-ho' />">Gia phả Việt Nam</a></li>
                                 <li><a href="#">Giới thiệu</a></li>
                                 <li><a href="#">Liên hệ - Góp ý</a></li>
                             </ul>
@@ -77,28 +78,20 @@
                                     </tr>
                                 </thead>
                                 <tbody id="formData">
-                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
+                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size">
                                         <tr class="prInfo">
                                             <td>${size.index + 1}</td>
-                                            <td><a href="#" style="cursor: pointer">${item.parentageName}</a></td>
+                                            <td><a href="<c:url value="/thong-tin-dong-ho"/>" style="cursor: pointer">${item.parentageName}</a></td>
                                             <td>${item.address}</td>
                                             <td>${item.head_of_parentage_name}</td>
                                             <td>${item.culturalSpringDay}</td>
                                             <td>${item.totalMember}</td>
                                         </tr>
                                     </c:forEach>
-                                    <%-- <tr id="list">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>--%>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
@@ -138,7 +131,7 @@
                 var val4 = list[i][cols[12]];
                 if (val == null && val1 == null && val2 == null && val3 == null && val4 == null) val = val1 = val2 = val3 = val4 = "";
                 row.append($('<td/>').html(num));
-                row.append($('<td/>').append("<a href=\"${PrtUrl}\">"+val+"</a>"));
+                row.append($('<td/>').append("<a href=\"${PrtInfo}\">"+val+"</a>"));
                 row.append($('<td/>').html(val1));
                 row.append($('<td/>').html(val2));
                 row.append($('<td/>').html(val3));
@@ -149,22 +142,6 @@
             $(selector).append(row);
         }
     }
-
-    /*$(document).ready(function () { //load parentages infomation
-        $.ajax({
-            url: '${PrtUrl}',
-            type: 'GET',
-            contentType:'application/json',
-            dataType: 'json',
-            success: function (list) {
-
-                constructTable(list,"#gpvn");
-            },
-            error: function () {
-                alert('There\'s something wrong!');
-            }
-        });
-    });*/
 
     $('#btnSearch').click(function(e) { //tìm kiếm thông tin dòng họ
         var searchData=$('#search').val();

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIIndividualurl" value="/api-admin-individual"/>
 <c:url var="APIurl" value="/api-admin-parentage"/>
 <c:url var="WebURL" value="/trang-chu"/>
 <c:url var="Adminurl" value="/quan-tri"/>
@@ -264,7 +265,8 @@
 					accountId : "<c:out value='${model.id}'></c:out>"
 			}
 			
-			if(parentageid!=null){
+			
+			if(parentageid!=""){
 				$.ajax({
 					url: '${APIurl}',
 					type: 'put',
@@ -279,6 +281,7 @@
 					}
 				});
 			}else{
+				
 				$.ajax({
 					url: '${APIurl}',
 					type: 'post',
@@ -286,25 +289,40 @@
 					data: JSON.stringify(data),
 					dataType: 'json',
 					success: function(result){
-						window.location.href = "${Adminurl}";
+						var ancestor = {
+								individualId : "",
+								fullName : $("#Ancestor").val(),
+								gender : 1,
+								dateOfBirth : "2019-11-22",
+								dateOfDeath : "2019-11-22",
+								father : 0,
+								branch : 1,
+								parentageId : result,
+								avatar : "/HuongCauPhan/template/adimgs/default.png"
+							};
+						$.ajax({
+							url: '${APIIndividualurl}',
+							type: 'put',
+							contentType: 'application/json',
+							data: JSON.stringify(ancestor),
+							dataType: 'json',
+							success: function(result){
+								window.location.href = "${Adminurl}";	
+							},
+							error: function(error){
+								window.location.href = "${Adminurl}?error=createfailure";
+							}
+						});
 					},
 					error: function(error){
 						window.location.href = "${Adminurl}?error=createfailure";
 					}
 				});
 			}
-			
-			
-				
 
 		});
 
-		function logout() {
-			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
-			if (window.confirm(mess)) {
-				window.location.href = "/home/view?action=logout";
-			}
-		}
+		
 		
 	</script>
 </body>
