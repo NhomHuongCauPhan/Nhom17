@@ -48,10 +48,13 @@ public class IndividualAPI extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		IndividualModel individualNew = HttpUtil.of(req.getReader()).toModel(IndividualModel.class);
-		if(individualService.findBranch(individualNew.getBranch())!=null) {
+		IndividualModel individualcheck = individualService.findBranch(individualNew.getBranch(),individualNew.getParentageId());
+		if(individualcheck!=null) {
+			System.out.println("loi");
 			mapper.writeValue(resp.getOutputStream(), "false");
 		}else {
-			individualService.save(individualNew);
+			long id = individualService.save(individualNew);
+			System.out.println(id);
 			mapper.writeValue(resp.getOutputStream(), "true");
 		}
 		

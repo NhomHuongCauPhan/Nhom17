@@ -43,8 +43,8 @@ public class IndividualService implements IIndividualService {
 	}
 
 	@Override
-	public IndividualModel findBranch(String branch) {
-		return individualDAO.findBranch(branch);
+	public IndividualModel findBranch(String branch, long prtid) {
+		return individualDAO.findBranch(branch,prtid);
 	}
 
 	@Override

@@ -88,8 +88,8 @@
 							<h3 class="bhead">DANH MỤC</h3>
 							<div class="grb">
 								<ul id="menu">
-									<li><a class="active" href="<c:url value='/trang-chu' />">Trang chủ</a></li>
-									<li><a href="<c:url value='/thong-bao' />">Thông báo</a></li>
+									<li><a href="<c:url value='/trang-chu' />">Trang chủ</a></li>
+									<li><a class="active" href="<c:url value='/thong-bao' />">Thông báo</a></li>
 									<li><a href="<c:url value='/cac-dong-ho' />">Gia phả Việt Nam</a></li>
 									<li><a href="#">Giới thiệu</a></li>
 									<li><a href="#">Liên hệ - Góp ý</a></li>

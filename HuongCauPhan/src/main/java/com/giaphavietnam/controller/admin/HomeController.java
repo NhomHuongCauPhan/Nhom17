@@ -44,18 +44,20 @@ public class HomeController extends HttpServlet {
 			rd.forward(req, res);
 		}
 		else if (req.getRequestURI().endsWith("pha-do")) {
-			ArrayList<IndividualModel> list = individualService.findAll(prt.getParentageId());
-			IndividualModel age = individualService.findAge(prt.getParentageId());
 			String familyTree;
-			if(list!=null){
+			if(prt!=null){
+				ArrayList<IndividualModel> list = individualService.findAll(prt.getParentageId());
+				IndividualModel age = individualService.findAge(prt.getParentageId());
 				familyTree = GenerateTree.viewIndividual(list);
+				req.setAttribute("prid", prt.getParentageId());
+				req.setAttribute("prlife", age.getBranch().split("\\.").length);
 			}else{
-				familyTree = "chua có dòng họ";
+				familyTree = "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+						"Chưa có dòng họ!\r\n" + 
+						"</div>";
 			}
 			
 			req.setAttribute(SystemConstant.FAMILYTREE, familyTree);
-			req.setAttribute("prlife", age.getBranch().split("\\.").length);
-			req.setAttribute("prid", prt.getParentageId());
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/familytree.jsp");
 			rd.forward(req, res);
 		}
@@ -156,12 +158,13 @@ public class HomeController extends HttpServlet {
 	        req.setAttribute("max", max);
 
 //			// end phân trang
-	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(1,page,itemsPerPage);
+//	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(1,page,itemsPerPage);
 
-//			// end ph�n trang
-	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(prt.getParentageId(),page,itemsPerPage);
-
-	        req.setAttribute("newsParent", newsByIDPare);
+//			// end ph�n trang
+	        if(prt!=null) {
+	        	ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(prt.getParentageId(),page,itemsPerPage);
+		        req.setAttribute("newsParent", newsByIDPare);
+	        }	     
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/manageNews.jsp");
 			rd.forward(req, res);
 		}
@@ -173,8 +176,8 @@ public class HomeController extends HttpServlet {
 			rd.forward(req, res);
 		}
 		else{
-			ArrayList<IndividualModel> model1= individualService.findAll(prt.getParentageId());
-			if(model1!=null){
+			if(prt!=null){
+				ArrayList<IndividualModel> model1= individualService.findAll(prt.getParentageId());
 				int sotv = model1.size();
 				req.setAttribute("sotv", sotv);
 			}

@@ -135,12 +135,7 @@
 		function openedit(id) {
 			window.location.href = "/home/individual/ae?id=" + id;
 		}
-		function logout() {
-			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống?";
-			if (window.confirm(mess)) {
-				window.location.href = "/home/view?action=logout";
-			}
-		}
+		
 	</script>
 </body>
 </html>
