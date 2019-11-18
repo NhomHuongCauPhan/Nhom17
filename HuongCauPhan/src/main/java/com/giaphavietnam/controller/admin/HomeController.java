@@ -14,19 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.giaphavietnam.constant.SystemConstant;
 import com.giaphavietnam.model.AccountModel;
 import com.giaphavietnam.model.IndividualModel;
+import com.giaphavietnam.model.NewModel;
 import com.giaphavietnam.model.ParentageModel;
 import com.giaphavietnam.service.IIndividualService;
+import com.giaphavietnam.service.INewsService;
 import com.giaphavietnam.service.IParentageService;
 import com.giaphavietnam.utils.GenerateTree;
 
-@WebServlet(urlPatterns = { "/quan-tri","/quan-tri/dong-ho","/quan-tri/mail", "/quan-tri/pha-do", "/quan-tri/sua-gia-pha", "/quan-tri/album", "/quan-tri/bai-viet" })
+@WebServlet(urlPatterns = { "/quan-tri","/quan-tri/dong-ho","/quan-tri/mail", "/quan-tri/pha-do", "/quan-tri/sua-gia-pha", "/quan-tri/album", "/quan-tri/bai-viet","/quan-tri/quan-ly-tin","/quan-tri/sua-tin" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Inject 
 	private IParentageService parentageService;
 	@Inject 
 	private IIndividualService individualService;
-
+	@Inject 
+	private INewsService newsService;
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		AccountModel model = (AccountModel) req.getSession().getAttribute(SystemConstant.MODEL);
 		ParentageModel prt = parentageService.findByAccountId(model.getId());
@@ -43,7 +46,13 @@ public class HomeController extends HttpServlet {
 		else if (req.getRequestURI().endsWith("pha-do")) {
 			ArrayList<IndividualModel> list = individualService.findAll(prt.getParentageId());
 			IndividualModel age = individualService.findAge(prt.getParentageId());
-			String familyTree = GenerateTree.viewIndividual(list);
+			String familyTree;
+			if(list!=null){
+				familyTree = GenerateTree.viewIndividual(list);
+			}else{
+				familyTree = "chua có dòng họ";
+			}
+			
 			req.setAttribute(SystemConstant.FAMILYTREE, familyTree);
 			req.setAttribute("prlife", age.getBranch().split("\\.").length);
 			req.setAttribute("prid", prt.getParentageId());
@@ -92,9 +101,84 @@ public class HomeController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/email.jsp");
 			rd.forward(req, res);
 		}
+		else if(req.getRequestURI().endsWith("quan-ly-tin")) {
+//			//phântrang
+	        int itemsPerPage = 5;
+	        int page = 1;
+	        int totalItem = newsService.countNews(1);
+	        int lastPage = 1;
+	        int range = 5;
+	        int middle = (int) Math.ceil((float) range / 2);
+	        int min = 1;
+	        int max = range;
+	        String pageRequest = req.getParameter("page");
+	        if (pageRequest == null) {
+	            lastPage = (int) Math.ceil((float) totalItem / itemsPerPage);
+	            if (lastPage <= range) {
+	                min = 1;
+	                page = 1;
+	                max = lastPage;
+	            }
+	            if (lastPage > range) {
+	                min = 1;
+	                page = 1;
+	                max = range;
+	            }
+
+	        } else { // if user request a page
+	            page = Integer.parseInt(pageRequest);
+	            lastPage = (int) Math.ceil((float) totalItem / itemsPerPage);
+	            if (page <= 0) {
+	                page = 1;
+	            }
+	            if (page > lastPage) {
+	                page = lastPage;
+	            }
+	            if (lastPage <= range) {
+	                min = 1;
+	                max = lastPage;
+	            } else {
+	                if (page >= middle + 1) {
+	                    if (page + middle - 1 <= lastPage) {
+	                        min = page - middle + 1;
+	                        max = page + middle - 1;
+	                    } else {
+	                        max = lastPage;
+	                        min = max - range + 1;
+	                    }
+
+	                }
+	            }
+	        }
+	        req.setAttribute("page", page);
+	        req.setAttribute("lastPage", lastPage);
+	        req.setAttribute("min", min);
+	        req.setAttribute("max", max);
+
+//			// end phân trang
+	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(1,page,itemsPerPage);
+
+//			// end ph�n trang
+	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(prt.getParentageId(),page,itemsPerPage);
+
+	        req.setAttribute("newsParent", newsByIDPare);
+			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/manageNews.jsp");
+			rd.forward(req, res);
+		}
+		else if(req.getRequestURI().endsWith("sua-tin")) {
+			long id=  Long.valueOf(req.getParameter("newID"));
+			NewModel onlyOne= newsService.findById(id);
+			req.setAttribute("onlyOne", onlyOne);
+			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/editNews.jsp");
+			rd.forward(req, res);
+		}
 		else{
-			int sotv = individualService.findAll(prt.getParentageId()).size();
-			req.setAttribute("sotv", sotv);
+			ArrayList<IndividualModel> model1= individualService.findAll(prt.getParentageId());
+			if(model1!=null){
+				int sotv = model1.size();
+				req.setAttribute("sotv", sotv);
+			}
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/parentage.jsp");
 			rd.forward(req, res);
 		}

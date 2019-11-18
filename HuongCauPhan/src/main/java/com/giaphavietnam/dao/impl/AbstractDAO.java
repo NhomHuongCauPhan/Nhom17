@@ -197,5 +197,37 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 			}
 		}
 	}
+	@Override
+	public void delete(String sql, Object... parameters) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		try {
+			con = getConnection();
+			con.setAutoCommit(false);
+			pre = con.prepareStatement(sql);
+			this.setParameter(pre, parameters);
+			pre.executeUpdate();
+			con.commit();
+		} catch (SQLException e) {
+			if(con!=null) {
+				try {
+					con.rollback();
+				} catch (SQLException e1) {
+					e.printStackTrace();
+				}
+			}
+		}finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+				if (pre != null) {
+					pre.close();
+				}				
+			} catch (SQLException e2) {
+				e2.printStackTrace();;
+			}
+		}
+	}
 
 }

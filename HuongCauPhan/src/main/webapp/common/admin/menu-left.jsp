@@ -12,7 +12,8 @@
 					</div>
 					<h2 class="title">Tin tức</h2>
 					<div class="gitem">
-						<a href="<c:url value='/quan-tri/bai-viet'/>">Viết bài mới</a> <a href="#">Tin bài đã tạo</a>
+						<a href="<c:url value='/quan-tri/bai-viet'/>">Viết bài mới</a>
+						 <a href="<c:url value="/quan-tri/quan-ly-tin"/>">Tin bài đã tạo</a>
 					</div>
 					<h2 class="title">Tin nhắn</h2>
 					<div class="gitem">

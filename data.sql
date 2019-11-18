@@ -86,4 +86,5 @@ CREATE TABLE news(
     FOREIGN KEY (parentage_id) REFERENCES parentage(parentage_id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
+alter table genealogy_management.news add column title text not null
 

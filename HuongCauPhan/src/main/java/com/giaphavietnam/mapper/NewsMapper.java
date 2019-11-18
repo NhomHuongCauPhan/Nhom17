@@ -15,6 +15,7 @@ public class NewsMapper implements RowMapper<NewModel>{
 			item.setParentage_id(rs.getLong("parentage_id"));
 			item.setCreate_date(rs.getDate("create_date"));
 			item.setViews(rs.getLong("views"));
+			item.setTitle(rs.getString("title"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

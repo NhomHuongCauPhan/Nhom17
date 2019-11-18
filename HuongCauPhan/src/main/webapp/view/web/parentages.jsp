@@ -76,8 +76,8 @@
                                         <td>Số thành viên</td>
                                     </tr>
                                 </thead>
-                                <<tbody id="formData">
-                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size">
+                                <tbody id="formData">
+                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
                                         <tr class="prInfo">
                                             <td>${size.index + 1}</td>
                                             <td><a href="#" style="cursor: pointer">${item.parentageName}</a></td>
@@ -87,7 +87,7 @@
                                             <td>${item.totalMember}</td>
                                         </tr>
                                     </c:forEach>
-                                    <%--<tr id="list">
+                                    <%-- <tr id="list">
                                         <td></td>
                                         <td></td>
                                         <td></td>
