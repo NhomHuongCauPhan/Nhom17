@@ -21,7 +21,7 @@
 			<div class="page_title" style="margin-bottom: 15px">
 				<h2 style="padding-right: 860px">Phả Đồ</h2>
 			</div>
-			<div class="ucp_def_right" id="gp_phahe" style="background:#eeee; width:45%; float:left">
+			<div class="ucp_def_right" id="gp_phahe" style="background:#eeee; width:44%; float:left">
 				${FamilyTree}
 			</div>
 			<div class="ucp_def_right" id="gp_phahe" style="background:#dddd; width:42%;float:left">

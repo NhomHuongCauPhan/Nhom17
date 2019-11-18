@@ -8,7 +8,6 @@ import org.apache.commons.beanutils.BeanUtils;
 
 public class FormUtil {
 	public static <T> T toModel(Class<T> tClass, HttpServletRequest request) {
-
 		T object = null;
 		try {
 			object = tClass.newInstance();
@@ -16,7 +15,6 @@ public class FormUtil {
 		} catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
 			System.out.println(e.getMessage());
 		}
-
 		return object;
 	}
 }

@@ -13,11 +13,12 @@
     <link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css"/>
     <link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css"/>
     <link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css"/>
-<style>
+    <link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>"/>
+<%--<style>
     .prInfo td{
         text-align: center !important;
     }
-</style>
+</style>--%>
 
 </head>
 <body>
@@ -64,8 +65,7 @@
                                 <%--<input type="button" class="btn btn-red" value="Tìm kiếm" id="btnSearch"/>--%>
                                 <button class="btn btn-secondary" type="submit" id="btnSearch">Tìm kiếm</button>
                             </div>
-                            <table cellpadding="5" cellspacing="0" border="0"
-                                   style="width: 100%; border-collapse: collapse" id="gpvn">
+                            <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse" id="gpvn">
                                 <thead>
                                     <tr>
                                         <td style="width: 30px">STT</td>
@@ -80,12 +80,13 @@
                                     <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
                                         <tr class="prInfo">
                                             <td>${size.index + 1}</td>
-                                            <td>${item.parentageName}</td>
+                                            <td><a href="#" style="cursor: pointer">${item.parentageName}</a></td>
                                             <td>${item.address}</td>
                                             <td>${item.head_of_parentage_name}</td>
                                             <td>${item.culturalSpringDay}</td>
                                             <td>${item.totalMember}</td>
                                         </tr>
+                                    </c:forEach>
                                     <%-- <tr id="list">
                                         <td></td>
                                         <td></td>
@@ -102,51 +103,70 @@
             </div>
         </div>
 
-        <div class="footer txtC w100">
-            <div class="clb ovh fw100 navBottom fonts ul-none">
-                <ul>
-                    <li><a class="active" href="<c:url value='/trang-chu' />">Trang chủ</a></li>
-                    <li><a href="<c:url value='/thong-bao' />">Thông báo</a></li>
-                    <li><a href="<c:url value='/cac-dong-ho' />">Gia phả Việt Nam</a></li>
-                    <li><a href="#">GIỚI THIỆU</a></li>
-                    <li><a href="#">LIÊN HỆ - GÓP Ý</a></li>
-                </ul>
-            </div>
-            <p>&copy; </p></div>
-
-    </div>
+        <%@include file="/common/web/footer.jsp" %>
 </form>
 <a href="javascript:void(0)" id="toTop">to Top</a>
 
+
 <script>
-    $(document).ready(function () { //load parentages infomation
+    function headers(list, selector) {
+        var columns = [];
+        for (var i = 0; i < list.length; i++) {
+            var row = list[i];
+            for (var k in row) {
+                if ($.inArray(k, columns) == -1) {
+                    columns.push(k);
+                }
+            }
+        }
+        return columns;
+    }
+
+    function constructTable(list, selector) {
+        //lấy tên columns
+        var cols = headers(list, selector);
+        $('#formData').html("");
+        //truyền dữ liệu json
+        for (var i = 0; i < list.length; i++) {
+            var num=i+1;
+            var row = $('<tr/>');
+            for (var colIndex = 0; colIndex < 1; colIndex++) {
+                var val = list[i][cols[1]];
+                var val1 = list[i][cols[3]];
+                var val2 = list[i][cols[2]];
+                var val3 = list[i][cols[4]];
+                var val4 = list[i][cols[12]];
+                if (val == null && val1 == null && val2 == null && val3 == null && val4 == null) val = val1 = val2 = val3 = val4 = "";
+                row.append($('<td/>').html(num));
+                row.append($('<td/>').append("<a href=\"${PrtUrl}\">"+val+"</a>"));
+                row.append($('<td/>').html(val1));
+                row.append($('<td/>').html(val2));
+                row.append($('<td/>').html(val3));
+
+                row.append($('<td/>').html("${totalMember}"));
+            }
+
+            $(selector).append(row);
+        }
+    }
+
+    /*$(document).ready(function () { //load parentages infomation
         $.ajax({
             url: '${PrtUrl}',
             type: 'GET',
             contentType:'application/json',
             dataType: 'json',
-            success: function (result) {
-                console.log("GET: "+result);
+            success: function (list) {
+
+                constructTable(list,"#gpvn");
             },
             error: function () {
                 alert('There\'s something wrong!');
             }
         });
-    });
+    });*/
 
-    function checkDataExist(data){
-        var prt=[];
-        if(data!=null){
-            //var data1=JSON.stringify(data);
-            prt.push(data)
-            console.log(data);
-            console.log("rr: "+prt);
-        }else{
-            alert("Không có dữ liệu.");
-        }
-    }
-
-    $('#btnSearch').click(function(e) {
+    $('#btnSearch').click(function(e) { //tìm kiếm thông tin dòng họ
         var searchData=$('#search').val();
         e.preventDefault();
         $.ajax({
@@ -155,8 +175,9 @@
             contentType:'application/text',
             dataType: 'json',
             data: searchData.trim(),
-            success: function (data) {
-                checkDataExist(data);
+            success: function (list) {
+                constructTable(list, '#gpvn');
+
             },
             error: function () {
                 alert('There\'s something wrong!');

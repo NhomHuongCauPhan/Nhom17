@@ -2,8 +2,13 @@ package com.giaphavietnam.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.giaphavietnam.model.ParentageModel;
+import com.giaphavietnam.service.IIndividualService;
+import com.giaphavietnam.service.IParentageService;
+
+import javax.inject.Inject;
 
 public class ParentageMapper implements RowMapper<ParentageModel> {
 
@@ -22,6 +27,7 @@ public class ParentageMapper implements RowMapper<ParentageModel> {
 			item.setHistoryOfParentage(rs.getString("history_of_parentage"));
 			item.setParentageId(rs.getInt("parentage_id"));
 			item.setParentageName(rs.getString("parentage_name"));
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}

@@ -186,7 +186,7 @@ img.dhct_loading {position: relative; left: 340px; top: 100px}
 .gpvn td a:hover, .gpvn td a:visited {color: red}
 .gpvn thead {background-color: #C9161A; color: #fff}
 .gpvn tbody tr:hover {background-color: #DAB473}
-.gpvn tbody td {text-align: left}
+/*.gpvn tbody td {text-align: center}*/
 .gpvn tbody td:first-child, .gpvn tbody td:last-child{text-align:center}
 .gpvn_search_box {float: right; padding: 5px 10px}
 .gpvn_search_box input { height: 16px; background: #fff; font-size: 12px; padding: 2px 3px; margin-right: 5px; width: 200px }

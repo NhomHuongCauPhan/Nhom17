@@ -3,6 +3,7 @@
 <%@include file="/common/taglib.jsp" %>	
 <c:url var="APIurl" value="/api-admin-account"/>
 <c:url var="WebURL" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri"/>
 <c:url var="Adminurl" value="/quan-tri"/> 
 <c:url var="TopViews" value="/api-admin-news"/>
 

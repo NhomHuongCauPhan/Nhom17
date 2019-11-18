@@ -12,6 +12,7 @@
 <link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value='/template/adjs/ucp.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/template/adcss/editor.css'/>" />
+<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>"/>
 <link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>"/>
 <script src="<c:url value='/template/ckeditor/ckeditor.js' />"></script>
 
