@@ -61,6 +61,11 @@ public class NewsService implements INewsService {
 		return inewsdao.countNews(id);
 	}
 
+	@Override
+	public void updateViews(NewModel news) {
+		inewsdao.updateViews(news);
+	}
+
 
 	
 }

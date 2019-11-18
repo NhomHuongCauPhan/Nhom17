@@ -13,5 +13,6 @@ public interface INewsDAO {
 	public int countNews(long id);
 	public long save(NewModel news);
 	public void update(NewModel news);
+	public void updateViews(NewModel news);
 	public void delete(NewModel news);
 }

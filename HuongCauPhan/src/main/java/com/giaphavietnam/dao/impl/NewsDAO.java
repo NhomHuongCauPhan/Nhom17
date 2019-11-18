@@ -77,4 +77,10 @@ public class NewsDAO extends AbstractDAO<NewModel> implements INewsDAO{
 			System.out.println(arr.get(0).getTitle());
 	
 	}
+
+	@Override
+	public void updateViews(NewModel news) {
+		StringBuilder sql = new StringBuilder("update news SET views=?+1 WHERE id=?");
+		update(sql.toString(),news.getViews(),news.getNewsID());
+	}
 }
