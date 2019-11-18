@@ -18,7 +18,7 @@
 <script type="text/javascript" src="<c:url value='/template/adjs/jquery.modal.min.js'/>" ></script>
 <link href="<c:url value='/template/adcss/jquery.modal.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/template/adcss/jquery.mCustomScrollbar.css'/>" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>" >
+<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>" >
 <%--<style>
 	.ss_vlist li{width:62px;}
 	.intro{width:670px;}
@@ -64,7 +64,7 @@
 						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 						<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-						<script src="adjs/bootstrap.min.js"></script>
+						
 
 					</div>
 					<div class="ss_vlist">
@@ -101,7 +101,7 @@
 						
 					</div>
 
-					<div class="main-center fll" style="padding:20px 20px; font-size:16px;background: url(<c:url value='/template/adimgs/ct_bg.png'/>) repeat !important;">
+					<div class="main-center fll" style="font-size:16px;background: url(<c:url value='/template/adimgs/ct_bg.png'/>) repeat !important;">
 						<%
 							
 								out.print("<div class=\"grb cencol\">");
@@ -226,25 +226,6 @@
 
 		function open_register() {
 			$('#dlg_register').modal('show'); // show bootstrap modal
-		}
-		function login() {
-
-			var username = $("#loginid").val().trim();
-			var password = $("#pass").val().trim();
-			var tmp = "";
-			if (username.length == 0) {
-				tmp += "Tên tài khoản không được để trống";
-			}
-			if (password.length == 0) {
-				tmp += "Mật khẩu không được để trống\n";
-			}
-			if (tmp != "") {
-				alert(tmp);
-				return;
-			}
-			$("#form1")[0].method = "POST";
-			$("#form1")[0].action = "/HuongCauPhan/view";
-			$("#form1")[0].submit();
 		}
 
 		function register() {

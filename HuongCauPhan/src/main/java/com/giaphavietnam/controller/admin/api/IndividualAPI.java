@@ -50,11 +50,9 @@ public class IndividualAPI extends HttpServlet{
 		IndividualModel individualNew = HttpUtil.of(req.getReader()).toModel(IndividualModel.class);
 		IndividualModel individualcheck = individualService.findBranch(individualNew.getBranch(),individualNew.getParentageId());
 		if(individualcheck!=null) {
-			System.out.println("loi");
 			mapper.writeValue(resp.getOutputStream(), "false");
 		}else {
 			long id = individualService.save(individualNew);
-			System.out.println(id);
 			mapper.writeValue(resp.getOutputStream(), "true");
 		}
 		

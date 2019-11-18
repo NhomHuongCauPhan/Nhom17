@@ -77,7 +77,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="formData">
-                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size"></c:forEach>
+                                    <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size">
                                         <tr class="prInfo">
                                             <td>${size.index + 1}</td>
                                             <td><a href="#" style="cursor: pointer">${item.parentageName}</a></td>
