@@ -156,11 +156,6 @@ public class HomeController extends HttpServlet {
 	        req.setAttribute("lastPage", lastPage);
 	        req.setAttribute("min", min);
 	        req.setAttribute("max", max);
-			// end phan trang
-	        ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(prt.getParentageId(),page,itemsPerPage);
-
-	        req.setAttribute("newsParent", newsByIDPare);
-
 //			// end ph�n trang
 	        if(prt!=null) {
 	        	ArrayList<NewModel> newsByIDPare= newsService.findByIdPare(prt.getParentageId(),page,itemsPerPage);

@@ -66,6 +66,8 @@ public class HomeController extends HttpServlet {
         }else if (req.getRequestURI().endsWith("tin-hot")) {
         	long id = Long.valueOf(req.getParameter("newID"));
         	NewModel onlyOne = newsService.findById(id);
+			System.out.println(onlyOne.getViews());
+			newsService.updateViews(onlyOne);
         	req.setAttribute("onlyOne", onlyOne);
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/news.jsp");
             rd.forward(req, res);
