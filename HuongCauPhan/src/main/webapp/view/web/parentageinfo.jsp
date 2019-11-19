@@ -13,6 +13,7 @@
 	<link rel="shortcut icon" href="template/adimgs/favicon.ico" type="image/x-icon"/>
 	<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
 	<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css"/>
+	<link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet" type="text/css"/>
 	<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css"/>
 	<link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>"/>
@@ -26,7 +27,7 @@
 				<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height:150px"/>
 			</div>
 		</a>
-		<div class="wrappage">
+		<div class="wrappage1">
 			<div class="ovh mainpage clb">
 				<div class="main-left1 fll">
 					<div class="box ovh txtC menu">
@@ -52,15 +53,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="main-right1 flr">
+				<div class="main-right1 flr" style="width: 900px;">
 					<div class="box ovh txtC">
 						<div class="page_title" style="margin-bottom: 15px">
-							<h2 style="padding-right: 860px">Phả Đồ</h2>
+							<h2>Phả Đồ</h2>
 						</div>
-						<div class="ucp_def_right" id="gp_phahe" style="background:#eeee; width:44%; float:left">
+						<div class="ucp_def_right" id="gp_phahe" style="background:#eeee; width:65%; float:left">
+							<h2>:((</h2>
 							${FamilyTree}
 						</div>
-						<div class="ucp_def_right" id="gp_phahe" style="background:#dddd; width:42%;float:left">
+						<div class="ucp_def_right" id="gp_phahe" style="background:#dddd; width:35%;float:left">
 							<div class="container-fluid">
 								<div class="row" style="padding-bottom:20px;">
 									<div class="col-md-offset-2 col-md-3">Đời</div>
@@ -116,7 +118,7 @@
 
 
 
-<%--<script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function() {
 
 	});
@@ -222,6 +224,6 @@
 			window.location.href = "<c:url value='trang-chu?action=logout'/>";
 		}
 	}
-</script>--%>
+</script>
 </body>
 </html>
