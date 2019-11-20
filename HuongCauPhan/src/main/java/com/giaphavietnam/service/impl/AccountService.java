@@ -18,4 +18,7 @@ public class AccountService implements IAccountService{
 	public Long save(AccountModel model) {
 		return acc.save(model);
 	}
+	public void update(AccountModel accountModel) {
+		acc.update(accountModel);
+	}
 }

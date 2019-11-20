@@ -1,85 +1,102 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="/common/taglib.jsp" %>
+<c:url var="APIurl" value="/api-admin-account"/>
+<c:url var="WebURL" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri/mat-khau"/>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Đổi mật khẩu - Gia phả Việt Nam</title>
 
-<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet"type="text/css" />
-<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet"type="text/css"/>
-<link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet"type="text/css" />
-
-<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
-
-<style>
-	#lgr a{color: #19191a}
-</style>
-
 </head>
 <body>
-	
-
-	
-
-	<div class="main_frame">
-		<div class="ucp_def_header">
 
 
-			<div class="banner txtC">
-				<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height: 80px" />
-			</div>
-			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="ucp_info">
-				<tbody>
-					<tr>
-						<td></td>
-						<td class="subleft"><a href="/home/view">TRANG CHỦ</a></td>
-						<td class="subcen"><c:out value="${prname}"></c:out></td>
-						<td class="subright">Người tạo: <c:out value="${pracname}"></c:out></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-			<div style="clear: both"></div>
-		</div>
-		<div class="ucp_def_body">
-			<jsp:include page="/common/admin/menu-left.jsp"></jsp:include>
-			<div class="ucp_def_right">
             
 
 <div class="page_title" style="margin-bottom: 15px">
     <h2>Đổi mật khẩu đăng nhập</h2>
 </div>
 <div class="message"></div>
-<form action="/home/account/tpw" method="post">
+
 	<div class="form_ctrl">
 	    <table border="0" cellpadding="0" cellspacing="10" class="compose">
 	        <tbody><tr>
 	            <td class="ar" style="width: 100px">Mật khẩu cũ</td>
-	            <td class="al" style="width: 300px"><input name="password" type="password" id="ctl02_right_ctrl0_txtOldPwd" style="width:200px;"></td>
+	            <td class="al" style="width: 300px"><input name="password" type="password" id="OldPwd" style="width:200px;"></td>
 	        </tr>
 	        <tr>
 	            <td class="ar">Mật khẩu mới</td>
-	            <td class="al"><input name="new_password" type="password" id="ctl02_right_ctrl0_txtNewPwd" style="width:200px;"></td>
+	            <td class="al"><input name="new_password" type="password" id="NewPwd" style="width:200px;"></td>
 	        </tr>
 	        <tr>
 	            <td class="ar">Xác nhận Mật khẩu mới</td>
-	            <td class="al"><input name="confirm_password" type="password" id="ctl02_right_ctrl0_txtConfirm" style="width:200px;"></td>
+	            <td class="al"><input name="confirm_password" type="password" id="Confirm" style="width:200px;"></td>
 	        </tr>
 	        <tr>
 	            <td class="ar"></td>
-	            <td class="al"><input type="submit" name="ctl02$right_ctrl0$btnOK" value="Đồng ý" id="ctl02_right_ctrl0_btnOK" class="button w70 op" style="height:28px;"></td>
+	            <td class="al"><input type="button" value="Đồng ý" id="btnOK" class="button w70 op" style="height:28px;"></td>
 	        </tr>
 	    </tbody></table>
 	</div>
-</form>
-        </div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-	<%@include file="/common/web/footer.jsp" %>
-	
-	
+	<script>
+	$('#btnOK').click(function(){
+		var oldpass = $('#OldPwd').val();
+		var newpass = $('#NewPwd').val();
+		var confirm = $('#Confirm').val(); 
+		
+		if(newpass != confirm){
+			alert('Kiển tra lại mật khẩu!');
+		}else{
+			var data = {
+					id : "",
+					accountName : "${account.accountName}",
+					password :  $('#OldPwd').val(),
+					role : 0,
+					status : 0	
+				};
+			
+			var data1 = {
+					id : "",
+					accountName : "${account.accountName}",
+					password : $('#NewPwd').val(),
+					role : 0,
+					status : 0	
+				};
+			
+			$.ajax({
+				url: '${APIurl}',
+				type: 'post',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: function(result){
+					if(result!=null){
+						$.ajax({
+							url: '${APIurl}',
+							type: 'delete',
+							contentType: 'application/json',
+							data: JSON.stringify(data1),
+							dataType: 'json',
+							success: function(result){
+								alert("Ok rồi");
+							},
+							error: function(error){
+								window.location.href = "${Adminurl}?error=updatefailure";
+							}
+						});
+					}else{
+						alert("Sai mật khẩu");
+					}
+				},
+				error: function(error){
+					window.location.href = "${Adminurl}?error=failure";
+				}
+			});
+			
+		}
+	});
+	</script>
 </body>
 </html>

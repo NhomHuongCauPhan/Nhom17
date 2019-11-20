@@ -27,6 +27,12 @@ public class AccountDAO extends AbstractDAO<AccountModel> implements IAccountDAO
 		return  insert(sql.toString(),model.getAccountName(),model.getPassword(), model.getRole(), model.getStatus());
 	}
 
+	@Override
+	public void update(AccountModel accountModel) {
+		StringBuilder sql= new StringBuilder("update account set password = ? where account_name = ?");
+		update(sql.toString(),accountModel.getPassword(),accountModel.getAccountName());
+	}
+
 	
 
 }

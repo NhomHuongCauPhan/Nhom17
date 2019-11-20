@@ -36,6 +36,9 @@ public class HomeController extends HttpServlet {
 		if(prt!=null) {
 			req.setAttribute(SystemConstant.PARENTAGEMODEL, prt);
 		}
+		if(model!=null) {
+			req.setAttribute("account", model);
+		}
 		
 		if (req.getRequestURI().endsWith("dong-ho")) {
 			int sotv = individualService.findAll(prt.getParentageId()).size();
