@@ -14,5 +14,8 @@ public class AccountService implements IAccountService{
 	public AccountModel findByUserNameAndUserPass(String userName, String password) {
 		return acc.findByUserNameAndUserPass(userName, password);
 	}
-
+	@Override
+	public Long save(AccountModel model) {
+		return acc.save(model);
+	}
 }

@@ -21,6 +21,12 @@ public class AccountDAO extends AbstractDAO<AccountModel> implements IAccountDAO
 		return user.isEmpty()?null:user.get(0);
 	}
 
+	@Override
+	public Long save(AccountModel model) {
+		StringBuilder sql= new StringBuilder("insert into account(account_name,password,role,status) values(?,?,?,?)");
+		return  insert(sql.toString(),model.getAccountName(),model.getPassword(), model.getRole(), model.getStatus());
+	}
+
 	
 
 }

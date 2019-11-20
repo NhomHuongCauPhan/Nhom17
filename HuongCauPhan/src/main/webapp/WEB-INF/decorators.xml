@@ -9,6 +9,9 @@
     <decorator name="web" page="web.jsp">
         <pattern>/trang-chu*</pattern>
     </decorator>
+    <decorator name="web" page="web.jsp">
+        <pattern>/thong-bao*</pattern>
+    </decorator>
     <decorator name="login" page="login.jsp">
         <pattern>/dang-nhap</pattern>
     </decorator>

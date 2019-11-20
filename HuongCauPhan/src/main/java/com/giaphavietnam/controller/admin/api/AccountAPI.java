@@ -33,6 +33,14 @@ public class AccountAPI extends HttpServlet{
 		}
 		mapper.writeValue(resp.getOutputStream(), accountModel);
 	}
-	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("application/json");
+		AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
+		long id = acountService.save(accountModel);
+		mapper.writeValue(resp.getOutputStream(), id);
+	}
 	
 }

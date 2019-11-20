@@ -6,16 +6,7 @@
 <head>
 <title>Đổi mật khẩu - Gia phả Việt Nam</title>
 
-<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet"type="text/css" />
-<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet"type="text/css"/>
-<link href="<c:url value='/template/adcss/ucp.css'/>" rel="stylesheet"type="text/css" />
 
-<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
-
-<style>
-	#lgr a{color: #19191a}
-	
-</style>
 
 </head>
 <body>
@@ -24,28 +15,7 @@
 	
 
 	<div class="main_frame">
-		<div class="ucp_def_header">
-
-
-			<div class="banner txtC">
-				<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height: 80px" />
-			</div>
-			<table width="100%" cellspacing="0" cellpadding="0" border="0"
-				class="ucp_info">
-				<tbody>
-					<tr>
-						<td></td>
-						<td class="subleft"><a href="/HuongCauPhan/view">TRANG CHỦ</a></td>
-						<td class="subcen"><c:out value="${prname}"></c:out></td>
-						<td class="subright">Người tạo: <c:out value="${pracname}"></c:out></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-			<div style="clear: both"></div>
-		</div>
-		<div class="ucp_def_body">
-			<jsp:include page="/common/admin/menu-left.jsp"></jsp:include>
+		
 			<div class="ucp_def_right">
             
 
@@ -83,10 +53,9 @@
 
         </div>
 		</div>
-	</div>
+	
 
 	<!-- Footer -->
-	<%@include file="/common/web/footer.jsp" %>
 	
 	<script type="text/javascript">
 		$(document).ready(function() {

@@ -24,7 +24,7 @@ public class NewsDAO extends AbstractDAO<NewModel> implements INewsDAO{
 
 	@Override
 	public ArrayList<NewModel> findByTopViews() {
-		StringBuilder sql= new StringBuilder("select  * from news order by views desc limit 2");
+		StringBuilder sql= new StringBuilder("select * from news order by views desc limit 2");
 		ArrayList<NewModel> news=query(sql.toString(),new NewsMapper());
 		return news.isEmpty()?null:news;
 	}
