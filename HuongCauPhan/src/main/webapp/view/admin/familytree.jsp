@@ -130,43 +130,6 @@
 			
 		});
 
-		
-		function del(id, name) {
-			var mess = "Bạn có thực sự muốn xóa "+name+" khỏi dòng họ!";
-			if (window.confirm(mess)) {
-				var data = {
-						individualId:id,
-						fullName :"",
-						gender:1,
-						dateOfBirth: "1300-1-1",
-						dateOfDeath:"1300-1-1" ,
-						father:1,
-						branch:"" ,
-						parentageId:1, 
-						avatar:"" 
-					};
-				
-				if(id!=null){
-					$.ajax({
-						url: '${APIurl}',
-						type: 'delete',
-						contentType: 'application/json',
-						data: JSON.stringify(data),
-						dataType: 'json',
-						success: function(result){
-							if(result=="true"){
-								window.location.href = "${Adminurl}";
-							}else{
-								alert(name+" vẫn còn hậu duệ!");
-							}
-						},
-						error: function(error){
-							
-						}
-					});
-				}
-			}
-		}
 		function openedit(id) {
 			window.location.href = "<c:url value='/quan-tri/sua-gia-pha?id="+id+"'/>";
 		}
