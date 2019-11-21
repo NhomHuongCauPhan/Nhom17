@@ -22,8 +22,8 @@
 					<h2 class="title">Account</h2>
 					<div class="gitem">
 
-						<a href="<c:url value = '/account/ae'/>">Thông tin tài khoản</a> 
-						<a href="<c:url value = '/account/tpw'/>">Đổi mật khẩu</a> <a
+						<a href="<c:url value = '/quan-tri/tai-khoan'/>">Thông tin tài khoản</a> 
+						<a href="<c:url value = '/quan-tri/mat-khau'/>">Đổi mật khẩu</a> <a
 							id="ctl02_left_ctrl0_logout" href="javascript:logout()">Đăng xuất</a>
 
 					</div>

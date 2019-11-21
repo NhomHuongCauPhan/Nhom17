@@ -4,4 +4,5 @@ import com.giaphavietnam.model.AccountModel;
 
 public interface IAccountService {
 	public AccountModel findByUserNameAndUserPass(String userName, String password);
+	public Long save(AccountModel model);
 }

@@ -21,7 +21,7 @@ import com.giaphavietnam.service.INewsService;
 import com.giaphavietnam.service.IParentageService;
 import com.giaphavietnam.utils.GenerateTree;
 
-@WebServlet(urlPatterns = { "/quan-tri","/quan-tri/dong-ho","/quan-tri/mail", "/quan-tri/pha-do", "/quan-tri/sua-gia-pha", "/quan-tri/album", "/quan-tri/bai-viet","/quan-tri/quan-ly-tin","/quan-tri/sua-tin" })
+@WebServlet(urlPatterns = {"/quan-tri/mat-khau","/quan-tri/tai-khoan", "/quan-tri","/quan-tri/dong-ho","/quan-tri/mail", "/quan-tri/pha-do", "/quan-tri/sua-gia-pha", "/quan-tri/album", "/quan-tri/bai-viet","/quan-tri/quan-ly-tin","/quan-tri/sua-tin" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Inject 
@@ -36,11 +36,24 @@ public class HomeController extends HttpServlet {
 		if(prt!=null) {
 			req.setAttribute(SystemConstant.PARENTAGEMODEL, prt);
 		}
+		if(model!=null) {
+			req.setAttribute("account", model);
+		}
 		
 		if (req.getRequestURI().endsWith("dong-ho")) {
 			int sotv = individualService.findAll(prt.getParentageId()).size();
 			req.setAttribute("sotv", sotv);
 			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/parentage.jsp");
+			rd.forward(req, res);
+		}else if (req.getRequestURI().endsWith("tai-khoan")) {
+			int sotv = individualService.findAll(prt.getParentageId()).size();
+			req.setAttribute("sotv", sotv);
+			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/accountae.jsp");
+			rd.forward(req, res);
+		}else if (req.getRequestURI().endsWith("mat-khau")) {
+			int sotv = individualService.findAll(prt.getParentageId()).size();
+			req.setAttribute("sotv", sotv);
+			RequestDispatcher rd = req.getRequestDispatcher("/view/admin/tpw.jsp");
 			rd.forward(req, res);
 		}
 		else if (req.getRequestURI().endsWith("pha-do")) {

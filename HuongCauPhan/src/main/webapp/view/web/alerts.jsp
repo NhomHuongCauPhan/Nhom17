@@ -9,21 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9" />
 <link rel="shortcut icon" href="http://www.giaphavietnam.vn/img/utils/favicon.ico"
 	type="image/x-icon" />
-
-<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>" ></script>
-<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/dvgss.css'/>" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<c:url value='/template/adjs/jquery.modal.min.js'/>" ></script>
-<link href="<c:url value='/template/adcss/jquery.modal.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/jquery.mCustomScrollbar.css'/>" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>" >
-<%--<style>
-	.ss_vlist li{width:62px;}
-	.intro{width:670px;}
-</style>--%>
-
 <title>Gia Phả Việt Nam</title>
 <style>
 
@@ -60,10 +45,6 @@
 								</div>
 							</div>
 						</div>
-
-						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-						<script
-							src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 						
 
 					</div>
@@ -155,7 +136,7 @@
 										out.print(
 												"<p><input type=\"password\" id=\"pass\" name=\"pass\" class=\"txt pwd\" placeholder=\"Mật khẩu\" /></p>");
 										out.print(
-												"<p class=\"pdr\"><input type=\"button\" onclick=\"login()\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
+												"<p class=\"pdr\"><input type=\"button\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
 										out.print(
 												"<p style=\"padding-top: 5px\"><a href=\"javascript:open_register()\" id=\"lnk_regnew\" style=\"text-decoration: underline\">Đăng ký mới miễn phí</a></p>");
 									}
@@ -198,98 +179,9 @@
 		</div>
 	</form>
 
-	<!-- Footer -->
-	<%@include file="/common/web/footer.jsp" %>
 	
 	<a href="#heading-page" id="toTop">to Top</a>
 
-	<script type="text/javascript">
-		function ucFirstAllWords(str) {
-			var pieces = str.split(" ");
-			for (var i = 0; i < pieces.length; i++) {
-				var j = pieces[i].charAt(0).toUpperCase();
-				pieces[i] = j + pieces[i].substr(1);
-			}
-			return pieces.join(" ");
-		}
-
-		$(document).ready(function() {
-
-		});
-
-		function logout() {
-			var mess = "Bạn có thực sự muốn đăng xuất khỏi hệ thống";
-			if (window.confirm(mess)) {
-				window.location.href = "/HuongCauPhan/view?action=logout";
-			}
-		}
-
-		function open_register() {
-			$('#dlg_register').modal('show'); // show bootstrap modal
-		}
-
-		function register() {
-
-			var username = $("#UserName").val().trim();
-			var password = $("#Password").val().trim();
-			var cfpassword = $("#ConfirmPassword").val().trim();
-			var capcf = $("#captConfirm").val().trim();
-			var tmp = "";
-			if (username.length == 0) {
-				tmp += "Tên tài khoản không được để trống; ";
-			}
-			if (password.length == 0) {
-				tmp += "Mật khẩu không được để trống; ";
-			}
-			if (password != cfpassword) {
-				tmp += "Kiểm tra lại mật khẩu; ";
-				$("#ConfirmPassword").val("");
-				$("#Password").focus();
-			}
-			if (tmp != "") {
-				tmp = "<div class=\"error\">" + tmp + "</div>";
-				$("#update_msg").html(tmp);
-				return;
-			}
-
-			var request;
-			if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-
-			try {
-
-				var data = {
-					accountname : username,
-					accountpass : password,
-					role : "1"
-				};
-
-				var datastr = JSON.stringify(data);
-				var url = "/HuongCauPhan/view?data="
-						+ encodeURIComponent(datastr);
-
-				request.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						var tmp1 = "<div class=\"error\">"
-								+ request.responseText + "</div>";
-						$("#update_msg").html(tmp1);
-
-					}
-				};
-
-				request.open("POST", url, true);
-				request.setRequestHeader('Content-Type',
-						'application/json; charset=utf-8');
-				request.send();
-			} catch (e) {
-				alert("Unable connect to server");
-			}
-
-		}
-	</script>
 	<div class="dialog modal" id="dlg_register"
 		style="width: 550px; margin: 100px auto; padding-right: -16px;">
 		<div class="dlg_title" style="width: 540px;!important">ĐĂNG KÝ THÀNH VIÊN MỚI</div>

@@ -6,6 +6,12 @@ public class AccountModel {
 	private String password;
 	private int role;
 	private int status;
+	
+	@Override
+	public String toString() {
+		return "AccountModel [id=" + id + ", accountName=" + accountName + ", password=" + password + ", role=" + role
+				+ ", status=" + status + "]";
+	}
 	public long getId() {
 		return id;
 	}

@@ -120,40 +120,32 @@
 			return;
 		}
 
-		var request;
-		if (window.XMLHttpRequest) {
-			request = new XMLHttpRequest();
-		} else if (window.ActiveXObject) {
-			request = new ActiveXObject("Microsoft.XMLHTTP");
-		}
+		
 
-		try {
+		var data = {
+			id: "",
+			accountName: username,
+			password: password,
+			role: "1",
+			status: 1
+		};
 
-			var data = {
-				accountname: username,
-				accountpass: password,
-				role: "1"
-			};
-
-			var datastr = JSON.stringify(data);
-			var url = "/HuongCauPhan/view?data="
-					+ encodeURIComponent(datastr);
-
-			request.onreadystatechange = function () {
-				if (this.readyState == 4 && this.status == 200) {
-					var tmp1 = "<div class=\"success\">"
-							+ request.responseText + "</div>";
-					$("#update_msg").html(tmp1);
-
-				}
-			};
-
-			request.open("POST", url, true);
-			request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-			request.send(datastr);
-		} catch (e) {
-			alert("Unable connect to server");
-		}
+		var datastr = JSON.stringify(data);
+		$.ajax({
+			url: '${APIurl}',
+			type: 'put',
+			contentType: 'application/json',
+			data: JSON.stringify(data),
+			dataType: 'json',
+			success: function(result){
+				$('#dlg_register').modal('hide');
+				alert("Chào mừng "+username+" đến với Giaphavietnam");
+			},
+			error: function(error){
+				$('#dlg_register').modal('hide');
+				alert("Lỗi hệ thống! Vui lòng kiểm tra lại.")
+			}
+		});
 	}
 	</script>
 </body>
