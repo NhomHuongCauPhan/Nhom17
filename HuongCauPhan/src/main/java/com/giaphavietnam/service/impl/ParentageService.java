@@ -23,6 +23,11 @@ public class ParentageService implements IParentageService {
 	}
 
 	@Override
+	public List<ParentageModel> findByPrtId(long prtId) {
+		return parentageDAO.findByPrtId(prtId);
+	}
+
+	@Override
 	public ParentageModel findByAccountId(long id) {	
 		return parentageDAO.findByAccountId(id);
 	}

@@ -30,10 +30,10 @@ public class ParentageDAO extends AbstractDAO<ParentageModel> implements IParent
     }
 
 	@Override
-	public List<ParentageModel> findByData(String data) {
+	public List<ParentageModel> findByPrtId(long prtId) {
 		StringBuilder sql=new StringBuilder("SELECT * FROM parentage ");
-		sql.append("WHERE ");
-		return query(sql.toString(),new ParentageMapper());
+		sql.append(" WHERE parentage_id = ?");
+		return query(sql.toString(),new ParentageMapper(),prtId);
 	}
 
 	@Override

@@ -62,8 +62,6 @@
                         <div class="grb gpvn">
                             <div class="gpvn_search_box">
                                 <input type="text" name="Keyword" id="search" placeholder="Tên dòng họ, Địa chỉ"/>
-                                <%--<a href="#" id="gpvn_search_btn">Tìm kiếm</a>--%>
-                                <%--<input type="button" class="btn btn-red" value="Tìm kiếm" id="btnSearch"/>--%>
                                 <button class="btn btn-secondary" type="submit" id="btnSearch">Tìm kiếm</button>
                             </div>
                             <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse" id="gpvn">
@@ -80,8 +78,9 @@
                                 <tbody id="formData">
                                     <c:forEach var="item" items="${ParentageModel.listResult}" varStatus="size">
                                         <tr class="prInfo">
+                                            <input type="hidden" value="${item.parentageId}" id="prtId_${item.parentageId}" name="parentageId"/>
                                             <td>${size.index + 1}</td>
-                                            <td><a href="<c:url value="/thong-tin-dong-ho"/>" style="cursor: pointer">${item.parentageName}</a></td>
+                                            <td><a href="<c:url value="/thong-tin-dong-ho?parentageId=${item.parentageId}"/>" style="cursor: pointer" id="prtName">${item.parentageName}</a></td>
                                             <td>${item.address}</td>
                                             <td>${item.head_of_parentage_name}</td>
                                             <td>${item.culturalSpringDay}</td>
@@ -124,27 +123,27 @@
             var num=i+1;
             var row = $('<tr/>');
             for (var colIndex = 0; colIndex < 1; colIndex++) {
+                var prtId=list[i][cols[10]];
                 var val = list[i][cols[1]];
                 var val1 = list[i][cols[3]];
                 var val2 = list[i][cols[2]];
                 var val3 = list[i][cols[4]];
                 var val4 = list[i][cols[12]];
                 if (val == null && val1 == null && val2 == null && val3 == null && val4 == null) val = val1 = val2 = val3 = val4 = "";
+                row.append("<input type=\"hidden\" value=\""+prtId+"\" id='prtId_"+prtId+"' name=\"parentageId\"/>");
                 row.append($('<td/>').html(num));
-                row.append($('<td/>').append("<a href=\"${PrtInfo}\">"+val+"</a>"));
+                row.append($('<td/>').append("<a href=\"${PrtInfo}?parentageId="+prtId+"\" id=\"prtName\">"+val+"</a>"));
                 row.append($('<td/>').html(val1));
                 row.append($('<td/>').html(val2));
                 row.append($('<td/>').html(val3));
-
                 row.append($('<td/>').html("${totalMember}"));
             }
-
             $(selector).append(row);
         }
     }
 
     $('#btnSearch').click(function(e) { //tìm kiếm thông tin dòng họ
-        var searchData=$('#search').val();
+        var searchData="allprt-"+$('#search').val();
         e.preventDefault();
         $.ajax({
             url: '${PrtUrl}',
@@ -154,13 +153,13 @@
             data: searchData.trim(),
             success: function (list) {
                 constructTable(list, '#gpvn');
-
             },
             error: function () {
-                alert('There\'s something wrong!');
+                window.location.href=document.location.href;
             }
         });
     });
+
 </script>
 </body>
 </html>

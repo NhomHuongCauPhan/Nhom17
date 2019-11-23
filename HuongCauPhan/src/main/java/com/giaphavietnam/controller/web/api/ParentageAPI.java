@@ -25,8 +25,11 @@ public class ParentageAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json");
+
         /*ParentageModel parentageNew = HttpUtil.of(req.getReader()).toModel(ParentageModel.class);
-        parentageService.update(parentageNew);*/
+        long id = parentageService.save(parentageNew);
+        mapper.writeValue(resp.getOutputStream(), id);*/
+
         mapper.writeValue(resp.getOutputStream(), parentageService.findAll());
     }
 
@@ -36,8 +39,17 @@ public class ParentageAPI extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json");
         String data = HttpUtil.of(req.getReader()).getValue();
-        List<ParentageModel> listPrt = parentageService.findAll(data);
-        mapper.writeValue(resp.getOutputStream(), listPrt);
+        String str[]=data.split("-");
+        String str1=str[0];
+        String str2=str[1];
+        if(str1.equals("allprt")){
+            List<ParentageModel> listPrt = parentageService.findAll(str2); //find all prt
+            mapper.writeValue(resp.getOutputStream(), listPrt);
+        }
+        if (str1.equals("oneprt")){
+            List<ParentageModel> listPrt1 = parentageService.findByPrtId(Long.parseLong(str2)); //find one prt by id
+            mapper.writeValue(resp.getOutputStream(), listPrt1);
+        }
     }
 
     @Override
