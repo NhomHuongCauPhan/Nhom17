@@ -5,25 +5,12 @@
 <html>
 <head>
 <title>Đổi mật khẩu - Gia phả Việt Nam</title>
-
-
-
 </head>
 <body>
-	
-
-	
-
-	<div class="main_frame">
 		
-			<div class="ucp_def_right">
-            
-
-
+<div class="ucp_def_right">
 <div class="page_title" style="margin-bottom: 15px">
     <h2>Thông tin tài khoản</h2>
-    
-    
 </div>
 <div class="frm_loadstatus" style="display: none;"></div>
 <table border="0" style="width: 100%; border-collapse: collapse" class="ucp_tbl_acc">
@@ -48,10 +35,6 @@
     </tr>
      
 </tbody></table>
-
-
-
         </div>
-		</div>
 </body>
 </html>

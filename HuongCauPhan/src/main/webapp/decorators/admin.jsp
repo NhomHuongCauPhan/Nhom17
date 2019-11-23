@@ -42,7 +42,6 @@
 
 	<div class="main_frame">
 		<div class="ucp_def_header">
-
 			<div class="banner txtC">
 				<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height: 80px" />
 			</div>

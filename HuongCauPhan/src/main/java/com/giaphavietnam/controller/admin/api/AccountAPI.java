@@ -49,7 +49,6 @@ public class AccountAPI extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
-		System.out.println(accountModel);
 		acountService.update(accountModel);
 		mapper.writeValue(resp.getOutputStream(), "s");
 	}
