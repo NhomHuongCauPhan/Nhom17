@@ -80,7 +80,7 @@
 							data: JSON.stringify(data1),
 							dataType: 'json',
 							success: function(result){
-								alert("Ok rồi");
+								alert("Đổi mật khẩu thành công.");
 							},
 							error: function(error){
 								window.location.href = "${Adminurl}?error=updatefailure";

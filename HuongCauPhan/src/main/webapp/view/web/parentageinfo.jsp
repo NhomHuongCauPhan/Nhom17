@@ -90,9 +90,9 @@
 								<span>Ngày giỗ họ</span><b>:</b><span>15/1</span>
 							</p>
 							<p class="dhtitle">
-								<span>Số thành viên</span><b>:</b><span>${prnumber_individual}(<a
-									href="#" class="treelink">Xem Phả đồ tại đây</a>)
-									</span>
+								<span>Số thành viên</span><b>:</b><span>
+                                (<a href="" class="treelink">Xem Phả đồ tại đây</a>)
+                                </span>
 							</p>
 							<p class="dhtitle">
 								<span>Ngày lập gia phả</span><b>:</b><span>17/05/2019</span>
@@ -215,18 +215,18 @@
 			dataType: 'json',
 			data: params,
 			success: function (result) {
-
-				for (var i in result) {
+                $('#gp_phahe').append(result);
+				/*for (var i in result) {
 					var obj = result[i];
 					for (var j in obj) {
 						var tmp = "<div class=\"rcontent-item item3\" >";
-						/*if (j == "branch") {
+						/!*if (j == "branch") {
 							var doi = obj[j].split(".").length;
 							for (var i = 0; i < doi; i++) {
 								tmp += "&nbsp;&nbsp;&nbsp;&nbsp;";
 								break;
 							}
-						}*/
+						}*!/
 						if (j == "fullName") {
 							$('#gp_phahe').append(tmp
 									+ "<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
@@ -236,7 +236,7 @@
 									+ "</div>");
 						}
 					}
-				}
+				}*/
 			},
 			error: function () {
 				window.location.href = document.location.href;

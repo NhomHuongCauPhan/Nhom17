@@ -61,7 +61,7 @@ public class HomeController extends HttpServlet {
 			if(prt!=null){
 				ArrayList<IndividualModel> list = individualService.findAll(prt.getParentageId());
 				IndividualModel age = individualService.findAge(prt.getParentageId());
-				familyTree = GenerateTree.viewIndividual(list);
+				familyTree = GenerateTree.viewIndividual(list,1);
 				req.setAttribute("prid", prt.getParentageId());
 				req.setAttribute("prlife", age.getBranch().split("\\.").length);
 			}else{

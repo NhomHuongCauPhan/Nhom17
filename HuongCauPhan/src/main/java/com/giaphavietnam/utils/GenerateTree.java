@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.giaphavietnam.model.IndividualModel;
 
 public class GenerateTree {
-	public static String viewIndividual(ArrayList<IndividualModel> items) {
+	public static String viewIndividual(ArrayList<IndividualModel> items,int n) {
 		int doi;		
 		String tmp = "";
 		tmp +="<div class=\"rcontent-item item3\" >";
@@ -17,12 +17,14 @@ public class GenerateTree {
 				tmp +="&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
 			
-		
+
 			tmp +="<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">";
 			tmp +="<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">";
 			tmp +="<button class=\"tree !important\">"+ item.getFullName() +"</button>";
-			tmp +="<button class=\"tree tree1 !important\" onclick=\"openedit("+item.getIndividualId()+")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>";
-			tmp +="<button class=\"tree tree1 !important\" onclick=\"del("+item.getIndividualId()+",\'"+item.getFullName()+"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>";
+			if(n==1){
+				tmp +="<button class=\"tree tree1 !important\" onclick=\"openedit("+item.getIndividualId()+")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>";
+				tmp +="<button class=\"tree tree1 !important\" onclick=\"del("+item.getIndividualId()+",\'"+item.getFullName()+"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>";
+			}
 			tmp +="</br>";
 		}
 
