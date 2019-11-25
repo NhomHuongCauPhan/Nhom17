@@ -13,6 +13,7 @@ public class IndividualDAO extends AbstractDAO<IndividualModel> implements IIndi
 	public ArrayList<IndividualModel> findAll(long parentageId) {
 		StringBuilder sql = new StringBuilder("select * from individual");
 		sql.append(" where parentage_id=?");
+		sql.append(" order by branch");
 		ArrayList<IndividualModel> prt = query(sql.toString(),new IndividualMapper(),parentageId);
 		return prt.isEmpty()?null:prt;
 	}

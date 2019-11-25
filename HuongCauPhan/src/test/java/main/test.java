@@ -53,5 +53,66 @@ public class test {
             throw new RuntimeException(e);
         }
 	}
-
+	
+	/*
+var tmp="";
+						for (var i in result) {					
+							tmp="1"+result[i].fullName;
+							var flag=0;
+							var check=0;
+							for (var j in result) {
+								if(result[j].father==result[i].individualId){
+									check=1;
+									tmp+="2"+result[j].fullName;
+									if(result[j].gender==1){
+										flag=1;
+									}
+								}
+								
+							}
+							if(flag==0&&check==1){
+								console.log(tmp);
+							}
+							tmp='';
+						}
+*
+*
+*/
+/*
+ var tmp='<div class=\"rcontent-item item3\" >';
+						for (var i in result) {
+							var tmp1="&nbsp;&nbsp;&nbsp;&nbsp;"	
+								+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+								+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+								+"<button class=\"tree\">"+ result[i].fullName +"</button>"
+								+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+								+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+								+"</br>"
+								+"";
+							console.log(result[i]);
+							
+							var flag=0;
+							for (var j in result) {
+								if(result[i].individualId==result[j].father){
+									tmp1+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+									tmp1+=""	
+										+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+										+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+										+"<button class=\"tree\">"+ result[i].fullName +"</button>"
+										+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+										+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+										+"</br>"
+										+"";
+									if(result[j].gender==1){
+										flag=1;
+									}
+								}
+							}
+							if(flag==1){
+								tmp+=tmp1;
+								tmp1='';
+							}
+						}
+						$('#gp_phahe').html(tmp+"</div>");
+*/
 }

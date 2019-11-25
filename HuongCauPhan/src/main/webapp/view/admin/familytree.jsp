@@ -65,7 +65,20 @@
 						</div>
 						
 					</div>	
+					<div class="row" style="padding-bottom:20px;background:#aaaa">
+						<div class="col-md-offset-2 col-md-3" style="padding-top:20px" >Gia đình không có</div>
+						<div class="col-md-4" style="padding-top:20px">
+							<input type="radio" name="prtgender" value="1" />Nam
+							<input type="radio" name="prtgender" value="0" />Nữ
+						</div>
+					</div>	
 					
+					<div class="row" style="padding-bottom:20px;background:#1g1g3g">
+						<div class="col-md-offset-2 col-md-3" style="padding-top:20px" >Lập gia đình</div>
+						<div class="col-md-4" style="padding-top:20px">
+							<input type="radio" name="married" value="1" />
+						</div>
+					</div>	
 				</div>
 			</div>
 			
@@ -78,9 +91,13 @@
 		$("#btn_load").click(function(){
 			var age = $("#cbxAge option:selected").text();
 			var gender = $('input[name=gender]:checked').val();
+			var prtgender = $('input[name=prtgender]:checked').val();
 			var name = $('#indname').val();
 			if(gender==undefined){
 				gender =  2;
+			}
+			if(age=='Chọn đời'&&gender==2&&prtgender==undefined&&name==''){
+				return;
 			}
 			var data = {
 					individualId:1,
@@ -100,28 +117,71 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function(result){
-					$('#gp_phahe').html(".");
-					for (var i in result) {
-					   var obj = result[i];
-					   for (var j in obj) {
-						   if(age!="Chọn đời"){
-							   if(j=="branch"){							
-								   if(age != obj[j].split("\.").length){break;}
+					if(prtgender=='0'||prtgender=='1'){
+						var tmp='<div class=\"rcontent-item item3\" >';
+						for (var i in result) {
+							var tmp1="&nbsp;&nbsp;&nbsp;&nbsp;"	
+								+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+								+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+								+"<button class=\"tree\">"+ result[i].fullName +"</button>"
+								+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+								+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+								+"</br>"
+								+"";
+							console.log(result[i]);
+							
+							var flag=0;
+							var check=0;
+							for (var j in result) {
+								if(result[i].individualId==result[j].father){
+									check=1;
+									tmp1+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+									tmp1+=""	
+										+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+										+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+										+"<button class=\"tree\">"+ result[i].fullName +"</button>"
+										+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+										+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+										+"</br>"
+										+"";
+									if(result[j].gender==prtgender){
+										flag=1;
+									}
+								}
+							}
+							if(flag==0&&check==1){
+								tmp+=tmp1;
+							}
+							tmp1='';
+						}
+						$('#gp_phahe').html(tmp+"</div>");
+						
+						
+					}else{
+						$('#gp_phahe').html("<div class=\"rcontent-item item3\" >");
+						for (var i in result) {
+							   var obj = result[i];
+							   for (var j in obj) {
+								   if(age!="Chọn đời"){
+									   if(j=="branch"){							
+										   if(age != obj[j].split("\.").length){break;}
+									   }
+								   }
+								   
+								   if(j=="fullName"){
+										$('#gp_phahe').append(""	
+											+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+											+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+											+"<button class=\"tree\">"+ obj[j] +"</button>"
+											+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+											+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+											+"</br>"
+											+"</div>");
+								   }							  							   							   
 							   }
-						   }
-						   
-						   if(j=="fullName"){
-								$('#gp_phahe').append("<div class=\"rcontent-item item3\" >"	
-									+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
-									+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
-									+"<button class=\"tree\">"+ obj[j] +"</button>"
-									+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
-									+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
-									+"</br>"
-									+"</div>");
-						   }							  							   							   
-					   }
-					}											 	
+							}
+						$('#gp_phahe').append("</div>");
+					}
 				},
 				error: function(error){
 					
