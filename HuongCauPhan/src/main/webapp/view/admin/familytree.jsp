@@ -117,8 +117,8 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function(result){
+					var tmp='<div class=\"rcontent-item item3\" >';
 					if(prtgender=='0'||prtgender=='1'){
-						var tmp='<div class=\"rcontent-item item3\" >';
 						for (var i in result) {
 							var tmp1="&nbsp;&nbsp;&nbsp;&nbsp;"	
 								+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
