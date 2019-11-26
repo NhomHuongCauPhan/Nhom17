@@ -76,7 +76,7 @@
 					<div class="row" style="padding-bottom:20px;background:#1g1g3g">
 						<div class="col-md-offset-2 col-md-3" style="padding-top:20px" >Lập gia đình</div>
 						<div class="col-md-4" style="padding-top:20px">
-							<input type="radio" name="married" value="1" />
+							<input type="checkbox" name="married" value="1" />
 						</div>
 					</div>	
 				</div>
@@ -91,12 +91,13 @@
 		$("#btn_load").click(function(){
 			var age = $("#cbxAge option:selected").text();
 			var gender = $('input[name=gender]:checked').val();
+			var married = $('input[name=married]:checked').val();
 			var prtgender = $('input[name=prtgender]:checked').val();
 			var name = $('#indname').val();
 			if(gender==undefined){
 				gender =  2;
 			}
-			if(age=='Chọn đời'&&gender==2&&prtgender==undefined&&name==''){
+			if(age=='Chọn đời'&&gender==2&&prtgender==undefined&&name==''&&married==''){
 				return;
 			}
 			var data = {
@@ -117,7 +118,7 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function(result){
-					var tmp='<div class=\"rcontent-item item3\" >';
+					var tmp='<div class=\"rcontent-item item3\" >.';
 					if(prtgender=='0'||prtgender=='1'){
 						for (var i in result) {
 							var tmp1="&nbsp;&nbsp;&nbsp;&nbsp;"	
@@ -139,7 +140,7 @@
 									tmp1+=""	
 										+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
 										+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
-										+"<button class=\"tree\">"+ result[i].fullName +"</button>"
+										+"<button class=\"tree\">"+ result[j].fullName +"</button>"
 										+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
 										+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
 										+"</br>"
@@ -155,10 +156,30 @@
 							tmp1='';
 						}
 						$('#gp_phahe').html(tmp+"</div>");
-						
-						
+					}else if(married=='1'){
+						for (var i in result) {
+							var tmp1="&nbsp;&nbsp;&nbsp;&nbsp;"	
+								+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
+								+"<img src=\"/HuongCauPhan/template/adimgs/m.jpg\" align=\"absmiddle\" style=\"width: 18px; height: 18px;\" id=\"img1\">"
+								+"<button class=\"tree\">"+ result[i].fullName +"</button>"
+								+"<button class=\"tree tree1\" onclick=\"openedit(\"+item.getIndividualId()+\")\"><img src=\"/HuongCauPhan/template/adimgs/pencil.png\" width=\"14px\" heigh=\"14px\"></button>"
+								+"<button class=\"tree tree1\" onclick=\"del(\"+item.getIndividualId()+\",\'\"+item.getFullName()+\"\')\"><img src=\"/HuongCauPhan/template/adimgs/delete.png\" width=\"14px\" heigh=\"14px\"></button>"
+								+"</br>"
+							console.log(result[i]);
+							var check=0;
+							for (var j in result) {
+								if(result[i].individualId==result[j].father){
+									check=1;
+								}
+							}
+							if(check==0){
+								tmp+=tmp1;
+							}
+							tmp1='';
+						}
+						$('#gp_phahe').html(tmp+"</div>");
 					}else{
-						$('#gp_phahe').html("<div class=\"rcontent-item item3\" >");
+						$('#gp_phahe').html("<div class=\"rcontent-item item3\" >.");
 						for (var i in result) {
 							   var obj = result[i];
 							   for (var j in obj) {
