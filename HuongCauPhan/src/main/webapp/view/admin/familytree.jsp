@@ -76,7 +76,8 @@
 					<div class="row" style="padding-bottom:20px;background:#1g1g3g">
 						<div class="col-md-offset-2 col-md-3" style="padding-top:20px" >Lập gia đình</div>
 						<div class="col-md-4" style="padding-top:20px">
-							<input type="checkbox" name="married" value="1" />
+							<input type="radio" name="married" value="1" />Đã lập 
+							<input type="radio" name="married" value="0" />Chưa lập
 						</div>
 					</div>	
 				</div>
@@ -156,7 +157,7 @@
 							tmp1='';
 						}
 						$('#gp_phahe').html(tmp+"</div>");
-					}else if(married=='1'){
+					}else if(married=='1'||married=='0'){
 						for (var i in result) {
 							var tmp1="&nbsp;&nbsp;&nbsp;&nbsp;"	
 								+"<img align=\"absmiddle\" src=\"/HuongCauPhan/template/adimgs/plus4.gif\" style=\"padding: 0px; margin: 0px; width: 18px; height: 18px;\" id=\"img0\" onclick=\"img1()\">"
@@ -172,7 +173,7 @@
 									check=1;
 								}
 							}
-							if(check==0){
+							if(check==married){
 								tmp+=tmp1;
 							}
 							tmp1='';
