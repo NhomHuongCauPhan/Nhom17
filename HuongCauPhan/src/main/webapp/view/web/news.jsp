@@ -1,71 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp" %>
+<%@include file="/common/taglib.jsp" %>	
+<c:url var="APIurl" value="/api-admin-account"/>
+<c:url var="WebURL" value="/trang-chu"/>
+<c:url var="Adminurl" value="/quan-tri"/>
+<c:url var="Adminurl" value="/quan-tri"/> 
+<c:url var="TopViews" value="/api-admin-news"/>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=9" />
-<link rel="shortcut icon" href="http://www.giaphavietnam.vn/img/utils/favicon.ico"
-	type="image/x-icon" />
-<link rel="icon" href="http://www.giaphavietnam.vn/img/utils/favicon.ico" type="image/x-icon" />
-
-<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>" ></script>
-<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/dvgss.css'/>" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<c:url value='/template/adjs/jquery.modal.min.js'/>" ></script>
-<link href="<c:url value='/template/adcss/jquery.modal.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/adcss/jquery.mCustomScrollbar.css'/>" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.css'/>" >
-<style>
-	.ss_vlist li{width:62px;}
-	.intro{width:670px;}
-</style>
-
 <title>Gia Phả Việt Nam</title>
-<style>
+<link rel="shortcut icon" href="template/http://www.giaphavietnam.vn/img/utils/favicon.ico" type="image/x-icon" />
 
-</style>
+	<script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.1.7.1.js'/>"></script>
+	<link href="<c:url value='/template/adcss/layout.css'/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value='/template/adcss/common.css'/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value='/template/adcss/default.css'/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value='/template/adcss/dvgss.css'/>" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<c:url value='/template/adjs/jquery.modal.min.js'/>"></script>
+	<link href="<c:url value='/template/adcss/jquery.modal.css'/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value='/template/adcss/jquery.mCustomScrollbar.css'/>" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="<c:url value='/template/adcss/bootstrap.min.css'/>">
 </head>
 <body>
 	<form name="form1" id="form1">
 
 		<div class="wrapper">
-			<a href="/HuongCauPhan/view" title="Bấm vào đây đề về Trang chủ">
+			<a href="<c:url value='/trang-chu'/>" title="Bấm vào đây đề về Trang chủ" >
 				<div class="banner txtC" id="heading-page">
-					<img src="<c:url value='/template/adimgs/cen_bn.jpg'/>" style="height: 150px" />
+					<img src="<c:url value='/template/adimgs/cen_bn.jpg'></c:url>" style="height: 150px" >
 				</div>
 			</a>
 			<div class="wrappage">
 				<div class="clb ovh top_news">
 					<div id="dvgss"
-						style="background: url(<c:url value='/template/adimgs/tnbd.png'/>) no-repeat !important;" >
-
-
-
+						style="background: url(<c:url value='/template/adimgs/tnbd.png'></c:url>) no-repeat !important;">
 						<div id="myCarousel" class="carousel slide border"
 							data-ride="carousel"
 							style="width: 440px; height: 240px; margin: 0 auto; padding-top: 9px">
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl1.jpeg'/>" alt="Panther" >
+									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl1.jpeg'></c:url>" alt="Panther">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl2.jpg' />" alt="Black Cat">
+									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl2.jpg'></c:url>" alt="Black Cat">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl3.jpg' />" alt="Lion">
+									<img class="d-block w-100" src="<c:url value='/template/adimgs/sl3.jpg'></c:url>" alt="Lion">
 								</div>
 							</div>
 						</div>
 
-						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+						
 						<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-						<script src="adjs/bootstrap.min.js"></script>
+						<script src="<c:url value='/template/adjs/bootstrap.min.js'></c:url>"></script>
 
 					</div>
 					<div class="ss_vlist">
@@ -88,20 +78,20 @@
 							<h3 class="bhead">DANH MỤC</h3>
 							<div class="grb">
 								<ul id="menu">
-									<li><a href="<c:url value='/trang-chu' />">Trang chủ</a></li>
-									<li><a class="active" href="<c:url value='/thong-bao' />">Thông báo</a></li>
+									<li><a class="active" href="<c:url value='/trang-chu' />">Trang chủ</a></li>
+									<li><a href="<c:url value='/thong-bao' />">Thông báo</a></li>
 									<li><a href="<c:url value='/cac-dong-ho' />">Gia phả Việt Nam</a></li>
 									<li><a href="#">Giới thiệu</a></li>
 									<li><a href="#">Liên hệ - Góp ý</a></li>
 								</ul>
 							</div>
 						</div>
-
-
-
 						
 					</div>
-					<c:set var="titleNew" value="${onlyOne.title }"> </c:set>
+
+					<div class="main-center fll">
+
+			<c:set var="titleNew" value="${onlyOne.title }"> </c:set>
 					<div class="main-center fll" style="padding:20px 20px; font-size:16px;background: url(<c:url value='/template/adimgs/ct_bg.png'/>) repeat !important;">
 							<h1 style="text-align: center;"><strong>${onlyOne.title }</strong> </h1>
 							<br>
@@ -111,37 +101,38 @@
 							</div>
 					</div>
 
+
+					</div>
+
 					<div class="main-right flr">
 
 						<div class="box rb ovh txtC login">
 							<h3 class="bhead">THÀNH VIÊN</h3>
+							
 							<div class="grb ovh" id="member_area">
-								<%
-									if (request.getSession().getAttribute("Loginned") != null) {
-										out.print("<div class=\"member\">");
-										out.print("<img src=\"/HuongCauPhan/template/adimgs/default.png\">");
-										out.print("<p>Xin chào:</p><p class=\"memname\">" + request.getSession().getAttribute("acname")
-												+ "</p>");
-										out.print("</div>");
-										out.print("<div class=\"memfunc\">");
-										out.print("<p><a href=\"/HuongCauPhan/parentage/ae\">Quản lý</a></p>");
-										out.print("<p><a href=\"javascript:logout()\">Đăng xuất</a></p>");
-										out.print("</div>");
-									} else {
-										out.print(
-												"<p><input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"txt usrn\" placeholder=\"Tên đăng nhập\" /></p>");
-										out.print(
-												"<p><input type=\"password\" id=\"pass\" name=\"pass\" class=\"txt pwd\" placeholder=\"Mật khẩu\" /></p>");
-										out.print(
-												"<p class=\"pdr\"><input type=\"button\" onclick=\"login()\" id=\"btnLogin\" value=\"Đăng nhập\" style=\"height: 25px\" /></p>");
-										out.print(
-												"<p style=\"padding-top: 5px\"><a href=\"javascript:open_register()\" id=\"lnk_regnew\" style=\"text-decoration: underline\">Đăng ký mới miễn phí</a></p>");
-									}
-								%>
-
-
-
-
+							
+							<c:if test="${not empty model}">
+								<div class="member">
+								<img src="<c:url value='/template/adimgs/default.png'/>"/>
+								<p>Xin chào:</p><p class="memname">${model.accountName}</p>
+								</div>
+								<div class="memfunc">
+								<p><a href="<c:url value='/quan-tri'/>" tabindex="1" >Quản lý</a></p>
+								<p><a href="javascript:logout()">Đăng xuất</a></p>
+								</div>
+							</c:if>
+							
+							<c:if test="${empty model}">
+								<form id="formlogin">
+										
+								<p><input type="text" id="accountName" name="accountName" class="txt usrn" placeholder="Tên đăng nhập" /></p>
+										
+								<p><input type="password" id="password" name="password" class="txt pwd" placeholder="Mật khẩu" /></p>
+								
+								<p class="pdr"><input type="button" id="btnLogin" value="Đăng nhập" tabindex="1" style="height: 25px" /></p>
+								<p style="padding-top: 5px"><a href="javascript:open_register()" id="lnk_regnew" style="text-decoration: underline">Đăng ký mới miễn phí</a></p>
+								</form>
+							</c:if>
 							</div>
 						</div>
 						
@@ -167,26 +158,17 @@
 								</ul>
 							</div>
 						</div>
-
-						
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</form>
-
-	<!-- Footer -->
-	<%@include file="/common/web/footer.jsp" %>
 	
 	<a href="#heading-page" id="toTop">to Top</a>
 
-	<script type="text/javascript">
-		
-	</script>
 	<div class="dialog modal" id="dlg_register"
-		style="width: 550px; margin: 100px auto; padding-right: -16px;">
-		<div class="dlg_title" style="width: 540px;!important">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
+		style="width: 550px; height: 280px; margin: 100px auto;">
+		<div class="dlg_title" style="">ĐĂNG KÝ THÀNH VIÊN MỚI</div>
 		<div class="dlg_content">
 			<div class="frm_loadstatus" style="display: none"></div>
 			<form name="frm_dk" id="frm_dk">
@@ -214,8 +196,9 @@
 						<td><input type="text" id="captConfirm"
 							style="width: 75px; height: 21px; float: left; margin-right: 10px"
 							placeholder="Mã bảo mật" title="Nhập mã trong ảnh bên" /> <img
-							id="imgSec" src="/HuongCauPhan/adimgs/CapGenerator.jpg" class="imgCaptcha"
-							alt="Loading..." style="width: 80px; height: 30px" /></td>
+							id="imgSec" src="<c:url value='/template/adimgs/CapGenerator.jpg'/>" class="imgCaptcha"
+							alt="Loading..." style="width: 80px; height: 30px"/>
+						</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -231,7 +214,12 @@
 			</form>
 		</div>
 		<input type="hidden" value="0" id="hdpr" name="hdpr" /> 
-		<a class="close-modal hdpr" id="hdpr">Close</a>
+		<a class="close-modal" style="margin-top: 5.5px; height: 3px;">Close</a>
 	</div>
+
+<script>
+
+	
+</script>
 </body>
 </html>

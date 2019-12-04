@@ -104,14 +104,14 @@
 
 
 						
-<div class="box ovh">
+						<div class="box ovh">
 							<h3 class="cbhead txtC">TIN TỨC DÒNG HỌ</h3>
 							<div class="grb cencol">
 								<div class="fnews fll" id="TopNews">
 									<h4></h4>
 							<c:forEach items="${arrNewsTop}" var="item">
 							<div style="height: 100px;box-shadow: 1px 2px 3px;">
-							<p class="headline" style="height: 45px; overflow: hidden;text-align: center;" >
+							<p class="headline" style="height: 45px; overflow: hidden;text-align: center;margin-bottom: 20px;margin-top: 20px;" >
 							<c:url value='/tin-hot' var='urlNews'>
 							<c:param name='newID' value='${item.newsID }'/> 
 							</c:url>
@@ -130,7 +130,13 @@
 											<c:param name='newID' value='${item.newsID }'/> 
 										</c:url>
 											<a href="${urlNews}">${item.title}<span>- <i>${item.create_date}</i></span></a>
-											<p class="source">Tin dòng họ:</p>
+											<c:forEach items="${pare }" var="pa">
+											<c:if test="${pa.parentageId==item.parentage_id }" >
+											<p class="source">Tin dòng họ: ${pa.parentageName}</p>
+											 </c:if>
+											
+											</c:forEach>
+											
 										</li>
 									</c:forEach> 
 									</ul>

@@ -8,7 +8,6 @@
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
   <script type="text/javascript" src="<c:url value='/template/adjs/jquery.min.3.2.1.js'/>"></script>
 	 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
  <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>

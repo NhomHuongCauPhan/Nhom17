@@ -37,8 +37,10 @@ public class HomeController extends HttpServlet {
             }
             ArrayList<NewModel> arrNewsTop=newsService.findByTopViews();
 			ArrayList<NewModel> arrNewDate=newsService.findNewDate();
+			List<ParentageModel> parent=  iParentageService.findAll();
 			req.setAttribute("arrNewsTop", arrNewsTop);
 			req.setAttribute("arrNewDate", arrNewDate);
+			req.setAttribute("pare", parent);
             RequestDispatcher rd = req.getRequestDispatcher("/view/web/home.jsp");
             rd.forward(req, res);
         } else if (req.getRequestURI().endsWith("cac-dong-ho")) {
