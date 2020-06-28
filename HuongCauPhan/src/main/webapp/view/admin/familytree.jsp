@@ -74,10 +74,10 @@
 					</div>	
 					
 					<div class="row" style="padding-bottom:20px;background:#1g1g3g">
-						<div class="col-md-offset-2 col-md-3" style="padding-top:20px" >Lập gia đình</div>
+						<div class="col-md-offset-2 col-md-3" style="padding-top:20px" >Gia đình có con</div>
 						<div class="col-md-4" style="padding-top:20px">
-							<input type="radio" name="married" value="1" />Đã lập 
-							<input type="radio" name="married" value="0" />Chưa lập
+							<input type="radio" name="married" value="1" />Đã có
+							<input type="radio" name="married" value="0" />Chưa có
 						</div>
 					</div>	
 				</div>
