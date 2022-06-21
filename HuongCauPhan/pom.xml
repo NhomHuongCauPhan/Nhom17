@@ -11,7 +11,7 @@
 		<servlet.api.version>3.1.0</servlet.api.version>
 		<jsp.api.version>2.3.1</jsp.api.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
-		<mysql.version>8.0.16</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 		<jstl.version>1.2</jstl.version>
 		<weld.version>1.1.10.Final</weld.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
